@@ -1,6 +1,5 @@
 /* =============================================
    MEMO NOTEPAD ONLINE – APPLICATION LOGIC
-   Fixed Dark Mode Text Issue
    ============================================= */
 
 (function () {
@@ -43,6 +42,7 @@
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         notes = JSON.parse(stored);
+        // Ensure each note has a content (HTML) field
         notes = notes.map(note => ({
           ...note,
           content: note.content || '',
@@ -56,6 +56,7 @@
       notes = [];
     }
     if (!notes.length) {
+      // Create a default welcome note
       const welcomeNote = {
         id: generateId(),
         title: 'Welcome to Memo NotePad!',
@@ -86,7 +87,7 @@
         if (settings.darkMode) {
           document.body.classList.add('dark-mode');
           document.body.classList.remove('light-mode');
-          updateDarkModeToggles(true);
+          if (darkToggle) darkToggle.innerHTML = '☀️';
         }
       }
     } catch (e) { /* ignore */ }
@@ -95,27 +96,6 @@
   function saveSettings(settings) {
     const existing = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...existing, ...settings }));
-  }
-
-  // Update all dark mode toggle buttons
-  function updateDarkModeToggles(isDark) {
-    const toggles = document.querySelectorAll('.dark-toggle');
-    toggles.forEach(toggle => {
-      toggle.innerHTML = isDark ? '☀️' : '🌙';
-    });
-  }
-
-  // Apply current theme to editor
-  function applyThemeToEditor() {
-    const isDark = document.body.classList.contains('dark-mode');
-    
-    if (noteTitleInput) {
-      noteTitleInput.style.color = isDark ? '#EEEAE2' : (currentNoteId ? notes.find(n => n.id === currentNoteId)?.textColor || '#1a1a2e' : '#1a1a2e');
-    }
-    
-    if (noteEditor) {
-      noteEditor.style.color = isDark ? '#EEEAE2' : (currentNoteId ? notes.find(n => n.id === currentNoteId)?.textColor || '#1a1a2e' : '#1a1a2e');
-    }
   }
 
   // ---------- UTILS ----------
@@ -193,6 +173,7 @@
 
   // ---------- SELECT / LOAD NOTE ----------
   function selectNote(id) {
+    // Save current before switching
     if (currentNoteId && currentNoteId !== id) {
       saveCurrentNote();
     }
@@ -201,20 +182,19 @@
     const note = notes.find(n => n.id === id);
     if (!note) return;
 
+    // Update UI
     noteTitleInput.value = note.title || '';
     noteEditor.innerHTML = note.content || '';
     
+    // Apply stored formatting preferences
     fontSizeSelect.value = note.fontSize || '16px';
     fontFamilySelect.value = note.fontFamily || 'DM Sans, sans-serif';
-    
-    const isDark = document.body.classList.contains('dark-mode');
-    const effectiveColor = isDark ? '#EEEAE2' : (note.textColor || '#1a1a2e');
     textColorPicker.value = note.textColor || '#1a1a2e';
     
+    // Apply font styles to editor
     noteEditor.style.fontSize = note.fontSize || '16px';
     noteEditor.style.fontFamily = note.fontFamily || 'DM Sans, sans-serif';
-    noteEditor.style.color = effectiveColor;
-    noteTitleInput.style.color = effectiveColor;
+    noteEditor.style.color = note.textColor || '#1a1a2e';
 
     updateCounts();
     updateStatus(true);
@@ -238,6 +218,7 @@
   }
 
   function createNewNote() {
+    // Save current first
     if (currentNoteId) saveCurrentNote();
 
     const newNote = {
@@ -267,11 +248,13 @@
     notes = notes.filter(n => n.id !== currentNoteId);
     saveNotes();
     
+    const previousId = currentNoteId;
     currentNoteId = null;
 
     if (notes.length > 0) {
       selectNote(notes[0].id);
     } else {
+      // Create a fresh note if all deleted
       noteTitleInput.value = '';
       noteEditor.innerHTML = '';
       currentNoteId = null;
@@ -354,27 +337,13 @@
     if (isDark) {
       document.body.classList.remove('dark-mode');
       document.body.classList.add('light-mode');
-      updateDarkModeToggles(false);
+      if (darkToggle) darkToggle.innerHTML = '🌙';
       saveSettings({ darkMode: false });
     } else {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
-      updateDarkModeToggles(true);
+      if (darkToggle) darkToggle.innerHTML = '☀️';
       saveSettings({ darkMode: true });
-    }
-    
-    // Fix editor text color after theme change
-    applyThemeToEditor();
-    
-    // If a note was loaded with a custom color, maintain the effective color
-    if (currentNoteId) {
-      const note = notes.find(n => n.id === currentNoteId);
-      if (note) {
-        const newIsDark = document.body.classList.contains('dark-mode');
-        const effectiveColor = newIsDark ? '#EEEAE2' : (note.textColor || '#1a1a2e');
-        noteEditor.style.color = effectiveColor;
-        noteTitleInput.style.color = effectiveColor;
-      }
     }
   }
 
@@ -398,7 +367,7 @@
     });
   }
 
-  // ---------- SCROLL ANIMATIONS ----------
+  // ---------- SCROLL ANIMATIONS (Features) ----------
   function setupScrollAnimations() {
     const cards = document.querySelectorAll('.feature-card');
     if (!cards.length) return;
@@ -424,6 +393,7 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav if open
           if (mobileNav) mobileNav.classList.remove('open');
         }
       });
@@ -432,20 +402,24 @@
 
   // ---------- EVENT LISTENERS ----------
   function bindEvents() {
+    // New note
     if (newNoteBtn) newNoteBtn.addEventListener('click', createNewNote);
 
+    // Search
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         renderNotesList(e.target.value);
       });
     }
 
+    // Title input
     if (noteTitleInput) {
       noteTitleInput.addEventListener('input', () => {
         scheduleAutoSave();
       });
     }
 
+    // Editor input
     if (noteEditor) {
       noteEditor.addEventListener('input', () => {
         updateCounts();
@@ -453,6 +427,7 @@
       });
     }
 
+    // Font size
     if (fontSizeSelect) {
       fontSizeSelect.addEventListener('change', () => {
         noteEditor.style.fontSize = fontSizeSelect.value;
@@ -460,6 +435,7 @@
       });
     }
 
+    // Font family
     if (fontFamilySelect) {
       fontFamilySelect.addEventListener('change', () => {
         noteEditor.style.fontFamily = fontFamilySelect.value;
@@ -467,39 +443,37 @@
       });
     }
 
+    // Text color
     if (textColorPicker) {
       textColorPicker.addEventListener('input', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        // In dark mode, always use light color regardless of picker
-        noteEditor.style.color = isDark ? '#EEEAE2' : textColorPicker.value;
-        noteTitleInput.style.color = isDark ? '#EEEAE2' : textColorPicker.value;
+        noteEditor.style.color = textColorPicker.value;
         scheduleAutoSave();
       });
     }
 
+    // Clear formatting
     if (clearFormatBtn) {
       clearFormatBtn.addEventListener('click', () => {
         execCommand('removeFormat');
-        const isDark = document.body.classList.contains('dark-mode');
         noteEditor.style.fontSize = fontSizeSelect.value;
         noteEditor.style.fontFamily = fontFamilySelect.value;
-        noteEditor.style.color = isDark ? '#EEEAE2' : textColorPicker.value;
-        noteTitleInput.style.color = isDark ? '#EEEAE2' : textColorPicker.value;
+        noteEditor.style.color = textColorPicker.value;
       });
     }
 
+    // Copy
     if (copyNoteBtn) copyNoteBtn.addEventListener('click', copyNoteToClipboard);
+
+    // Download
     if (downloadNoteBtn) downloadNoteBtn.addEventListener('click', downloadNoteAsTxt);
+
+    // Delete
     if (deleteNoteBtn) deleteNoteBtn.addEventListener('click', deleteCurrentNote);
 
-    // Dark mode toggle - handle both header and any other dark toggles
-    document.addEventListener('click', (e) => {
-      const darkBtn = e.target.closest('.dark-toggle');
-      if (darkBtn) {
-        toggleDarkMode();
-      }
-    });
+    // Dark mode toggle
+    if (darkToggle) darkToggle.addEventListener('click', toggleDarkMode);
 
+    // Hamburger menu
     if (hamburger) hamburger.addEventListener('click', toggleMobileNav);
 
     // Keyboard shortcuts
@@ -515,27 +489,9 @@
       }
     });
 
+    // Save before unload
     window.addEventListener('beforeunload', () => {
       if (currentNoteId) saveCurrentNote();
-    });
-
-    // Listen for dark mode changes from other components
-    const observer = new MutationObserver(() => {
-      applyThemeToEditor();
-      if (currentNoteId) {
-        const note = notes.find(n => n.id === currentNoteId);
-        if (note) {
-          const isDark = document.body.classList.contains('dark-mode');
-          const effectiveColor = isDark ? '#EEEAE2' : (note.textColor || '#1a1a2e');
-          noteEditor.style.color = effectiveColor;
-          noteTitleInput.style.color = effectiveColor;
-        }
-      }
-    });
-    
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ['class']
     });
   }
 
@@ -556,13 +512,11 @@
     setupFaq();
     setupScrollAnimations();
     setupSmoothLinks();
-    
-    // Apply theme on init
-    applyThemeToEditor();
 
     console.log('📝 Memo NotePad Online ready');
   }
 
+  // Start the app
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
