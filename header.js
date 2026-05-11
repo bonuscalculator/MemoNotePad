@@ -8,19 +8,19 @@
   const headerHTML = `
     <header class="site-header">
       <div class="container header-inner">
-        <a href="#" class="header-logo">
+        <a href="/" class="header-logo">
           <div class="logo-icon">📝</div>
           <span>Memo NotePad</span>
         </a>
 
         <nav class="header-nav" id="headerNav">
-          <a href="#app" class="nav-link active">App</a>
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#how-it-works" class="nav-link">How It Works</a>
-          <a href="#use-cases" class="nav-link">Use Cases</a>
-          <a href="#why-us" class="nav-link">Why Us</a>
-          <a href="#tips" class="nav-link">Tips</a>
-          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="/#app" class="nav-link active">App</a>
+          <a href="/#features" class="nav-link">Features</a>
+          <a href="/#how-it-works" class="nav-link">How It Works</a>
+          <a href="/#use-cases" class="nav-link">Use Cases</a>
+          <a href="/#why-us" class="nav-link">Why Us</a>
+          <a href="/#tips" class="nav-link">Tips</a>
+          <a href="/#faq" class="nav-link">FAQ</a>
         </nav>
 
         <div class="header-actions">
@@ -34,13 +34,13 @@
       </div>
 
       <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-        <a href="#app" class="nav-link">App</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#use-cases" class="nav-link">Use Cases</a>
-        <a href="#why-us" class="nav-link">Why Us</a>
-        <a href="#tips" class="nav-link">Tips</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="/#app" class="nav-link">App</a>
+        <a href="/#features" class="nav-link">Features</a>
+        <a href="/#how-it-works" class="nav-link">How It Works</a>
+        <a href="/#use-cases" class="nav-link">Use Cases</a>
+        <a href="/#why-us" class="nav-link">Why Us</a>
+        <a href="/#tips" class="nav-link">Tips</a>
+        <a href="/#faq" class="nav-link">FAQ</a>
       </nav>
     </header>
   `;
