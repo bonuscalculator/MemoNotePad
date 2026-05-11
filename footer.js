@@ -13,7 +13,7 @@
         <div class="footer-grid">
           <!-- Brand Column -->
           <div class="footer-brand">
-            <a href="#" class="header-logo">
+            <a href="/" class="header-logo">
               <div class="logo-icon">📝</div>
               <span>Memo NotePad</span>
             </a>
@@ -26,11 +26,11 @@
           <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#app">Open App</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#faq">FAQ</a></li>
-              <li><a href="#cta">Get Started</a></li>
+              <li><a href="/#app">Open App</a></li>
+              <li><a href="/#features">Features</a></li>
+              <li><a href="/#how-it-works">How It Works</a></li>
+              <li><a href="/#faq">FAQ</a></li>
+              <li><a href="/#cta">Get Started</a></li>
             </ul>
           </div>
 
@@ -38,21 +38,21 @@
           <div class="footer-col">
             <h4>Resources</h4>
             <ul>
-              <li><a href="#tips">Tips & Tricks</a></li>
-              <li><a href="#use-cases">Use Cases</a></li>
-              <li><a href="#why-us">Why Choose Us</a></li>
+              <li><a href="/#tips">Tips & Tricks</a></li>
+              <li><a href="/#use-cases">Use Cases</a></li>
+              <li><a href="/#why-us">Why Choose Us</a></li>
               <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to Top</a></li>
             </ul>
           </div>
 
           <!-- Connect -->
           <div class="footer-col">
-            <h4>About</h4>
+            <h4>Pages</h4>
             <ul>
-              <li><a href="#features">Free Forever</a></li>
-              <li><a href="#faq">100% Private</a></li>
-              <li><a href="#faq">No Login Required</a></li>
-              <li><a href="#app">Start Writing</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Use</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
           </div>
         </div>
