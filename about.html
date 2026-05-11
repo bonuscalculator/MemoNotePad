@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Memo NotePad Online</title>
+  <meta name="description" content="Meet Waqas Bukhari, the developer behind Memo NotePad Online. Learn about our mission to provide a distraction-free, private writing experience." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <style>
+    .about-hero { padding: 140px 0 80px; background: var(--bg-alt); text-align: center; border-bottom: 1px solid var(--border); }
+    .about-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; }
+    .about-content { padding: 80px 0; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+    .profile-card { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius-lg); 
+      padding: 40px; 
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    .profile-info h3 { margin-bottom: 10px; color: var(--primary); }
+    .badge { 
+      display: inline-block; 
+      padding: 4px 12px; 
+      background: var(--surface-2); 
+      border-radius: 20px; 
+      font-size: 0.85rem; 
+      margin-right: 8px; 
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    @media (max-width: 768px) {
+      .profile-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <div id="header-root"></div>
+
+  <section class="about-hero">
+    <div class="container">
+      <div class="section-label">✦ Our Story</div>
+      <h1>Simplicity in Every Stroke.</h1>
+      <p class="section-desc">We believe that great ideas shouldn't be interrupted by complex interfaces or privacy concerns.</p>
+    </div>
+  </section>
+
+  <article class="container about-content">
+    <h2>The Mission</h2>
+    <p>Memo NotePad Online was built with a singular goal: to provide a digital space that feels as natural as a physical notebook. In a world of cluttered apps and data mining, we offer a sanctuary for your thoughts—fast, functional, and completely private.</p>
+    
+    <p>Our tool is designed for students, writers, and professionals who need to capture ideas instantly without the friction of creating accounts or managing cloud sync settings. By utilizing local storage, we ensure that your notes stay on your device and nowhere else.</p>
+
+    <div class="profile-card">
+      <div class="profile-info">
+        <div class="section-label">The Creator</div>
+        <h3>Waqas Bukhari</h3>
+        <p>I am a dedicated <strong>Web Developer and SEO Expert</strong> with a passion for building lightweight, utility-driven web applications. With years of experience in the digital landscape, I focus on creating tools that balance technical performance with a superior user experience.</p>
+        <div style="margin-top: 15px;">
+          <span class="badge">Full-Stack Dev</span>
+          <span class="badge">SEO Strategy</span>
+          <span class="badge">UI/UX Design</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div id="footer-root"></div>
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+</body>
+</html>
