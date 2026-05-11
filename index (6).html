@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memo NotePad Online – Free Online Notepad & Memo App | MemoNotePad.online</title>
+  <meta name="description" content="Memo NotePad Online is a free, fast, and secure online notepad app. Create, save, and organize memos, notes, and text instantly. No login required. Works on all devices." />
+  <meta name="keywords" content="memo notepad online, online notepad, free notepad, memo app, online memo, text editor online, quick notes, notepad online free, digital notepad, memo pad online" />
+  <meta name="author" content="MemoNotePad.online" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://memonotepad.online/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Memo NotePad Online – Free Online Notepad & Memo App" />
+  <meta property="og:description" content="Create, save, and organize memos instantly. No login required. Works on all devices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://memonotepad.online/" />
+  <meta property="og:image" content="https://memonotepad.online/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Memo NotePad Online – Free Online Notepad" />
+  <meta name="twitter:description" content="Create, save, and organize memos instantly. No login required." />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Memo NotePad Online",
+    "url": "https://memonotepad.online/",
+    "description": "A free online notepad and memo application for creating, saving, and organizing notes instantly without any login.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Create unlimited memos",
+      "Auto-save notes",
+      "Rich text formatting",
+      "Download notes as text",
+      "No login required",
+      "Works offline",
+      "Mobile compatible",
+      "Dark mode"
+    ],
+    "browserRequirements": "Requires JavaScript",
+    "softwareVersion": "2.0"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="light-mode">
+
+  <!-- Header Component Injection -->
+  <div id="header-root"></div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg">
+      <div class="lines-bg"></div>
+      <div class="floating-papers">
+        <div class="paper p1">✏️</div>
+        <div class="paper p2">📝</div>
+        <div class="paper p3">📌</div>
+        <div class="paper p4">🗒️</div>
+        <div class="paper p5">💡</div>
+      </div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Free · No Login · Works Everywhere
+      </div>
+      <h1 class="hero-title">
+        Your Smart <span class="accent-text">Memo NotePad</span><br />Online
+      </h1>
+      <p class="hero-subtitle">Capture ideas, write memos, and organize thoughts instantly — no account needed. The fastest free notepad online, always ready when inspiration strikes.</p>
+      <div class="hero-cta">
+        <a href="#app" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Start Writing Now
+        </a>
+        <a href="#features" class="btn btn-ghost">Explore Features</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free Forever</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">Login Required</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Notes Limit</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section id="app" class="app-section">
+    <div class="container">
+      <div class="section-label">✦ Live Application</div>
+      <h2 class="section-title">Write Your First Memo Right Now</h2>
+      <p class="section-sub">No sign-up. No ads. Just your thoughts and a clean canvas.</p>
+
+      <div class="app-wrapper">
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="appSidebar">
+          <div class="sidebar-header">
+            <h3>My Memos</h3>
+            <button class="btn-icon" id="newNoteBtn" title="New Note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="sidebar-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" placeholder="Search memos..." />
+          </div>
+          <div class="notes-list" id="notesList"></div>
+        </aside>
+
+        <!-- Editor -->
+        <main class="app-editor">
+          <div class="editor-toolbar">
+            <div class="toolbar-group">
+              <button class="tool-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+              <button class="tool-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+              <button class="tool-btn" data-cmd="underline" title="Underline"><u>U</u></button>
+              <button class="tool-btn" data-cmd="strikeThrough" title="Strike"><s>S</s></button>
+            </div>
+            <div class="tool-divider"></div>
+            <div class="toolbar-group">
+              <select id="fontSizeSelect" class="tool-select">
+                <option value="14px">14</option>
+                <option value="16px" selected>16</option>
+                <option value="18px">18</option>
+                <option value="20px">20</option>
+                <option value="24px">24</option>
+                <option value="28px">28</option>
+                <option value="32px">32</option>
+              </select>
+              <select id="fontFamilySelect" class="tool-select">
+                <option value="DM Sans, sans-serif">DM Sans</option>
+                <option value="Playfair Display, serif">Playfair</option>
+                <option value="JetBrains Mono, monospace">Mono</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="Arial, sans-serif">Arial</option>
+              </select>
+            </div>
+            <div class="tool-divider"></div>
+            <div class="toolbar-group">
+              <button class="tool-btn" data-cmd="insertUnorderedList" title="Bullet List">☰</button>
+              <button class="tool-btn" data-cmd="insertOrderedList" title="Numbered List">①</button>
+              <button class="tool-btn" data-cmd="justifyLeft" title="Left">◧</button>
+              <button class="tool-btn" data-cmd="justifyCenter" title="Center">▣</button>
+              <button class="tool-btn" data-cmd="justifyRight" title="Right">◨</button>
+            </div>
+            <div class="tool-divider"></div>
+            <div class="toolbar-group toolbar-actions">
+              <input type="color" id="textColorPicker" title="Text Color" value="#1a1a2e" class="color-picker" />
+              <button class="tool-btn" id="clearFormatBtn" title="Clear Format">✕</button>
+            </div>
+          </div>
+
+          <input type="text" id="noteTitle" class="note-title-input" placeholder="Memo title..." />
+          <div id="noteEditor" class="note-editor" contenteditable="true" data-placeholder="Start writing your memo here... Your thoughts are auto-saved."></div>
+
+          <div class="editor-footer">
+            <div class="footer-meta">
+              <span id="wordCount">0 words</span>
+              <span id="charCount">0 chars</span>
+              <span id="autoSaveStatus" class="save-status">✓ Auto-saved</span>
+            </div>
+            <div class="footer-actions">
+              <button class="btn-sm" id="copyNoteBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy
+              </button>
+              <button class="btn-sm" id="downloadNoteBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download
+              </button>
+              <button class="btn-sm btn-danger" id="deleteNoteBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+                Delete
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-label">✦ Features</div>
+      <h2 class="section-title">Everything You Need in a<br/><span class="accent-text">Free Online Notepad</span></h2>
+      <p class="section-sub">Memo NotePad Online is built for speed, simplicity, and smarts — the perfect digital notepad for students, professionals, and everyday thinkers.</p>
+      <div class="features-grid">
+        <div class="feature-card" data-delay="0">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Notes</h3>
+          <p>Open your browser and start writing immediately. No registration, no loading screens — your memo notepad is always ready in under a second.</p>
+        </div>
+        <div class="feature-card" data-delay="100">
+          <div class="feature-icon">💾</div>
+          <h3>Auto-Save Technology</h3>
+          <p>Every keystroke is automatically saved locally. Never lose a memo again. Your notes persist even if you accidentally close the tab.</p>
+        </div>
+        <div class="feature-card" data-delay="200">
+          <div class="feature-icon">🗂️</div>
+          <h3>Multiple Memos</h3>
+          <p>Create and manage unlimited memos simultaneously. Switch between notes with a single click from the organized sidebar.</p>
+        </div>
+        <div class="feature-card" data-delay="300">
+          <div class="feature-icon">✍️</div>
+          <h3>Rich Text Editing</h3>
+          <p>Format your memos with bold, italic, underline, font sizes, colors, and lists. More powerful than a basic notepad, lighter than a word processor.</p>
+        </div>
+        <div class="feature-card" data-delay="400">
+          <div class="feature-icon">🔍</div>
+          <h3>Smart Search</h3>
+          <p>Find any memo instantly with real-time search across all your notes. No waiting, no loading — results appear as you type.</p>
+        </div>
+        <div class="feature-card" data-delay="500">
+          <div class="feature-icon">📥</div>
+          <h3>Download & Export</h3>
+          <p>Export any memo as a .txt file directly to your device. Share your notes via copy-to-clipboard with one click.</p>
+        </div>
+        <div class="feature-card" data-delay="600">
+          <div class="feature-icon">🌙</div>
+          <h3>Dark & Light Mode</h3>
+          <p>Switch between beautiful dark and light themes to match your environment and protect your eyes during late-night writing sessions.</p>
+        </div>
+        <div class="feature-card" data-delay="700">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Compatible</h3>
+          <p>Fully responsive design works perfectly on smartphones, tablets, and desktops. Your online memo pad follows you everywhere.</p>
+        </div>
+        <div class="feature-card" data-delay="800">
+          <div class="feature-icon">🔒</div>
+          <h3>100% Private</h3>
+          <p>All memos are stored only on your device using local storage. Nothing is uploaded to servers. Your thoughts stay completely private.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="how-section">
+    <div class="container">
+      <div class="section-label">✦ How It Works</div>
+      <h2 class="section-title">Start Writing in <span class="accent-text">3 Simple Steps</span></h2>
+      <div class="steps-wrapper">
+        <div class="steps-line"></div>
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Open & Click New Memo</h3>
+            <p>Visit MemoNotePad.online in any browser. No download, no install, no account. Click "New Memo" and a fresh notepad canvas appears instantly.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-card">
+              <div class="step-card-header"><span></span><span></span><span></span></div>
+              <div class="step-card-body">
+                <div class="line-sim" style="width:60%"></div>
+                <div class="line-sim" style="width:90%"></div>
+                <div class="line-sim" style="width:45%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step step-reverse">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Write Your Memo</h3>
+            <p>Type your thoughts, ideas, lists, or detailed notes. Use the rich-text toolbar to format your memo. Everything auto-saves as you type.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-card">
+              <div class="step-card-header"><span></span><span></span><span></span></div>
+              <div class="step-card-body">
+                <div class="typing-demo">Write your memo here<span class="cursor-blink">|</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Save, Share, or Download</h3>
+            <p>Your memo is automatically stored in your browser. Download it as a text file, copy it to clipboard, or simply close the tab — it'll be there when you return.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-card">
+              <div class="step-card-header"><span></span><span></span><span></span></div>
+              <div class="step-card-body">
+                <div class="btn-sim">📥 Download</div>
+                <div class="btn-sim btn-sim-ghost">📋 Copy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES SECTION -->
+  <section id="use-cases" class="usecases-section">
+    <div class="container">
+      <div class="section-label">✦ Use Cases</div>
+      <h2 class="section-title">Who Uses <span class="accent-text">Memo NotePad Online?</span></h2>
+      <p class="section-sub">From students to CEOs, our free online memo notepad serves everyone who thinks, creates, and communicates.</p>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-emoji">🎓</div>
+          <h3>Students</h3>
+          <p>Take lecture notes, draft essays, create study outlines, and jot down quick memos during class — all from any device.</p>
+          <ul>
+            <li>Lecture note-taking</li>
+            <li>Essay drafting</li>
+            <li>Study checklists</li>
+            <li>Research snippets</li>
+          </ul>
+        </div>
+        <div class="usecase-card usecase-featured">
+          <div class="usecase-badge">Most Popular</div>
+          <div class="usecase-emoji">💼</div>
+          <h3>Professionals</h3>
+          <p>Draft emails, capture meeting action items, brainstorm ideas, and write quick memos without opening heavy software.</p>
+          <ul>
+            <li>Meeting notes</li>
+            <li>Email drafts</li>
+            <li>Action item lists</li>
+            <li>Quick memos</li>
+          </ul>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">✍️</div>
+          <h3>Writers & Creators</h3>
+          <p>Capture story ideas, write blog post outlines, save creative snippets, and maintain a distraction-free writing environment.</p>
+          <ul>
+            <li>Story brainstorming</li>
+            <li>Blog outlines</li>
+            <li>Script notes</li>
+            <li>Idea capture</li>
+          </ul>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">🧑‍💻</div>
+          <h3>Developers</h3>
+          <p>Store code snippets, write technical documentation, manage TODO lists, and keep quick reference notes accessible always.</p>
+          <ul>
+            <li>Code snippets</li>
+            <li>TODO lists</li>
+            <li>Config notes</li>
+            <li>Debug logs</li>
+          </ul>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">🏠</div>
+          <h3>Everyday Users</h3>
+          <p>Shopping lists, home project memos, recipe notes, travel itineraries — a simple free notepad for every daily need.</p>
+          <ul>
+            <li>Shopping lists</li>
+            <li>Travel plans</li>
+            <li>Recipe notes</li>
+            <li>Personal memos</li>
+          </ul>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">👩‍🏫</div>
+          <h3>Educators</h3>
+          <p>Lesson planning, student feedback notes, curriculum memos, and quick announcements drafted on any device.</p>
+          <ul>
+            <li>Lesson plans</li>
+            <li>Curriculum memos</li>
+            <li>Student notes</li>
+            <li>Announcements</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US SECTION -->
+  <section id="why-us" class="why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content">
+          <div class="section-label">✦ Why Memo NotePad Online?</div>
+          <h2 class="section-title">The Smartest Free<br/><span class="accent-text">Online Notepad</span></h2>
+          <p>Most online notepad tools are cluttered, slow, or push you to create an account. Memo NotePad Online was built differently — it respects your time, your privacy, and your workflow.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <strong>Zero Friction</strong>
+                <p>Open the URL, start writing. No sign-ups, no paywalls, no tutorials needed.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <strong>Offline-Ready</strong>
+                <p>Works without internet after the initial page load. Write memos anywhere.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <strong>Always Free</strong>
+                <p>Memo NotePad Online is and always will be completely free for personal use.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <strong>Educational Design</strong>
+                <p>Clean, readable interface inspired by academic note-taking systems worldwide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-visual">
+          <div class="comparison-table">
+            <div class="ct-header">
+              <div>Feature</div>
+              <div class="ct-us">Memo NotePad</div>
+              <div>Others</div>
+            </div>
+            <div class="ct-row">
+              <div>No Login</div>
+              <div class="ct-us">✅</div>
+              <div>❌</div>
+            </div>
+            <div class="ct-row">
+              <div>Always Free</div>
+              <div class="ct-us">✅</div>
+              <div>⚠️</div>
+            </div>
+            <div class="ct-row">
+              <div>Auto-Save</div>
+              <div class="ct-us">✅</div>
+              <div>⚠️</div>
+            </div>
+            <div class="ct-row">
+              <div>100% Private</div>
+              <div class="ct-us">✅</div>
+              <div>❌</div>
+            </div>
+            <div class="ct-row">
+              <div>Rich Formatting</div>
+              <div class="ct-us">✅</div>
+              <div>❌</div>
+            </div>
+            <div class="ct-row">
+              <div>Mobile Optimized</div>
+              <div class="ct-us">✅</div>
+              <div>⚠️</div>
+            </div>
+            <div class="ct-row">
+              <div>No Ads</div>
+              <div class="ct-us">✅</div>
+              <div>❌</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS & TRICKS SECTION -->
+  <section id="tips" class="tips-section">
+    <div class="container">
+      <div class="section-label">✦ Tips & Tricks</div>
+      <h2 class="section-title">Master Your <span class="accent-text">Online Memo Writing</span></h2>
+      <p class="section-sub">Level up your note-taking with these proven strategies for using Memo NotePad Online efficiently.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-number">01</div>
+          <h4>Use Descriptive Titles</h4>
+          <p>Give every memo a clear, specific title like "Project Alpha Meeting — May 2025" instead of "Notes". It makes searching 10× faster.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">02</div>
+          <h4>Start With a TL;DR</h4>
+          <p>Begin each memo with a one-line summary. When you scan your notes list later, that summary instantly refreshes your memory.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">03</div>
+          <h4>Use Bold for Action Items</h4>
+          <p>Make tasks pop by bolding them. When reviewing meeting memos, your action items jump out immediately from the reading.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">04</div>
+          <h4>Create Template Memos</h4>
+          <p>Write a reusable meeting notes template. Duplicate it before each session to save setup time every single week.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">05</div>
+          <h4>Download Important Memos</h4>
+          <p>For critical information, download a .txt backup. Local storage can be cleared — always have a copy of vital memos.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">06</div>
+          <h4>Keyboard Shortcut Workflow</h4>
+          <p>Use Ctrl+B for bold, Ctrl+I for italic, Ctrl+U for underline. Format on the fly without lifting your hands from the keys.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-label">✦ FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="accent-text">Questions</span></h2>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">Is Memo NotePad Online completely free?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes, absolutely. Memo NotePad Online is 100% free with no hidden charges, no premium tiers, and no subscription fees. All features are available to every user at no cost.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to create an account to use the memo notepad?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>No account is required at all. Simply visit memonotepad.online and start writing immediately. Your memos are saved locally in your browser without any sign-up process.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Where are my memos stored?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>All memos are stored exclusively in your browser's local storage on your device. Nothing is uploaded to external servers. Your notes are completely private and only accessible on the device where you wrote them.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I access my memos from different devices?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Since memos are stored in local browser storage, they are device-specific. To transfer notes between devices, use the Download feature to save as a .txt file and transfer it manually. This approach maintains your privacy.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if I clear my browser data?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Clearing browser data or local storage will delete your memos. We strongly recommend downloading important memos as .txt files regularly to maintain a backup on your device.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does the online notepad work on mobile devices?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes! Memo NotePad Online is fully responsive and optimized for smartphones and tablets. The editor, toolbar, and sidebar all adapt perfectly to touch interfaces and smaller screens.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I format my memos with rich text?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Absolutely. The built-in rich text toolbar supports bold, italic, underline, strikethrough, text color, font size, font family selection, ordered/unordered lists, and text alignment — everything you need for well-structured memos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there a limit on the number of memos I can create?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>There is no artificial limit. You can create as many memos as your browser's local storage allows (typically 5–10MB), which is more than enough for thousands of text-based notes.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-dots"></div>
+        <h2>Ready to Write Your First<br/><span class="accent-text">Memo Online?</span></h2>
+        <p>Join thousands of students, professionals, and creators who trust Memo NotePad Online as their go-to free digital notepad. No fluff. Just writing.</p>
+        <a href="#app" class="btn btn-primary btn-large">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Start Writing — It's Free
+        </a>
+        <p class="cta-note">No account needed · Auto-saves instantly · Works on all devices</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component Injection -->
+  <div id="footer-root"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
