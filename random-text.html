@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BX53Q83EYZ');
+  </script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Text Generator - Free Online Lorem Ipsum & Dummy Text Tool</title>
+  <meta name="description" content="Free online Random Text Generator. Create realistic dummy text, Lorem Ipsum, random sentences, paragraphs, and placeholder content instantly. Perfect for designers, developers & writers." />
+  <meta name="keywords" content="random text generator, lorem ipsum generator, dummy text generator, placeholder text, online text generator, fake text generator, random paragraph generator" />
+  <meta name="author" content="Waqas Bukhari" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.memonotepad.online/random-text" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Random Text Generator - Free Lorem Ipsum Tool" />
+  <meta property="og:description" content="Instantly generate realistic dummy text, Lorem Ipsum, and random content for your projects. Customizable, fast, and free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.memonotepad.online/random-text" />
+  <meta property="og:image" content="https://www.memonotepad.online/og-image-randomtext.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Random Text Generator Online" />
+  <meta name="twitter:description" content="Generate Lorem Ipsum and realistic dummy text instantly." />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Random Text Generator",
+    "url": "https://www.memonotepad.online/random-text",
+    "description": "Free online tool to generate random text, Lorem Ipsum, dummy paragraphs, and placeholder content for web design, development, and testing.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Multiple text types",
+      "Custom length control",
+      "Lorem Ipsum mode",
+      "Realistic English text",
+      "Copy & Download",
+      "History of generations",
+      "Mobile friendly",
+      "Dark mode support"
+    ],
+    "browserRequirements": "Requires JavaScript",
+    "softwareVersion": "1.0"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .generator-output {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      min-height: 320px;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    
+    .output-actions {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      opacity: 0.9;
+    }
+    
+    .random-word {
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="light-mode">
+
+  <!-- Header Component Injection -->
+  <div id="header-root"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" style="background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%); color: #fff; padding-top: calc(var(--header-h) + 50px);">
+    <div class="container hero-inner" style="max-width: 860px; text-align: center;">
+      <div class="hero-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.35); color: #fff;">
+        <span class="badge-dot" style="background: #F4A261;"></span>
+        Instant · Customizable · Free
+      </div>
+      <h1 class="hero-title" style="color: #fff;">
+        Random Text<br><span class="accent-text" style="color: #B7E4C7;">Generator</span>
+      </h1>
+      <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">
+        Generate realistic Lorem Ipsum, dummy text, random sentences, and placeholder content in seconds. 
+        Perfect for designers, developers, and content creators.
+      </p>
+      <div class="hero-cta">
+        <a href="#generator-app" class="btn btn-primary" style="background: white; color: var(--primary-dark); font-size: 1.1rem;">
+          Generate Text Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN GENERATOR APP -->
+  <section id="generator-app" class="app-section">
+    <div class="container">
+      <div class="section-label">✦ Live Random Text Generator</div>
+      <h2 class="section-title">Create Dummy Text Instantly</h2>
+      <p class="section-sub">Powerful controls. Beautiful output. Zero limits.</p>
+
+      <div class="app-wrapper" style="grid-template-columns: 300px 1fr; height: auto; min-height: 580px;">
+        
+        <!-- Controls Sidebar -->
+        <aside class="app-sidebar" style="height: auto; padding-bottom: 20px;">
+          <div class="sidebar-header">
+            <h3>Generator Settings</h3>
+          </div>
+
+          <div style="padding: 0 16px 20px;">
+            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Text Type</label>
+            <select id="textType" class="tool-select" style="width: 100%; padding: 12px 14px; font-size: 1rem;">
+              <option value="lorem">Lorem Ipsum</option>
+              <option value="realistic" selected>Realistic English</option>
+              <option value="nonsense">Nonsense Words</option>
+              <option value="tech">Tech Jargon</option>
+            </select>
+
+            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Output Format</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <button class="btn-sm format-btn active" data-format="paragraphs">Paragraphs</button>
+              <button class="btn-sm format-btn" data-format="sentences">Sentences</button>
+            </div>
+
+            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Quantity</label>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <input type="range" id="quantitySlider" min="1" max="20" value="3" style="flex: 1;">
+              <input type="number" id="quantityInput" value="3" min="1" max="50" style="width: 70px; text-align: center; padding: 8px;">
+            </div>
+            <div id="quantityLabel" style="text-align: center; margin-top: 6px; font-size: 0.9rem; color: var(--primary);">3 Paragraphs</div>
+          </div>
+
+          <div style="padding: 16px; border-top: 1px solid var(--border);">
+            <button id="generateBtn" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><path d="M14 5l7 7-7 7M5 12h14"/></svg>
+              Generate Text
+            </button>
+          </div>
+
+          <div style="padding: 0 16px;">
+            <button id="clearBtn" class="btn btn-ghost" style="width: 100%;">Clear Output</button>
+          </div>
+        </aside>
+
+        <!-- Output Area -->
+        <main class="app-editor" style="height: auto; min-height: 580px;">
+          <div class="generator-output" id="outputArea">
+            <div class="output-actions">
+              <button class="btn-sm" id="copyBtn" title="Copy">
+                📋 Copy
+              </button>
+              <button class="btn-sm" id="downloadBtn" title="Download">
+                ⬇️ TXT
+              </button>
+            </div>
+            <div id="generatedText" style="margin-top: 20px; min-height: 260px;">
+              Click "Generate Text" to create random content...
+            </div>
+          </div>
+
+          <!-- History -->
+          <div style="margin-top: 24px;">
+            <h4 style="margin-bottom: 12px; color: var(--text-muted);">Recent Generations</h4>
+            <div id="historyList" style="display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto;"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-label">✦ Features</div>
+      <h2 class="section-title">Powerful Random Text Tools</h2>
+      <p class="section-sub">Everything you need to generate high-quality placeholder text.</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Multiple Text Modes</h3>
+          <p>Lorem Ipsum, realistic English, tech jargon, and creative nonsense text.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📏</div>
+          <h3>Full Customization</h3>
+          <p>Control number of paragraphs, sentences, or words with precise sliders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Generation</h3>
+          <p>Lightning-fast generation with natural-looking sentence structures.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>One-Click Copy</h3>
+          <p>Copy generated text instantly or download as .txt file.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🕒</div>
+          <h3>Generation History</h3>
+          <p>Keep track of your previous generations during the session.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Fully Responsive</h3>
+          <p>Works beautifully on desktop, tablet, and mobile devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="usecases-section">
+    <div class="container">
+      <div class="section-label">✦ Popular Uses</div>
+      <h2 class="section-title">Who Uses This Tool?</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-emoji">🧑‍💻</div>
+          <h3>Web Developers</h3>
+          <p>Fill websites with realistic content during development and testing.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">🎨</div>
+          <h3>UI/UX Designers</h3>
+          <p>Populate mockups and prototypes with meaningful dummy text.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-emoji">✍️</div>
+          <h3>Content Writers</h3>
+          <p>Get inspiration and overcome writer’s block with random prompts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Need Placeholder Text?<br>Generate It Now</h2>
+        <p>Fast, free, and unlimited random text generator.</p>
+        <a href="#generator-app" class="btn btn-primary btn-large">Open Generator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component Injection -->
+  <div id="footer-root"></div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script>
+    // Word lists for realistic generation
+    const words = ["the", "and", "with", "from", "this", "that", "which", "where", "when", "how", "experience", "knowledge", "development", "creative", "innovation", "beautiful", "amazing", "incredible", "journey", "moment", "future", "success", "passion", "inspiration"];
+    const loremWords = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua"];
+    
+    let history = [];
+
+    function getRandomWord(type) {
+      if (type === 'lorem') {
+        return loremWords[Math.floor(Math.random() * loremWords.length)];
+      }
+      return words[Math.floor(Math.random() * words.length)];
+    }
+
+    function generateSentence(type) {
+      let sentence = [];
+      const length = Math.floor(Math.random() * 12) + 8;
+      
+      for (let i = 0; i < length; i++) {
+        sentence.push(getRandomWord(type));
+      }
+      
+      let text = sentence.join(" ");
+      return text.charAt(0).toUpperCase() + text.slice(1) + ".";
+    }
+
+    function generateParagraph(type, numSentences) {
+      let para = [];
+      for (let i = 0; i < numSentences; i++) {
+        para.push(generateSentence(type));
+      }
+      return para.join(" ");
+    }
+
+    function generateText() {
+      const type = document.getElementById('textType').value;
+      const formatBtns = document.querySelectorAll('.format-btn');
+      let format = 'paragraphs';
+      formatBtns.forEach(btn => {
+        if (btn.classList.contains('active')) format = btn.dataset.format;
+      });
+      
+      const quantity = parseInt(document.getElementById('quantityInput').value) || 3;
+      
+      let output = '';
+      
+      if (format === 'paragraphs') {
+        for (let i = 0; i < quantity; i++) {
+          output += generateParagraph(type, Math.floor(Math.random() * 4) + 3) + "\n\n";
+        }
+      } else {
+        for (let i = 0; i < quantity; i++) {
+          output += generateSentence(type) + "\n";
+        }
+      }
+      
+      document.getElementById('generatedText').innerHTML = output;
+      
+      // Save to history
+      const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      history.unshift({
+        text: output.trim(),
+        type: type,
+        timestamp: timestamp
+      });
+      
+      if (history.length > 8) history.pop();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const container = document.getElementById('historyList');
+      container.innerHTML = '';
+      
+      history.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'note-item';
+        div.style.cursor = 'pointer';
+        div.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.85rem; color:var(--text-muted);">${item.timestamp} • ${item.type}</span>
+          </div>
+          <div style="margin-top:6px; font-size:0.9rem; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+            ${item.text.substring(0, 140)}...
+          </div>
+        `;
+        div.onclick = () => {
+          document.getElementById('generatedText').innerHTML = item.text;
+        };
+        container.appendChild(div);
+      });
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('generatedText').innerText;
+      if (!text) return;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✅ Text copied to clipboard');
+      });
+    }
+
+    function downloadText() {
+      const text = document.getElementById('generatedText').innerText;
+      if (!text) return;
+      
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `random-text-${new Date().toISOString().slice(0,10)}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      showToast('📥 Text downloaded');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // Initialize
+    function initRandomTextGenerator() {
+      // Format buttons
+      document.querySelectorAll('.format-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+      
+      // Quantity sync
+      const slider = document.getElementById('quantitySlider');
+      const input = document.getElementById('quantityInput');
+      const label = document.getElementById('quantityLabel');
+      
+      function updateLabel() {
+        const val = parseInt(input.value);
+        const unit = document.querySelector('.format-btn.active').dataset.format === 'paragraphs' ? 'Paragraphs' : 'Sentences';
+        label.textContent = `${val} ${unit}`;
+      }
+      
+      slider.addEventListener('input', () => {
+        input.value = slider.value;
+        updateLabel();
+      });
+      
+      input.addEventListener('input', () => {
+        slider.value = input.value;
+        updateLabel();
+      });
+      
+      // Generate button
+      document.getElementById('generateBtn').addEventListener('click', generateText);
+      
+      // Copy & Download
+      document.getElementById('copyBtn').addEventListener('click', copyToClipboard);
+      document.getElementById('downloadBtn').addEventListener('click', downloadText);
+      
+      // Clear
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        document.getElementById('generatedText').innerHTML = '<em style="color:#888;">Generated text will appear here...</em>';
+      });
+      
+      // Keyboard shortcut
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'Enter') {
+          generateText();
+        }
+      });
+      
+      // Initial generation
+      setTimeout(() => {
+        generateText();
+      }, 800);
+    }
+
+    window.onload = function() {
+      initRandomTextGenerator();
+    };
+  </script>
+</body>
+</html>
