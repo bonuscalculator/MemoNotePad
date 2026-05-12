@@ -41,6 +41,7 @@
               <li><a href="/#tips">Tips & Tricks</a></li>
               <li><a href="/#use-cases">Use Cases</a></li>
               <li><a href="/#why-us">Why Choose Us</a></li>
+              <li><a href="/diary">Online Diary</a></li>
               <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to Top</a></li>
             </ul>
           </div>
