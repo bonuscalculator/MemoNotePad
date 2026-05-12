@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BX53Q83EYZ');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>My Diary · Private Online Journal | Memo NotePad</title>
@@ -17,15 +8,13 @@
   <meta name="keywords" content="online diary, digital journal, private journal, daily journal, mood tracker, diary online, personal journal, encrypted diary, daily log, journaling app" />
   <meta name="author" content="Memo NotePad" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.memonotepad.online/diary" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="canonical" href="https://www.memonotepad.online/diary.html" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="My Diary – Private Online Journal & Diary App" />
   <meta property="og:description" content="Secure daily journal with mood tracking, weather, search, and export. Your thoughts stay on your device." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.memonotepad.online/diary" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta property="og:url" content="https://www.memonotepad.online/diary.html" />
   
   <!-- Schema WebApplication -->
   <script type="application/ld+json">
@@ -33,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "My Diary – Online Journal",
-    "url": "https://www.memonotepad.online/diary",
+    "url": "https://www.memonotepad.online/diary.html",
     "description": "Private daily diary with mood tracking, weather, search, export, and optional passphrase protection. All data stored locally.",
     "applicationCategory": "LifestyleApplication",
     "operatingSystem": "All",
@@ -43,12 +32,446 @@
   </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="styles.css" />
-</head>    
-<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- Header Component Injection -->
-  <div id="header-root"></div>
+    :root {
+      --bg-page: #fdf8f0;
+      --surface: #ffffff;
+      --surface-2: #fef7e8;
+      --border: #ede0cf;
+      --text: #2e241f;
+      --text-muted: #8b7a6b;
+      --primary: #b45f3b;
+      --primary-light: #d18f67;
+      --primary-soft: #f4e4d8;
+      --accent-mood: #d96c4a;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+    }
+
+    body.dark {
+      --bg-page: #1a1c21;
+      --surface: #25282f;
+      --surface-2: #2e313a;
+      --border: #3b3e48;
+      --text: #f0ede8;
+      --text-muted: #a8a3a0;
+      --primary: #dd8f6c;
+      --primary-soft: #3d2e28;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.5;
+    }
+
+    .diary-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* header */
+    .diary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .logo-area h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .logo-area p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-icon {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text);
+    }
+    .btn-icon:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .dark-toggle {
+      background: var(--surface);
+      border-radius: 40px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    /* two columns */
+    .diary-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 780px) {
+      .diary-grid { grid-template-columns: 1fr; }
+    }
+
+    /* SIDEBAR (calendar + entries list) */
+    .diary-sidebar {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .streak-card {
+      background: var(--primary-soft);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .streak-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .calendar-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 0 12px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.1s;
+      background: transparent;
+    }
+    .cal-day.has-entry {
+      background: var(--primary-light);
+      color: white;
+      font-weight: bold;
+    }
+    .cal-day.today {
+      border: 2px solid var(--primary);
+    }
+    .cal-day.selected {
+      background: var(--primary);
+      color: white;
+    }
+    .entries-list {
+      margin-top: 28px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+    .entry-item {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: 0.1s;
+    }
+    .entry-item:hover { background: var(--surface-2); }
+    .entry-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .entry-preview {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* MAIN EDITOR */
+    .diary-editor {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .editor-header {
+      padding: 20px 24px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .editor-date {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .mood-weather {
+      display: flex;
+      gap: 16px;
+    }
+    .mood-select, .weather-select {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .diary-title-input {
+      width: calc(100% - 48px);
+      margin: 16px 24px 8px;
+      padding: 12px 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: transparent;
+      border: none;
+      border-bottom: 2px dashed var(--border);
+      outline: none;
+      color: var(--text);
+      font-family: inherit;
+    }
+    .diary-content {
+      min-height: 420px;
+      padding: 20px 24px;
+      font-size: 1rem;
+      line-height: 1.7;
+      outline: none;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    .diary-content:empty:before {
+      content: "What's on your mind today? ✍️";
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+    .editor-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: var(--surface-2);
+    }
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .lock-panel {
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      margin: 80px auto;
+    }
+    .lock-input {
+      padding: 12px;
+      border-radius: 60px;
+      border: 1px solid var(--border);
+      width: 220px;
+      margin: 16px;
+      background: var(--bg-page);
+      color: var(--text);
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--text);
+      color: var(--bg-page);
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      z-index: 2000;
+      transition: 0.2s;
+      pointer-events: none;
+    }
+    .toast-msg.show { transform: translateX(-50%) translateY(0); }
+
+    /* NEW SECTIONS: How To, Description, FAQ */
+    .info-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+    }
+    .section-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      margin-bottom: 32px;
+      transition: all 0.2s;
+    }
+    .section-card h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card h3 {
+      margin: 20px 0 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .how-step {
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+    }
+    .how-step .step-num {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .feature-badge {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .faq-question {
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      margin-top: 12px;
+    }
+    .desc-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    hr {
+      border-color: var(--border);
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="diary-container">
+  <div class="diary-header">
+    <div class="logo-area">
+      <h1>📔 My Diary · Online Journal</h1>
+      <p>Private · Encrypted locally · Mood & weather companion</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="exportAllBtn">📥 Export all entries</button>
+      <button class="btn-icon" id="importBackupBtn">📂 Import backup</button>
+      <button class="btn-icon" id="lockUnlockBtn">🔒 Lock diary</button>
+      <div class="dark-toggle" id="darkModeDiaryToggle">🌙</div>
+    </div>
+  </div>
+
+  <div id="appProtectedArea">
+    <!-- if locked, show lock screen -->
+  </div>
 
 
   <div class="diary-container">
@@ -545,24 +968,6 @@
     init();
   })();
 </script>
-  
-<div class="diary-container">
-  <div class="diary-header">
-    <div class="logo-area">
-      <h1>📔 My Diary · Online Journal</h1>
-      <p>Private · Encrypted locally · Mood & weather companion</p>
-    </div>
-    <div class="header-actions">
-      <button class="btn-icon" id="exportAllBtn">📥 Export all entries</button>
-      <button class="btn-icon" id="importBackupBtn">📂 Import backup</button>
-      <button class="btn-icon" id="lockUnlockBtn">🔒 Lock diary</button>
-      <div class="dark-toggle" id="darkModeDiaryToggle">🌙</div>
-    </div>
-  </div>
-
-  <div id="appProtectedArea">
-    <!-- if locked, show lock screen -->
-  </div>
 
   <!-- NEW SECTIONS after the diary app: How to use, Description, FAQ -->
   <div class="info-section" id="infoSection">
@@ -649,16 +1054,6 @@
   </div>
 </div>
 <div id="toastMsg" class="toast-msg"></div>
-
-  <!-- Footer Component Injection -->
-  <div id="footer-root"></div>
-
-  <!-- Toast Notification -->
-  <div id="toast" class="toast"></div>
-
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
-  
 
 <script>
   (function(){
