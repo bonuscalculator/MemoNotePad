@@ -469,6 +469,501 @@
 
 <!-- Header Component Injection -->
   <div id="header-root"></div>
+
+  <div class="diary-container">
+  <div class="diary-header">
+    <div class="logo-area">
+      <h1>📔 My Diary · Online Journal</h1>
+      <p>Private · Encrypted locally · Mood & weather companion</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="exportAllBtn">📥 Export all entries</button>
+      <button class="btn-icon" id="importBackupBtn">📂 Import backup</button>
+      <button class="btn-icon" id="lockUnlockBtn">🔒 Lock diary</button>
+      <div class="dark-toggle" id="darkModeDiaryToggle">🌙</div>
+    </div>
+  </div>
+
+  <div id="appProtectedArea">
+    <!-- if locked, show lock screen -->
+  </div>
+</div>
+<div id="toastMsg" class="toast-msg"></div>
+
+<script>
+  (function(){
+    // ---------- STORAGE KEYS ----------
+    const DIARY_STORAGE = 'memo_diary_entries';
+    const DIARY_SETTINGS = 'memo_diary_settings';
+    let entries = [];        // array of { id, dateStr, title, content, mood, weather, updatedAt }
+    let currentDate = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    let selectedDate = currentDate;
+    let isLocked = false;
+    let diaryPassphrase = null;  // stored as hash / plain in memory only when unlocked
+    let streakCount = 0;
+    
+    // DOM elements
+    const protectedArea = document.getElementById('appProtectedArea');
+    const toastEl = document.getElementById('toastMsg');
+    
+    function showToast(msg, duration=2000){
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      setTimeout(()=> toastEl.classList.remove('show'), duration);
+    }
+    
+    // load entries & settings
+    function loadEntries(){
+      try{
+        const stored = localStorage.getItem(DIARY_STORAGE);
+        if(stored) entries = JSON.parse(stored);
+        else entries = [];
+        // ensure each has proper fields
+        entries = entries.map(e => ({ ...e, mood: e.mood || '🤔 neutral', weather: e.weather || '☀️ sunny' }));
+        entries.sort((a,b)=> (a.dateStr > b.dateStr ? -1 : 1));
+      }catch(e){ entries = []; }
+    }
+    function saveEntries(){
+      localStorage.setItem(DIARY_STORAGE, JSON.stringify(entries));
+      updateStreak();
+      renderCalendar(); 
+      renderEntriesList();
+      if(selectedDate) loadEntryByDate(selectedDate);
+    }
+    function loadSettings(){
+      try{
+        const settings = JSON.parse(localStorage.getItem(DIARY_SETTINGS) || '{}');
+        if(settings.darkMode) document.body.classList.add('dark');
+        if(settings.isLocked && settings.passphraseHash){
+          isLocked = true;
+          diaryPassphrase = null; // not in memory
+        } else { isLocked = false; }
+      }catch(e){}
+    }
+    function saveSettings(updates){
+      const existing = JSON.parse(localStorage.getItem(DIARY_SETTINGS) || '{}');
+      localStorage.setItem(DIARY_SETTINGS, JSON.stringify({...existing, ...updates}));
+    }
+    
+    // simple hash (not for crypto but for obfuscation)
+    function simpleHash(str){
+      let hash = 0;
+      for(let i=0;i<str.length;i++) hash = ((hash<<5)-hash)+str.charCodeAt(i) & 0xffffffff;
+      return hash.toString(16);
+    }
+    
+    function lockDiary(passphrase = null){
+      if(passphrase && passphrase.trim() !== ""){
+        const hash = simpleHash(passphrase);
+        diaryPassphrase = passphrase;
+        saveSettings({ isLocked: true, passphraseHash: hash });
+        isLocked = true;
+        showToast("🔒 Diary locked. Refresh passphrase protection.");
+        renderLockScreen();
+      } else {
+        if(diaryPassphrase === null && isLocked){
+          renderLockScreen();
+        } else {
+          isLocked = true;
+          saveSettings({ isLocked: true });
+          renderLockScreen();
+        }
+      }
+    }
+    function unlockDiary(enteredPass){
+      const settings = JSON.parse(localStorage.getItem(DIARY_SETTINGS) || '{}');
+      const storedHash = settings.passphraseHash;
+      if(!storedHash) {
+        // no password set, just unlock
+        isLocked = false;
+        diaryPassphrase = null;
+        saveSettings({ isLocked: false });
+        renderMainApp();
+        showToast("Diary unlocked");
+        return true;
+      }
+      if(simpleHash(enteredPass) === storedHash){
+        isLocked = false;
+        diaryPassphrase = enteredPass;
+        saveSettings({ isLocked: false });
+        renderMainApp();
+        showToast("✅ Unlocked successfully");
+        return true;
+      } else {
+        showToast("❌ Wrong passphrase");
+        return false;
+      }
+    }
+    function setNewPassphrase(newPass){
+      if(newPass && newPass.trim()){
+        const hash = simpleHash(newPass);
+        diaryPassphrase = newPass;
+        saveSettings({ passphraseHash: hash, isLocked: false });
+        isLocked = false;
+        showToast("Passphrase updated. Diary unlocked.");
+        renderMainApp();
+      }
+    }
+    
+    function renderLockScreen(){
+      protectedArea.innerHTML = `
+        <div class="lock-panel">
+          <div style="font-size:4rem;">📔🔒</div>
+          <h2 style="margin:16px 0;">Diary is locked</h2>
+          <p style="margin-bottom:16px;">Enter your private passphrase to continue</p>
+          <input type="password" id="unlockPassInput" class="lock-input" placeholder="your passphrase" autocomplete="off"/>
+          <div style="display:flex; gap:12px; justify-content:center;">
+            <button id="unlockBtnAction" class="btn-primary">Unlock</button>
+            <button id="resetPassBtn" class="btn-icon">Reset / New passphrase</button>
+          </div>
+          <p style="margin-top:28px; font-size:0.75rem; color:var(--text-muted);">*All data remains on your device. Passphrase resets will keep entries.</p>
+        </div>
+      `;
+      document.getElementById('unlockBtnAction')?.addEventListener('click',()=>{
+        const inp = document.getElementById('unlockPassInput').value;
+        unlockDiary(inp);
+      });
+      document.getElementById('resetPassBtn')?.addEventListener('click',()=>{
+        const newP = prompt("Set a new diary passphrase (leave empty to disable password protection):");
+        if(newP !== null){
+          if(newP === "") {
+            // remove password protection
+            saveSettings({ isLocked: false, passphraseHash: null });
+            isLocked = false;
+            diaryPassphrase = null;
+            renderMainApp();
+            showToast("Password protection removed.");
+          } else {
+            setNewPassphrase(newP);
+          }
+        }
+      });
+    }
+    
+    // main UI after unlock
+    function renderMainApp(){
+      protectedArea.innerHTML = `
+        <div class="diary-grid">
+          <!-- SIDEBAR -->
+          <div class="diary-sidebar">
+            <div class="streak-card">
+              <div>🔥 Current streak</div>
+              <div class="streak-number" id="streakDisplay">0</div>
+              <div style="font-size:0.7rem;">consecutive days with entries</div>
+            </div>
+            <div class="calendar-nav">
+              <button class="btn-icon" id="prevMonthBtn">◀</button>
+              <span id="monthYearLabel" style="font-weight:600;"></span>
+              <button class="btn-icon" id="nextMonthBtn">▶</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div style="margin: 20px 0 10px;"><strong>📜 Recent entries</strong></div>
+            <div id="entriesListSidebar" class="entries-list"></div>
+          </div>
+          <!-- MAIN EDITOR -->
+          <div class="diary-editor">
+            <div class="editor-header">
+              <div class="editor-date" id="selectedDateDisplay"></div>
+              <div class="mood-weather">
+                <select id="moodSelect" class="mood-select">
+                  <option value="😊 happy">😊 Happy</option>
+                  <option value="😌 calm">😌 Calm</option>
+                  <option value="🤔 neutral">🤔 Neutral</option>
+                  <option value="😢 sad">😢 Sad</option>
+                  <option value="⚡ energetic">⚡ Energetic</option>
+                  <option value="❤️ loved">❤️ Loved</option>
+                </select>
+                <select id="weatherSelect" class="weather-select">
+                  <option value="☀️ sunny">☀️ Sunny</option>
+                  <option value="⛅ cloudy">⛅ Cloudy</option>
+                  <option value="🌧️ rainy">🌧️ Rainy</option>
+                  <option value="❄️ snowy">❄️ Snowy</option>
+                  <option value="🌙 night">🌙 Night</option>
+                  <option value="🌈 rainbow">🌈 Rainbow</option>
+                </select>
+              </div>
+            </div>
+            <input type="text" id="diaryTitle" class="diary-title-input" placeholder="Title of your day..."/>
+            <div id="diaryContent" class="diary-content" contenteditable="true"></div>
+            <div class="editor-footer">
+              <div class="action-buttons">
+                <button id="saveCurrentBtn" class="btn-primary">💾 Save entry</button>
+                <button id="deleteEntryBtn" class="btn-icon">🗑️ Delete this day</button>
+              </div>
+              <div>
+                <span id="wordCountDiary" style="font-size:0.75rem;">0 words</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      attachEditorEvents();
+      renderCalendar();
+      renderEntriesList();
+      loadEntryByDate(selectedDate);
+      updateStreak();
+      setupGlobalActions();
+    }
+    
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    
+    function getEntriesMap(){
+      const map = new Map();
+      entries.forEach(entry => { map.set(entry.dateStr, true); });
+      return map;
+    }
+    
+    function renderCalendar(){
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const startDay = firstDay.getDay();
+      const daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
+      const calendarDiv = document.getElementById('calendarGrid');
+      if(!calendarDiv) return;
+      const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      document.getElementById('monthYearLabel').innerText = `${monthNames[currentMonth]} ${currentYear}`;
+      let html = '';
+      const weekdays = ['S','M','T','W','T','F','S'];
+      weekdays.forEach(d=> html+=`<div style="font-size:0.65rem; opacity:0.7;">${d}</div>`);
+      for(let i=0;i<startDay;i++) html+=`<div></div>`;
+      const hasEntryMap = getEntriesMap();
+      for(let d=1; d<=daysInMonth; d++){
+        const dateStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const isSelected = (selectedDate === dateStr);
+        const has = hasEntryMap.has(dateStr);
+        const isToday = (dateStr === new Date().toISOString().slice(0,10));
+        let cls = 'cal-day';
+        if(has) cls+=' has-entry';
+        if(isSelected) cls+=' selected';
+        if(isToday) cls+=' today';
+        html+=`<div class="${cls}" data-date="${dateStr}">${d}</div>`;
+      }
+      calendarDiv.innerHTML = html;
+      document.querySelectorAll('.cal-day[data-date]').forEach(el=>{
+        el.addEventListener('click',()=>{
+          selectedDate = el.dataset.date;
+          renderCalendar();
+          renderEntriesList();
+          loadEntryByDate(selectedDate);
+        });
+      });
+      document.getElementById('prevMonthBtn')?.addEventListener('click',()=>{
+        if(currentMonth===0){ currentMonth=11; currentYear--; } else currentMonth--;
+        renderCalendar();
+        renderEntriesList();
+      });
+      document.getElementById('nextMonthBtn')?.addEventListener('click',()=>{
+        if(currentMonth===11){ currentMonth=0; currentYear++; } else currentMonth++;
+        renderCalendar();
+        renderEntriesList();
+      });
+    }
+    
+    function renderEntriesList(){
+      const container = document.getElementById('entriesListSidebar');
+      if(!container) return;
+      let sorted = [...entries].sort((a,b)=>b.dateStr.localeCompare(a.dateStr));
+      if(sorted.length===0){
+        container.innerHTML = '<div style="padding:12px; text-align:center">✨ No entries yet. Start writing!</div>';
+        return;
+      }
+      container.innerHTML = sorted.map(entry=>`
+        <div class="entry-item" data-date="${entry.dateStr}">
+          <div class="entry-date">${entry.dateStr} ${entry.mood || ''}</div>
+          <div class="entry-preview"><strong>${escapeHtml(entry.title||'Untitled')}</strong> — ${entry.content.replace(/<[^>]*>/g,'').substring(0,50)}</div>
+        </div>
+      `).join('');
+      document.querySelectorAll('.entry-item').forEach(el=>{
+        el.addEventListener('click',()=>{
+          selectedDate = el.dataset.date;
+          renderCalendar();
+          renderEntriesList();
+          loadEntryByDate(selectedDate);
+        });
+      });
+    }
+    
+    function loadEntryByDate(dateStr){
+      const entry = entries.find(e=>e.dateStr === dateStr);
+      const titleInput = document.getElementById('diaryTitle');
+      const contentDiv = document.getElementById('diaryContent');
+      const moodSel = document.getElementById('moodSelect');
+      const weatherSel = document.getElementById('weatherSelect');
+      const dateDisplay = document.getElementById('selectedDateDisplay');
+      if(dateDisplay) dateDisplay.innerText = formatDateDisplay(dateStr);
+      if(entry){
+        if(titleInput) titleInput.value = entry.title || '';
+        if(contentDiv) contentDiv.innerHTML = entry.content || '';
+        if(moodSel) moodSel.value = entry.mood || '🤔 neutral';
+        if(weatherSel) weatherSel.value = entry.weather || '☀️ sunny';
+      } else {
+        if(titleInput) titleInput.value = '';
+        if(contentDiv) contentDiv.innerHTML = '';
+        if(moodSel) moodSel.value = '🤔 neutral';
+        if(weatherSel) weatherSel.value = '☀️ sunny';
+      }
+      updateWordCount();
+    }
+    
+    function saveCurrentEntry(){
+      const title = document.getElementById('diaryTitle')?.value || '';
+      const content = document.getElementById('diaryContent')?.innerHTML || '';
+      const mood = document.getElementById('moodSelect')?.value || '🤔 neutral';
+      const weather = document.getElementById('weatherSelect')?.value || '☀️ sunny';
+      if(!selectedDate) return;
+      const existingIndex = entries.findIndex(e=>e.dateStr === selectedDate);
+      const newEntry = {
+        id: existingIndex>=0 ? entries[existingIndex].id : Date.now()+Math.random(),
+        dateStr: selectedDate,
+        title: title.trim() || "Untitled entry",
+        content: content,
+        mood: mood,
+        weather: weather,
+        updatedAt: Date.now()
+      };
+      if(existingIndex>=0) entries[existingIndex] = newEntry;
+      else entries.push(newEntry);
+      saveEntries();
+      showToast(`📘 Saved entry for ${selectedDate}`);
+      updateWordCount();
+    }
+    
+    function deleteCurrentEntry(){
+      if(!selectedDate) return;
+      if(confirm(`Delete entry for ${selectedDate}? This cannot be undone.`)){
+        entries = entries.filter(e=>e.dateStr !== selectedDate);
+        saveEntries();
+        loadEntryByDate(selectedDate);
+        showToast("Entry deleted");
+      }
+    }
+    
+    function updateStreak(){
+      if(entries.length===0){ streakCount=0; document.getElementById('streakDisplay')?.setAttribute('textContent','0'); return; }
+      const sortedDates = [...entries].map(e=>e.dateStr).sort();
+      let streak=1;
+      let maxStreak=1;
+      for(let i=1;i<sortedDates.length;i++){
+        const prev = new Date(sortedDates[i-1]);
+        const curr = new Date(sortedDates[i]);
+        const diff = (curr - prev) / (1000*3600*24);
+        if(diff === 1) streak++;
+        else streak=1;
+        if(streak>maxStreak) maxStreak=streak;
+      }
+      streakCount = maxStreak;
+      const streakSpan = document.getElementById('streakDisplay');
+      if(streakSpan) streakSpan.innerText = streakCount;
+    }
+    
+    function formatDateDisplay(iso){
+      const d = new Date(iso);
+      return d.toLocaleDateString(undefined, { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    }
+    
+    function updateWordCount(){
+      const contentDiv = document.getElementById('diaryContent');
+      if(!contentDiv) return;
+      const text = contentDiv.innerText || '';
+      const words = text.trim().split(/\s+/).filter(w=>w.length).length;
+      const wcSpan = document.getElementById('wordCountDiary');
+      if(wcSpan) wcSpan.innerText = `${words} words`;
+    }
+    
+    function attachEditorEvents(){
+      const contentEd = document.getElementById('diaryContent');
+      if(contentEd) contentEd.addEventListener('input', ()=>{ updateWordCount(); });
+      const saveBtn = document.getElementById('saveCurrentBtn');
+      if(saveBtn) saveBtn.addEventListener('click', saveCurrentEntry);
+      const deleteBtn = document.getElementById('deleteEntryBtn');
+      if(deleteBtn) deleteBtn.addEventListener('click', deleteCurrentEntry);
+    }
+    
+    function setupGlobalActions(){
+      document.getElementById('exportAllBtn')?.addEventListener('click', ()=>{
+        const dataStr = JSON.stringify(entries, null, 2);
+        const blob = new Blob([dataStr], {type: 'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `diary_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+        showToast("Exported all entries as JSON");
+      });
+      document.getElementById('importBackupBtn')?.addEventListener('click', ()=>{
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/json';
+        input.onchange = e=>{
+          const file = e.target.files[0];
+          if(!file) return;
+          const reader = new FileReader();
+          reader.onload = ev=>{
+            try{
+              const imported = JSON.parse(ev.target.result);
+              if(Array.isArray(imported)){
+                entries = imported;
+                saveEntries();
+                renderCalendar();
+                renderEntriesList();
+                loadEntryByDate(selectedDate);
+                showToast("Imported backup successfully!");
+              } else throw new Error();
+            }catch(err){ showToast("Invalid backup file"); }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      });
+      document.getElementById('lockUnlockBtn')?.addEventListener('click',()=>{
+        if(!isLocked){
+          const newPass = prompt("Set a passphrase to lock your diary (or leave empty to keep unlocked but lock screen)");
+          if(newPass !== null){
+            if(newPass === ""){
+              lockDiary("");
+            } else {
+              setNewPassphrase(newPass);
+              lockDiary(newPass);
+            }
+          }
+        } else {
+          unlockDiary(prompt("Enter passphrase to unlock:")||"");
+        }
+      });
+      const darkToggleBtn = document.getElementById('darkModeDiaryToggle');
+      darkToggleBtn?.addEventListener('click',()=>{
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        darkToggleBtn.innerHTML = isDark ? '☀️' : '🌙';
+        saveSettings({ darkMode: isDark });
+      });
+      const savedDark = localStorage.getItem(DIARY_SETTINGS) ? (JSON.parse(localStorage.getItem(DIARY_SETTINGS)).darkMode || false) : false;
+      if(savedDark) document.body.classList.add('dark');
+      if(darkToggleBtn) darkToggleBtn.innerHTML = savedDark ? '☀️' : '🌙';
+    }
+    
+    function escapeHtml(str){
+      if(!str) return '';
+      return str.replace(/[&<>]/g, function(m){
+        if(m === '&') return '&amp;';
+        if(m === '<') return '&lt;';
+        if(m === '>') return '&gt;';
+        return m;
+      });
+    }
+    
+    function init(){
+      loadEntries();
+      loadSettings();
+      if(isLocked){
+        renderLockScreen();
+      } else {
+        renderMainApp();
+      }
+    }
+    init();
+  })();
+</script>
   
 <div class="diary-container">
   <div class="diary-header">
