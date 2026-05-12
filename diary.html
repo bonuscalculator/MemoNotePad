@@ -67,142 +67,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Base CSS Reset / Global Variables - Ensures features show correctly */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #2D6A4F;
-      --primary-dark: #1B4332;
-      --primary-light: #40916C;
-      --accent: #F4A261;
-      --accent-dark: #E76F51;
-      --surface: #FFFFFF;
-      --surface-2: #F8F9FA;
-      --text: #212529;
-      --text-muted: #6C757D;
-      --border: #E9ECEF;
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --header-h: 70px;
-      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-display: 'Playfair Display', Georgia, serif;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--surface);
-      color: var(--text);
-      line-height: 1.5;
-      transition: background 0.2s;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Button Styles */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: 2px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border-color: currentColor;
-    }
-
-    /* Feature Section Styles (Ensuring visibility) */
-    .features-section {
-      padding: 80px 0;
-      background: var(--surface-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--primary-dark);
-    }
-
-    .section-sub {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 640px;
-      margin-bottom: 48px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-top: 20px;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 32px 24px;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Diary app wrapper and other styles (ensuring main app works) */
+    /* Diary-specific enhancements */
     .diary-hero {
       background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
       color: #fff;
@@ -292,282 +160,132 @@
       border-radius: var(--radius-md);
     }
 
-    .app-wrapper {
-      display: grid;
-      gap: 24px;
+    /* Ensure feature cards are visible */
+    .features-section {
+      background: var(--bg-alt);
+      padding: 100px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card {
       background: var(--surface);
-      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-    }
-
-    .app-sidebar {
-      background: var(--surface-2);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
-
-    .app-editor {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-    }
-
-    .sidebar-header {
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .btn-icon {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 999px;
-    }
-
-    .sidebar-search {
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .sidebar-search input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      outline: none;
-    }
-
-    .notes-list {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .note-item {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      transition: background 0.1s;
-    }
-
-    .note-item.active {
-      background: rgba(64, 145, 108, 0.1);
-      border-left: 3px solid var(--primary);
-    }
-
-    .editor-toolbar {
-      padding: 12px 16px;
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface-2);
-    }
-
-    .note-title-input {
-      font-size: 1.5rem;
-      font-weight: 600;
-      padding: 16px 20px;
-      border: none;
-      outline: none;
-      font-family: var(--font-display);
-    }
-
-    .note-editor {
-      flex: 1;
-      padding: 20px;
-      outline: none;
-      min-height: 300px;
-      line-height: 1.7;
-    }
-
-    .editor-footer {
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      background: var(--surface-2);
-      font-size: 0.8rem;
-    }
-
-    .btn-sm {
-      padding: 6px 14px;
-      border-radius: 40px;
-      border: 1px solid var(--border);
-      background: white;
-      cursor: pointer;
-    }
-
-    .cta-section {
-      padding: 80px 0;
-      background: var(--primary-dark);
-      color: white;
-    }
-
-    .cta-box {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #1e2a32;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: all 0.2s;
-      z-index: 1000;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      transition: all var(--transition);
       opacity: 1;
+      transform: translateY(0);
     }
 
-    .hero-stats {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      margin-top: 48px;
-      padding: 20px 32px;
-      border-radius: 60px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+    .feature-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    @media (max-width: 768px) {
-      .app-wrapper {
-        grid-template-columns: 1fr !important;
-        height: auto !important;
-      }
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
+
+    .feature-card:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
-    .tool-divider {
-      width: 1px;
-      background: var(--border);
-      margin: 0 4px;
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
     }
-    .toolbar-group {
-      display: flex;
-      gap: 4px;
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
-    .tool-btn {
-      background: transparent;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 4px 10px;
-      border-radius: 8px;
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
     }
-    .tool-select {
-      padding: 4px 8px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-    .footer-meta {
-      display: flex;
-      gap: 16px;
-    }
-    .btn-danger {
-      background: #f8d7da;
-      border-color: #f1b0b7;
-      color: #721c24;
-    }
-    #header-root, #footer-root {
-      width: 100%;
-    }
-    .accent-text {
-      color: #B7E4C7;
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
     }
   </style>
 </head>
 <body class="light-mode">
 
-  <!-- Header Component Injection placeholder -->
+  <!-- Header Component Injection -->
   <div id="header-root"></div>
 
   <!-- HERO SECTION -->
   <section class="hero-section diary-hero" style="padding-top: calc(var(--header-h) + 40px); min-height: 85vh;">
     <div class="container hero-inner" style="max-width: 820px;">
-      <div class="hero-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #fff; display: inline-flex; padding: 6px 18px; border-radius: 30px; margin-bottom: 20px;">
-        <span class="badge-dot" style="background: #F4A261; display: inline-block; width: 10px; height: 10px; border-radius: 10px; margin-right: 8px;"></span>
+      <div class="hero-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #fff;">
+        <span class="badge-dot" style="background: #F4A261;"></span>
         Private · Secure · Yours Forever
       </div>
-      <h1 class="hero-title" style="color: #fff; font-size: 3.5rem;">
+      <h1 class="hero-title" style="color: #fff;">
         Your Private<br><span class="accent-text" style="color: #B7E4C7;">Online Diary</span>
       </h1>
-      <p class="hero-subtitle" style="color: rgba(255,255,255,0.85); max-width: 620px; margin: 20px 0;">
+      <p class="hero-subtitle" style="color: rgba(255,255,255,0.85); max-width: 620px;">
         A beautiful digital journal for your thoughts, memories, and reflections. 
         Track your mood, tag entries, and write with complete privacy — all stored locally.
       </p>
-      <div class="hero-cta" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="#diary-app" class="btn btn-primary" style="background: white; color: var(--primary-dark);">Start Journaling Today</a>
+      <div class="hero-cta">
+        <a href="#diary-app" class="btn btn-primary" style="background: white; color: var(--primary-dark);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><path d="M19 11H5M19 11C19.5523 11 20 11.4477 20 12V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V12C4 11.4477 4.44772 11 5 11M19 11L12 4L5 11"/></svg>
+          Start Journaling Today
+        </a>
         <a href="#features" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.6); color: white;">See Features</a>
       </div>
       
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7; font-weight: bold; font-size: 1.6rem;">∞</span><br><span class="stat-label" style="color: rgba(255,255,255,0.8);">Private Entries</span></div>
-        <div class="stat-div" style="background: rgba(255,255,255,0.3); width:1px; height:30px;"></div>
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7; font-weight: bold;">Mood</span><br><span class="stat-label" style="color: rgba(255,255,255,0.8);">Tracker</span></div>
-        <div class="stat-div" style="background: rgba(255,255,255,0.3); width:1px; height:30px;"></div>
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7; font-weight: bold;">100%</span><br><span class="stat-label" style="color: rgba(255,255,255,0.8);">Private</span></div>
+      <div class="hero-stats" style="background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25);">
+        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">∞</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Private Entries</span></div>
+        <div class="stat-div" style="background: rgba(255,255,255,0.3);"></div>
+        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">Mood</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Tracker</span></div>
+        <div class="stat-div" style="background: rgba(255,255,255,0.3);"></div>
+        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">100%</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Private</span></div>
       </div>
     </div>
   </section>
 
   <!-- DIARY APP SECTION -->
-  <section id="diary-app" class="app-section" style="padding: 60px 0;">
+  <section id="diary-app" class="app-section">
     <div class="container">
       <div class="section-label">✦ Live Private Diary</div>
       <h2 class="section-title">Write Your Story</h2>
       <p class="section-sub">A safe space for your daily thoughts, memories, and personal growth.</p>
 
-      <div class="app-wrapper" style="grid-template-columns: 280px 1fr; min-height: 640px;">
+      <div class="app-wrapper" style="grid-template-columns: 280px 1fr; height: 640px;">
         <!-- Sidebar -->
         <aside class="app-sidebar" id="diarySidebar">
           <div class="sidebar-header">
             <h3>My Journal</h3>
             <button class="btn-icon" id="newEntryBtn" title="New Entry">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
           
+          <!-- Mini Calendar -->
           <div style="padding: 12px 16px; border-bottom: 1px solid var(--border);">
             <div id="miniCalendar" class="calendar-grid"></div>
           </div>
           
           <div class="sidebar-search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <input type="text" id="diarySearchInput" placeholder="Search entries..." />
           </div>
           
-          <div class="notes-list" id="entriesList"></div>
+          <div class="notes-list" id="entriesList" style="padding-top: 8px;"></div>
         </aside>
 
         <!-- Editor -->
         <main class="app-editor">
           <div class="editor-toolbar" style="flex-wrap: wrap;">
+            <!-- Mood -->
             <div style="display: flex; align-items: center; gap: 8px; padding: 0 10px;">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Mood:</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted); white-space: nowrap;">Mood:</span>
               <div class="mood-selector" id="moodSelector">
                 <div class="mood-btn" data-mood="😊">😊</div>
                 <div class="mood-btn" data-mood="🙂">🙂</div>
@@ -577,23 +295,29 @@
                 <div class="mood-btn" data-mood="😡">😡</div>
               </div>
             </div>
+            
             <div class="tool-divider"></div>
+            
             <div class="toolbar-group">
               <button class="tool-btn" data-cmd="bold" title="Bold"><b>B</b></button>
               <button class="tool-btn" data-cmd="italic" title="Italic"><i>I</i></button>
               <button class="tool-btn" data-cmd="underline" title="Underline"><u>U</u></button>
             </div>
+            
             <div class="tool-divider"></div>
+            
             <div class="toolbar-group">
               <input type="date" id="entryDate" class="tool-select" style="width: auto; padding: 6px 10px;">
             </div>
-            <div style="margin-left: auto; display: flex; align-items: center; gap: 12px;">
+            
+            <div style="margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: var(--text-muted);">
               <span id="streakInfo" class="streak-counter" style="font-size: 0.8rem; padding: 6px 14px;">🔥 0 day streak</span>
             </div>
           </div>
 
           <input type="text" id="entryTitle" class="note-title-input" placeholder="Entry title (e.g., A peaceful morning...)" />
           
+          <!-- Tags -->
           <div style="padding: 0 20px 8px; border-bottom: 1px solid var(--border);">
             <div class="tag-input" id="tagsContainer">
               <input type="text" id="tagInput" placeholder="Add tag..." style="background: none; border: none; outline: none; flex: 1; min-width: 120px;">
@@ -619,7 +343,7 @@
     </div>
   </section>
 
-  <!-- FEATURES SECTION - FIXED AND VISIBLE -->
+  <!-- FEATURES SECTION - Fixed: Now properly renders -->
   <section id="features" class="features-section">
     <div class="container">
       <div class="section-label">✦ Diary Features</div>
@@ -666,9 +390,9 @@
     <div class="container">
       <div class="cta-box">
         <div class="cta-dots"></div>
-        <h2 style="font-size: 2rem;">Begin Your Private<br>Journaling Journey</h2>
-        <p style="margin: 20px 0;">Start writing today. Your future self will thank you.</p>
-        <a href="#diary-app" class="btn btn-primary" style="background: white; color: var(--primary-dark);">Open My Diary</a>
+        <h2>Begin Your Private<br>Journaling Journey</h2>
+        <p>Start writing today. Your future self will thank you.</p>
+        <a href="#diary-app" class="btn btn-primary btn-large">Open My Diary</a>
       </div>
     </div>
   </section>
@@ -679,28 +403,27 @@
   <!-- Toast -->
   <div id="toast" class="toast"></div>
 
-  <!-- Stub for header/footer to avoid errors -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
   <script>
-    // Provide mock for header/footer includes (so missing external scripts don't break)
-    if (typeof window !== 'undefined') {
-      setTimeout(() => {
-        const headerDiv = document.getElementById('header-root');
-        if (headerDiv && headerDiv.innerHTML === '') {
-          headerDiv.innerHTML = '<div style="background: white; border-bottom: 1px solid #e0e0e0; padding: 16px 24px; font-family: sans-serif;"><div style="max-width: 1280px; margin:auto; display:flex; gap:24px; align-items:center;"><span style="font-weight:bold; font-size:1.4rem;">Memo Diary</span><span>📔 Free private journal</span></div></div>';
-        }
-        const footerDiv = document.getElementById('footer-root');
-        if (footerDiv && footerDiv.innerHTML === '') {
-          footerDiv.innerHTML = '<footer style="background:#1B4332; color: white; padding: 32px 24px; text-align:center;"><p>© 2025 Memo Notepad — Private Digital Diary. All entries stored locally.</p></footer>';
-        }
-      }, 0);
-    }
-  </script>
-
-  <script>
-    // Full Diary Application Logic
+    // Complete Diary Application JavaScript
     let currentEntryDate = new Date().toISOString().split('T')[0];
-    let entries = JSON.parse(localStorage.getItem('diaryEntries')) || {};
+    let entries = {};
     let currentTags = [];
+    
+    // Load entries from localStorage
+    try {
+      const saved = localStorage.getItem('diaryEntries');
+      if (saved) {
+        entries = JSON.parse(saved);
+      } else {
+        entries = {};
+      }
+    } catch(e) {
+      entries = {};
+    }
+    
+    const moods = ["😊", "🙂", "😐", "😔", "😢", "😡"];
     
     function saveEntries() {
       localStorage.setItem('diaryEntries', JSON.stringify(entries));
@@ -715,164 +438,419 @@
     function renderEntriesList(filter = '') {
       const container = document.getElementById('entriesList');
       if (!container) return;
+      
       container.innerHTML = '';
+      
       const sortedDates = Object.keys(entries).sort((a, b) => new Date(b) - new Date(a));
+      
       sortedDates.forEach(date => {
         const entry = entries[date];
-        if (filter && !entry.title.toLowerCase().includes(filter.toLowerCase()) && !entry.content.toLowerCase().includes(filter.toLowerCase())) return;
+        if (filter && 
+            !(entry.title || '').toLowerCase().includes(filter.toLowerCase()) && 
+            !(entry.content || '').toLowerCase().includes(filter.toLowerCase())) {
+          return;
+        }
+        
         const div = document.createElement('div');
         div.className = `note-item ${date === currentEntryDate ? 'active' : ''}`;
-        div.innerHTML = `<div class="note-item-title"><strong>${entry.title || formatDate(date)}</strong></div>
-                         <div class="note-item-preview">${(entry.content || '').replace(/<[^>]+>/g, '').substring(0, 80)}</div>
-                         <div class="note-item-date" style="font-size:0.7rem; opacity:0.7;">${formatDate(date)} ${entry.mood || ''}</div>`;
+        div.innerHTML = `
+          <div class="note-item-title">${escapeHtml(entry.title || formatDate(date))}</div>
+          <div class="note-item-preview">${escapeHtml((entry.content || '').substring(0, 80))}${(entry.content || '').length > 80 ? '...' : ''}</div>
+          <div class="note-item-date">${formatDate(date)} ${entry.mood || ''}</div>
+        `;
         div.onclick = () => loadEntry(date);
         container.appendChild(div);
       });
-      if (sortedDates.length === 0) container.innerHTML = '<div style="padding:40px; text-align:center;">✨ No entries yet. Create your first memory!</div>';
+      
+      if (sortedDates.length === 0) {
+        container.innerHTML = `<div style="padding: 40px 20px; text-align: center; color: var(--text-muted);">No entries yet.<br>Write your first one!</div>`;
+      }
+    }
+    
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      });
     }
     
     function loadEntry(date) {
       currentEntryDate = date;
       const entry = entries[date] || { title: '', content: '', mood: '😊', tags: [] };
-      document.getElementById('entryDate').value = date;
-      document.getElementById('entryTitle').value = entry.title || '';
-      document.getElementById('diaryEditor').innerHTML = entry.content || '';
-      document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('active'));
-      const activeMoodBtn = Array.from(document.querySelectorAll('.mood-btn')).find(btn => btn.getAttribute('data-mood') === entry.mood);
-      if (activeMoodBtn) activeMoodBtn.classList.add('active');
-      currentTags = [...(entry.tags || [])];
+      
+      const datePicker = document.getElementById('entryDate');
+      if (datePicker) datePicker.value = date;
+      
+      const titleInput = document.getElementById('entryTitle');
+      if (titleInput) titleInput.value = entry.title || '';
+      
+      const editor = document.getElementById('diaryEditor');
+      if (editor) editor.innerHTML = entry.content || '';
+      
+      // Set mood
+      document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-mood') === entry.mood);
+      });
+      
+      currentTags = entry.tags ? [...entry.tags] : [];
       renderTags();
-      renderEntriesList(document.getElementById('diarySearchInput')?.value || '');
+      
+      renderEntriesList(document.getElementById('diarySearchInput') ? document.getElementById('diarySearchInput').value : '');
       updateWordCount();
+      renderMiniCalendar();
+      
+      // Update streak display
+      const streak = calculateStreak();
+      const streakInfo = document.getElementById('streakInfo');
+      if (streakInfo) streakInfo.innerHTML = `🔥 ${streak} day streak`;
     }
     
     function createNewEntry() {
       currentEntryDate = new Date().toISOString().split('T')[0];
+      
       if (!entries[currentEntryDate]) {
-        entries[currentEntryDate] = { title: '', content: '', mood: '😊', tags: [] };
+        entries[currentEntryDate] = {
+          title: '',
+          content: '',
+          mood: '😊',
+          tags: []
+        };
         saveEntries();
       }
+      
       loadEntry(currentEntryDate);
     }
     
     function renderTags() {
       const container = document.getElementById('tagsContainer');
       if (!container) return;
+      
       const input = document.getElementById('tagInput');
-      const existing = container.querySelectorAll('.tag:not(#tagInput)');
-      existing.forEach(t => t.remove());
-      currentTags.forEach((tag, idx) => {
-        const tagDiv = document.createElement('div');
-        tagDiv.className = 'tag';
-        tagDiv.innerHTML = `${tag} <span style="cursor:pointer;">✖</span>`;
-        tagDiv.querySelector('span').onclick = (e) => {
-          e.stopPropagation();
-          currentTags.splice(idx, 1);
-          renderTags();
-          saveCurrentEntry();
-        };
-        container.insertBefore(tagDiv, input);
+      if (!input) return;
+      
+      // Remove previous tags
+      const existingTags = container.querySelectorAll('.tag');
+      existingTags.forEach(t => t.remove());
+      
+      currentTags.forEach((tag, index) => {
+        const tagEl = document.createElement('div');
+        tagEl.className = 'tag';
+        tagEl.innerHTML = `${escapeHtml(tag)} <span style="cursor:pointer; font-size:1.1rem;">×</span>`;
+        const closeSpan = tagEl.querySelector('span');
+        if (closeSpan) {
+          closeSpan.onclick = (e) => {
+            e.stopPropagation();
+            currentTags.splice(index, 1);
+            renderTags();
+            saveCurrentEntry();
+          };
+        }
+        container.insertBefore(tagEl, input);
       });
     }
     
     function saveCurrentEntry() {
       if (!currentEntryDate) return;
-      const title = document.getElementById('entryTitle').value.trim();
-      const content = document.getElementById('diaryEditor').innerHTML;
-      const activeMood = document.querySelector('.mood-btn.active')?.getAttribute('data-mood') || '😊';
+      
+      const titleInput = document.getElementById('entryTitle');
+      const title = titleInput ? titleInput.value.trim() : '';
+      
+      const editor = document.getElementById('diaryEditor');
+      const content = editor ? editor.innerHTML : '';
+      
+      const activeMood = document.querySelector('.mood-btn.active');
+      const mood = activeMood ? activeMood.getAttribute('data-mood') : '😐';
+      
       entries[currentEntryDate] = {
         title: title || `Journal - ${formatDate(currentEntryDate)}`,
         content: content,
-        mood: activeMood,
+        mood: mood,
         tags: [...currentTags]
       };
+      
       saveEntries();
-      renderEntriesList(document.getElementById('diarySearchInput')?.value || '');
-      const statusSpan = document.getElementById('diarySaveStatus');
-      if (statusSpan) { statusSpan.textContent = '✓ Saved'; setTimeout(() => { statusSpan.textContent = '✓ Auto-saved'; }, 1500); }
-      renderMiniCalendar();
+      renderEntriesList(document.getElementById('diarySearchInput') ? document.getElementById('diarySearchInput').value : '');
+      
+      // Update save status
+      const status = document.getElementById('diarySaveStatus');
+      if (status) {
+        status.textContent = '✓ Saved';
+        setTimeout(() => {
+          if (status) status.textContent = '✓ Auto-saved';
+        }, 1500);
+      }
+      
+      // Update streak
       const streak = calculateStreak();
-      document.getElementById('streakInfo').innerHTML = `🔥 ${streak} day streak`;
+      const streakInfo = document.getElementById('streakInfo');
+      if (streakInfo) streakInfo.innerHTML = `🔥 ${streak} day streak`;
     }
     
     function updateWordCount() {
       const editor = document.getElementById('diaryEditor');
       if (!editor) return;
+      
       const text = editor.innerText || '';
       const words = text.trim().split(/\s+/).filter(Boolean).length;
       const chars = text.length;
-      document.getElementById('diaryWordCount').innerText = `${words} words`;
-      document.getElementById('diaryCharCount').innerText = `${chars} chars`;
+      
+      const wordSpan = document.getElementById('diaryWordCount');
+      const charSpan = document.getElementById('diaryCharCount');
+      if (wordSpan) wordSpan.textContent = `${words} words`;
+      if (charSpan) charSpan.textContent = `${chars} chars`;
     }
     
     function renderMiniCalendar() {
       const container = document.getElementById('miniCalendar');
       if (!container) return;
+      
       container.innerHTML = '';
+      
       const today = new Date();
       const year = today.getFullYear();
       const month = today.getMonth();
+      
+      // Weekday headers
       const days = ['S','M','T','W','T','F','S'];
-      days.forEach(day => { const d = document.createElement('div'); d.style.fontSize='0.7rem'; d.style.opacity='0.6'; d.textContent=day; container.appendChild(d); });
+      days.forEach(day => {
+        const d = document.createElement('div');
+        d.style.fontSize = '0.7rem';
+        d.style.opacity = '0.6';
+        d.textContent = day;
+        container.appendChild(d);
+      });
+      
       const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month+1, 0).getDate();
-      for(let i=0;i<firstDay;i++) container.appendChild(document.createElement('div'));
-      for(let day=1; day<=daysInMonth; day++) {
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      // Empty slots
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        container.appendChild(empty);
+      }
+      
+      for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-        const dayDiv = document.createElement('div');
-        dayDiv.className = 'calendar-day';
-        dayDiv.textContent = day;
-        if(entries[dateStr]) dayDiv.classList.add('has-entry');
-        if(dateStr === currentEntryDate) dayDiv.style.border = '2px solid var(--accent)';
-        dayDiv.onclick = () => { currentEntryDate = dateStr; if(!entries[dateStr]) entries[dateStr] = {title:'', content:'', mood:'😊', tags:[]}; loadEntry(dateStr); };
-        container.appendChild(dayDiv);
+        const dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+        dayEl.textContent = day;
+        
+        if (entries[dateStr]) {
+          dayEl.classList.add('has-entry');
+        }
+        
+        if (dateStr === currentEntryDate) {
+          dayEl.style.border = '2px solid var(--accent)';
+        }
+        
+        dayEl.onclick = () => {
+          currentEntryDate = dateStr;
+          if (!entries[dateStr]) {
+            entries[dateStr] = {title: '', content: '', mood: '😊', tags: []};
+          }
+          loadEntry(dateStr);
+        };
+        
+        container.appendChild(dayEl);
       }
     }
     
     function calculateStreak() {
+      const dates = Object.keys(entries).sort((a,b) => new Date(b) - new Date(a));
+      if (dates.length === 0) return 0;
+      
       let streak = 0;
-      let cur = new Date();
-      for(let i=0;i<60;i++) {
-        let check = new Date(cur);
-        check.setDate(cur.getDate() - i);
-        let ds = check.toISOString().split('T')[0];
-        if(entries[ds]) streak++;
-        else break;
+      let current = new Date();
+      
+      for (let i = 0; i < 30; i++) {
+        const checkDate = new Date(current);
+        checkDate.setDate(checkDate.getDate() - i);
+        const dateStr = checkDate.toISOString().split('T')[0];
+        
+        if (entries[dateStr]) {
+          streak++;
+        } else {
+          break;
+        }
       }
       return streak;
     }
     
-    function showToast(msg) {
+    function showToast(message) {
       const toast = document.getElementById('toast');
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(()=> toast.classList.remove('show'), 2500);
+      if (toast) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2800);
+      }
     }
     
-    window.onload = () => {
-      initDiaryApp();
-    };
-    
+    // Initialize all event listeners
     function initDiaryApp() {
-      document.getElementById('newEntryBtn')?.addEventListener('click', createNewEntry);
-      document.getElementById('entryDate')?.addEventListener('change', (e) => { currentEntryDate = e.target.value; if(!entries[currentEntryDate]) entries[currentEntryDate]={title:'',content:'',mood:'😊',tags:[]}; loadEntry(currentEntryDate); });
-      document.querySelectorAll('.mood-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); saveCurrentEntry(); }));
-      document.getElementById('diaryEditor')?.addEventListener('input', () => { updateWordCount(); saveCurrentEntry(); });
-      document.getElementById('entryTitle')?.addEventListener('input', saveCurrentEntry);
+      // New Entry
+      const newBtn = document.getElementById('newEntryBtn');
+      if (newBtn) newBtn.addEventListener('click', createNewEntry);
+      
+      // Date picker
+      const datePicker = document.getElementById('entryDate');
+      if (datePicker) {
+        datePicker.addEventListener('change', (e) => {
+          currentEntryDate = e.target.value;
+          if (!entries[currentEntryDate]) {
+            entries[currentEntryDate] = {title: '', content: '', mood: '😊', tags: []};
+          }
+          loadEntry(currentEntryDate);
+        });
+      }
+      
+      // Mood buttons
+      document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          saveCurrentEntry();
+        });
+      });
+      
+      // Editor events
+      const editor = document.getElementById('diaryEditor');
+      if (editor) {
+        editor.addEventListener('input', () => {
+          updateWordCount();
+          saveCurrentEntry();
+        });
+      }
+      
+      const titleInput = document.getElementById('entryTitle');
+      if (titleInput) {
+        titleInput.addEventListener('input', saveCurrentEntry);
+      }
+      
+      // Tags input
       const tagInput = document.getElementById('tagInput');
-      tagInput?.addEventListener('keypress', (e) => { if(e.key==='Enter' && tagInput.value.trim()) { let nt=tagInput.value.trim(); if(!currentTags.includes(nt)){currentTags.push(nt); renderTags(); saveCurrentEntry();} tagInput.value=''; }});
-      document.querySelectorAll('[data-cmd]').forEach(btn => btn.addEventListener('click', (e) => { document.execCommand(btn.getAttribute('data-cmd'), false, null); document.getElementById('diaryEditor')?.focus(); saveCurrentEntry(); }));
-      document.getElementById('diarySearchInput')?.addEventListener('input', (e) => renderEntriesList(e.target.value));
-      document.getElementById('exportDiaryBtn')?.addEventListener('click', () => { const entry=entries[currentEntryDate]; if(entry){ const plain=entry.content.replace(/<[^>]+>/g,''); const blob=new Blob([`Date: ${formatDate(currentEntryDate)}\nMood: ${entry.mood}\nTitle: ${entry.title}\n\n${plain}`],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`diary-${currentEntryDate}.txt`; a.click(); URL.revokeObjectURL(a.href); showToast('Exported!'); } });
-      document.getElementById('copyDiaryBtn')?.addEventListener('click', () => { const entry=entries[currentEntryDate]; if(entry){ navigator.clipboard.writeText(entry.content.replace(/<[^>]+>/g,'')); showToast('Copied to clipboard'); } });
-      document.getElementById('deleteEntryBtn')?.addEventListener('click', () => { if(confirm('Delete this journal entry?')){ delete entries[currentEntryDate]; saveEntries(); createNewEntry(); renderEntriesList(); renderMiniCalendar(); showToast('Entry deleted'); } });
-      if(Object.keys(entries).length===0) createNewEntry(); else { const latest=Object.keys(entries).sort((a,b)=>new Date(b)-new Date(a))[0]; loadEntry(latest); }
-      renderEntriesList();
+      if (tagInput) {
+        tagInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && tagInput.value.trim()) {
+            const newTag = tagInput.value.trim();
+            if (!currentTags.includes(newTag)) {
+              currentTags.push(newTag);
+              renderTags();
+              saveCurrentEntry();
+            }
+            tagInput.value = '';
+          }
+        });
+      }
+      
+      // Toolbar commands
+      document.querySelectorAll('[data-cmd]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const cmd = btn.getAttribute('data-cmd');
+          document.execCommand(cmd, false, null);
+          if (editor) editor.focus();
+          saveCurrentEntry();
+        });
+      });
+      
+      // Search
+      const searchInput = document.getElementById('diarySearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          renderEntriesList(e.target.value);
+        });
+      }
+      
+      // Export
+      const exportBtn = document.getElementById('exportDiaryBtn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          const entry = entries[currentEntryDate];
+          if (!entry) return;
+          
+          const plainContent = (entry.content || '').replace(/<[^>]+>/g, '');
+          const text = `Date: ${formatDate(currentEntryDate)}\nMood: ${entry.mood}\nTitle: ${entry.title}\n\n${plainContent}`;
+          const blob = new Blob([text], { type: 'text/plain' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `diary-${currentEntryDate}.txt`;
+          a.click();
+          URL.revokeObjectURL(url);
+          showToast('Entry exported');
+        });
+      }
+      
+      // Copy
+      const copyBtn = document.getElementById('copyDiaryBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          const entry = entries[currentEntryDate];
+          if (!entry) return;
+          const plainText = (entry.content || '').replace(/<[^>]+>/g, '');
+          navigator.clipboard.writeText(plainText).then(() => {
+            showToast('Entry copied to clipboard');
+          }).catch(() => showToast('Could not copy'));
+        });
+      }
+      
+      // Delete
+      const deleteBtn = document.getElementById('deleteEntryBtn');
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
+          if (confirm('Delete this journal entry permanently?')) {
+            delete entries[currentEntryDate];
+            saveEntries();
+            createNewEntry();
+            showToast('Entry deleted');
+          }
+        });
+      }
+      
+      // Keyboard shortcut
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 's') {
+          e.preventDefault();
+          saveCurrentEntry();
+          showToast('Journal saved');
+        }
+      });
+      
+      // Initial load
+      if (Object.keys(entries).length === 0) {
+        createNewEntry();
+      } else {
+        const latestDate = Object.keys(entries).sort((a,b) => new Date(b) - new Date(a))[0];
+        loadEntry(latestDate);
+      }
+      
+      renderEntriesList('');
       renderMiniCalendar();
       updateWordCount();
-      document.getElementById('streakInfo').innerHTML = `🔥 ${calculateStreak()} day streak`;
-      setInterval(()=> saveCurrentEntry(), 3000);
-      setTimeout(()=> showToast('📔 Your private diary is ready ✨'), 500);
+      
+      const streak = calculateStreak();
+      const streakInfo = document.getElementById('streakInfo');
+      if (streakInfo) streakInfo.innerHTML = `🔥 ${streak} day streak`;
+      
+      // Auto-save interval
+      setInterval(() => {
+        saveCurrentEntry();
+      }, 3000);
+      
+      setTimeout(() => {
+        showToast('Welcome to your private diary ✨');
+      }, 1200);
+    }
+    
+    // Start the diary app when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDiaryApp);
+    } else {
+      initDiaryApp();
     }
   </script>
 </body>
