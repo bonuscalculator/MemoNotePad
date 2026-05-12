@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Diary & Journal – Free Private Digital Diary | MemoNotePad.online</title>
+  <meta name="description" content="Write your private online diary and journal for free at MemoNotePad.online. Daily entries, mood tracker, rich text, search, export — all stored securely in your browser. No signup needed." />
+  <meta name="keywords" content="online diary, free online journal, digital diary, personal journal online, private diary online, daily journal, write diary online, diary app, journal app, online diary no signup" />
+  <meta name="author" content="MemoNotePad Online" />
+  <link rel="canonical" href="https://memonotepad.online/diary" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Online Diary & Journal – Free Private Digital Diary | MemoNotePad.online" />
+  <meta property="og:description" content="Free private online diary. Write daily journal entries, track your mood, search your past, and export your diary — no signup, no server, 100% private." />
+  <meta property="og:url" content="https://memonotepad.online/diary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://memonotepad.online/og-diary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Online Diary & Journal – MemoNotePad.online" />
+  <meta name="twitter:description" content="Write your private digital diary online. Free, auto-saved, mood tracking, no account needed." />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Online Diary & Journal – MemoNotePad.online",
+    "url": "https://memonotepad.online/diary",
+    "description": "A free, private online diary and journal application. Write daily entries, track moods, search past entries, and export your journal without any account.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["Daily diary entries","Mood tracker","Rich text formatting","Entry search","Export diary","Password protection","Dark mode","Mobile responsive","No signup required"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"MemoNotePad Online","item":"https://memonotepad.online/"},
+      {"@type":"ListItem","position":2,"name":"Online Diary","item":"https://memonotepad.online/diary"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is this online diary free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No subscription, no account, no hidden fees."}},
+      {"@type":"Question","name":"Is my diary private?","acceptedAnswer":{"@type":"Answer","text":"Your diary entries are stored only in your browser's localStorage — never sent to any server. They are completely private."}},
+      {"@type":"Question","name":"Can I export my diary?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can download your entire diary as a .txt file at any time from the export button."}},
+      {"@type":"Question","name":"Will my diary entries be saved?","acceptedAnswer":{"@type":"Answer","text":"All entries auto-save to your browser as you type. They persist between visits unless you clear your browser data."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #fdf8f0; --paper: #fffef9; --ink: #1a1208; --ink-light: #4a3f2f;
+      --ink-muted: #8a7a6a; --amber: #e8a020; --amber-light: #f5c85a;
+      --amber-dark: #c47a10; --teal: #0d7a6e; --teal-light: #1aaa99;
+      --teal-pale: #e0f5f3; --red-pen: #c0392b; --rule-line: #e0d8cc;
+      --shadow: rgba(60,40,10,.10); --shadow-strong: rgba(60,40,10,.20);
+      --font-display: 'Lora', Georgia, serif; --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace; --radius: 4px; --radius-lg: 12px;
+      --transition: 0.28s cubic-bezier(.4,0,.2,1);
+      /* Diary accent — warm rose */
+      --rose: #c0525c; --rose-light: #e8848d; --rose-pale: #fdf0f1;
+      --violet: #7c4daf; --violet-pale: #f3eeff;
+    }
+    [data-theme="dark"] {
+      --cream: #1a1710; --paper: #211f15; --ink: #f5edd8; --ink-light: #d8ccb0;
+      --ink-muted: #9a8c78; --rule-line: #33302a; --shadow: rgba(0,0,0,.35);
+      --shadow-strong: rgba(0,0,0,.55); --teal-pale: #0a2825; --rose-pale: #2a1215;
+      --violet-pale: #1e1528;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;transition:background var(--transition),color var(--transition)}
+    a{color:var(--teal);text-decoration:none;transition:color var(--transition)}
+    a:hover{color:var(--teal-light)}
+    button{cursor:pointer;font-family:var(--font-body)}
+    ::selection{background:var(--amber-light);color:var(--ink)}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:var(--cream)}
+    ::-webkit-scrollbar-thumb{background:var(--rose);border-radius:10px}
+
+    /* RULED PAPER BG */
+    .ruled-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3;
+      background-image:repeating-linear-gradient(transparent,transparent 27px,var(--rule-line) 27px,var(--rule-line) 28px)}
+
+    /* HEADER */
+    #site-header{position:sticky;top:0;z-index:100;background:rgba(253,248,240,.93);backdrop-filter:blur(12px);
+      border-bottom:1.5px solid var(--rule-line);transition:all var(--transition)}
+    [data-theme="dark"] #site-header{background:rgba(26,23,16,.93)}
+    #site-header.scrolled{box-shadow:0 4px 24px var(--shadow)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;
+      height:64px;padding:0 24px;max-width:1140px;margin:0 auto}
+    .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);
+      font-size:1.2rem;font-weight:700;color:var(--ink)}
+    .logo-icon{width:34px;height:34px;background:var(--rose);border-radius:8px;
+      display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .logo span{color:var(--amber)}
+    .header-nav{display:flex;align-items:center;gap:4px}
+    .header-nav a{padding:6px 13px;border-radius:var(--radius);font-size:.88rem;
+      font-weight:500;color:var(--ink-light);transition:all var(--transition)}
+    .header-nav a:hover,.header-nav a.active{color:var(--rose);background:var(--rose-pale)}
+    .header-actions{display:flex;align-items:center;gap:8px}
+    .theme-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--rule-line);
+      background:none;font-size:.95rem;color:var(--ink-light);display:flex;align-items:center;
+      justify-content:center;transition:all var(--transition)}
+    .theme-btn:hover{background:var(--rose-pale);color:var(--rose)}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:var(--radius);
+      border:none;font-size:.88rem;font-weight:600;letter-spacing:.02em;transition:all var(--transition)}
+    .btn-primary{background:var(--rose);color:#fff;box-shadow:0 3px 12px rgba(192,82,92,.3)}
+    .btn-primary:hover{background:var(--rose-light);color:#fff;transform:translateY(-2px)}
+    .btn-outline{background:transparent;color:var(--rose);border:2px solid var(--rose)}
+    .btn-outline:hover{background:var(--rose);color:#fff;transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--ink-muted);border:1.5px solid var(--rule-line)}
+    .btn-ghost:hover{border-color:var(--rose);color:var(--rose)}
+    .btn-teal{background:var(--teal);color:#fff;box-shadow:0 3px 12px rgba(13,122,110,.25)}
+    .btn-teal:hover{background:var(--teal-light);color:#fff;transform:translateY(-2px)}
+    .menu-toggle{display:none;flex-direction:column;gap:5px;width:36px;height:36px;
+      align-items:center;justify-content:center;background:none;border:none}
+    .menu-toggle span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s}
+    .mobile-nav{display:none;flex-direction:column;gap:3px;padding:10px 20px 14px;
+      border-top:1px solid var(--rule-line)}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a{padding:9px 12px;border-radius:var(--radius);font-size:.9rem;color:var(--ink-light)}
+    .mobile-nav a:hover{color:var(--rose);background:var(--rose-pale)}
+
+    /* HERO */
+    .hero{position:relative;z-index:1;min-height:72vh;display:flex;align-items:center;
+      padding:72px 0 56px;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-120px;right:-80px;width:600px;height:600px;
+      border-radius:50%;background:radial-gradient(circle,rgba(192,82,92,.12) 0%,transparent 70%);
+      pointer-events:none}
+    .hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;
+      border-radius:50%;background:radial-gradient(circle,rgba(124,77,175,.08) 0%,transparent 70%);
+      pointer-events:none}
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--rose-pale);
+      color:var(--rose);padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:600;
+      margin-bottom:18px;border:1px solid rgba(192,82,92,.2);
+      animation:fadeUp .8s ease both}
+    .hero-badge::before{content:'';width:6px;height:6px;background:var(--rose);
+      border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+    h1.hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.4rem);
+      font-weight:700;line-height:1.1;margin-bottom:18px;animation:fadeUp .85s .1s ease both}
+    h1.hero-title em{color:var(--rose);font-style:italic}
+    .hero-desc{font-size:1.05rem;color:var(--ink-light);margin-bottom:28px;
+      max-width:460px;animation:fadeUp .85s .18s ease both}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .85s .26s ease both}
+    .hero-features{display:flex;gap:20px;flex-wrap:wrap;margin-top:36px;
+      animation:fadeUp .85s .34s ease both}
+    .hf-item{display:flex;align-items:center;gap:7px;font-size:.83rem;color:var(--ink-muted)}
+    .hf-item::before{content:'✓';color:var(--rose);font-weight:700}
+
+    /* Diary visual */
+    .hero-visual{animation:fadeUp .85s .12s ease both;position:relative}
+    .diary-book{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);box-shadow:0 24px 64px var(--shadow-strong);
+      overflow:hidden;position:relative}
+    .diary-book::before{content:'';position:absolute;left:0;top:0;bottom:0;width:48px;
+      background:linear-gradient(90deg,var(--rose-pale),transparent);border-right:2px solid rgba(192,82,92,.15)}
+    .diary-book::after{content:'';position:absolute;left:48px;top:0;bottom:0;width:1.5px;
+      background:rgba(192,82,92,.18)}
+    .diary-topbar{background:var(--rose);padding:12px 16px;display:flex;
+      align-items:center;justify-content:space-between}
+    .diary-topbar-title{font-family:var(--font-display);font-size:.9rem;font-weight:600;color:#fff}
+    .diary-topbar-date{font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.8)}
+    .diary-body{padding:20px 20px 20px 64px;min-height:300px;
+      background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule-line) 31px,var(--rule-line) 32px)}
+    .diary-entry-preview{font-family:var(--font-display);font-size:.95rem;line-height:32px;
+      color:var(--ink);font-style:italic}
+    .diary-footer{background:var(--cream);border-top:1.5px solid var(--rule-line);
+      padding:8px 16px;display:flex;justify-content:space-between;
+      font-family:var(--font-mono);font-size:.7rem;color:var(--ink-muted)}
+    .mood-bubble{position:absolute;top:-14px;right:20px;background:#fff;
+      border:1.5px solid var(--rule-line);border-radius:100px;padding:6px 14px;
+      font-size:.8rem;font-weight:600;color:var(--ink);box-shadow:0 4px 12px var(--shadow);
+      animation:float 3s ease-in-out infinite}
+    .mood-bubble-2{position:absolute;bottom:20px;right:-18px;background:var(--rose);
+      color:#fff;border:none;animation:float 3s 1.4s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+    /* SECTION UTIL */
+    .section{position:relative;z-index:1;padding:76px 0}
+    .section-alt{background:var(--paper)}
+    .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.15em;
+      text-transform:uppercase;color:var(--rose);display:block;margin-bottom:8px}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.6rem);
+      font-weight:700;line-height:1.2;margin-bottom:14px}
+    .section-sub{font-size:1rem;color:var(--ink-light);max-width:560px}
+    .text-center{text-align:center}
+    .mx-auto{margin-left:auto;margin-right:auto}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .6s ease,transform .6s ease}
+    .reveal-l.visible{opacity:1;transform:none}
+    .reveal-r{opacity:0;transform:translateX(36px);transition:opacity .6s ease,transform .6s ease}
+    .reveal-r.visible{opacity:1;transform:none}
+
+    /* ===== DIARY APP ===== */
+    .app-shell{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);box-shadow:0 24px 80px var(--shadow-strong);
+      overflow:hidden;display:grid;grid-template-columns:280px 1fr;min-height:680px}
+
+    /* Sidebar */
+    .diary-sidebar{background:var(--cream);border-right:1.5px solid var(--rule-line);
+      display:flex;flex-direction:column;overflow:hidden}
+    .ds-header{padding:14px 14px 10px;border-bottom:1px solid var(--rule-line)}
+    .ds-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .ds-header-top h2{font-family:var(--font-display);font-size:1rem;font-weight:700}
+    .ds-stats{display:flex;gap:10px;font-family:var(--font-mono);font-size:.68rem;color:var(--ink-muted)}
+    .ds-stat{display:flex;flex-direction:column;align-items:center;
+      background:var(--paper);border:1px solid var(--rule-line);border-radius:var(--radius);
+      padding:4px 10px}
+    .ds-stat strong{font-size:.85rem;color:var(--rose);font-weight:700}
+    .ds-search{padding:8px 10px;border-bottom:1px solid var(--rule-line)}
+    .ds-search input{width:100%;padding:7px 11px;border-radius:var(--radius);
+      border:1.5px solid var(--rule-line);background:var(--paper);color:var(--ink);
+      font-family:var(--font-body);font-size:.83rem;outline:none;transition:border-color var(--transition)}
+    .ds-search input:focus{border-color:var(--rose)}
+    .ds-filters{padding:8px 10px;border-bottom:1px solid var(--rule-line);
+      display:flex;gap:6px;flex-wrap:wrap}
+    .filter-chip{padding:3px 11px;border-radius:100px;font-size:.72rem;font-weight:600;
+      border:1.5px solid var(--rule-line);background:none;color:var(--ink-muted);
+      transition:all var(--transition);cursor:pointer}
+    .filter-chip:hover,.filter-chip.active{background:var(--rose);color:#fff;border-color:var(--rose)}
+    .ds-entries{flex:1;overflow-y:auto;padding:6px}
+    .entry-card{padding:10px 11px;border-radius:var(--radius);cursor:pointer;
+      border:1.5px solid transparent;margin-bottom:4px;transition:all var(--transition)}
+    .entry-card:hover{background:var(--paper);border-color:var(--rule-line)}
+    .entry-card.active{background:var(--rose-pale);border-color:rgba(192,82,92,.3)}
+    .ec-date{font-family:var(--font-mono);font-size:.65rem;color:var(--ink-muted);margin-bottom:3px;
+      display:flex;justify-content:space-between;align-items:center}
+    .ec-title{font-weight:600;font-size:.85rem;margin-bottom:3px;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ec-preview{font-size:.76rem;color:var(--ink-muted);white-space:nowrap;
+      overflow:hidden;text-overflow:ellipsis}
+    .ec-mood{font-size:.8rem}
+    .ds-footer{padding:10px;border-top:1px solid var(--rule-line);
+      font-family:var(--font-mono);font-size:.68rem;color:var(--ink-muted);text-align:center}
+
+    /* Editor */
+    .diary-editor{display:flex;flex-direction:column;overflow:hidden}
+    .de-topbar{background:var(--rose);padding:10px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .de-date-time{font-family:var(--font-mono);font-size:.78rem;color:rgba(255,255,255,.85)}
+    .de-mood-picker{display:flex;gap:6px;align-items:center}
+    .de-mood-label{font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.7)}
+    .mood-btn{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);
+      border:1.5px solid transparent;font-size:.88rem;display:flex;align-items:center;
+      justify-content:center;transition:all .2s;cursor:pointer}
+    .mood-btn:hover{background:rgba(255,255,255,.3);transform:scale(1.15)}
+    .mood-btn.selected{background:#fff;border-color:rgba(255,255,255,.6);transform:scale(1.15)}
+    .de-toolbar{padding:8px 14px;background:var(--cream);border-bottom:1.5px solid var(--rule-line);
+      display:flex;align-items:center;gap:3px;flex-wrap:wrap}
+    .tb-btn{width:30px;height:30px;border-radius:var(--radius);background:none;
+      border:1.5px solid transparent;font-size:.82rem;color:var(--ink-light);
+      display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+    .tb-btn:hover{background:var(--rose-pale);color:var(--rose);border-color:var(--rule-line)}
+    .tb-btn.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+    .tb-sep{width:1px;height:20px;background:var(--rule-line);margin:0 4px}
+    .tb-select{border:1px solid var(--rule-line);border-radius:var(--radius);background:transparent;
+      color:var(--ink);font-size:.76rem;padding:3px 6px;outline:none;cursor:pointer}
+    .de-title-row{padding:14px 20px 10px 64px;border-bottom:1px solid var(--rule-line);
+      position:relative}
+    .de-title-row::before{content:'';position:absolute;left:44px;top:0;bottom:0;
+      width:1.5px;background:rgba(192,82,92,.15)}
+    .de-title-input{width:100%;border:none;outline:none;background:transparent;
+      font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--ink)}
+    .de-title-input::placeholder{color:var(--ink-muted);font-style:italic}
+    .de-tags-row{padding:6px 20px 6px 64px;border-bottom:1px solid var(--rule-line);
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:relative}
+    .de-tags-row::before{content:'';position:absolute;left:44px;top:0;bottom:0;
+      width:1.5px;background:rgba(192,82,92,.15)}
+    .de-tags-row span{font-size:.72rem;color:var(--ink-muted);font-family:var(--font-mono)}
+    .tag-chip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;
+      border-radius:100px;background:var(--rose-pale);color:var(--rose);
+      font-size:.72rem;font-weight:600;border:1px solid rgba(192,82,92,.2)}
+    .tag-chip button{background:none;border:none;color:var(--rose);font-size:.7rem;
+      padding:0;cursor:pointer;line-height:1}
+    .tag-input{border:none;outline:none;background:transparent;font-size:.78rem;
+      color:var(--ink);font-family:var(--font-body);min-width:60px}
+    .de-body{flex:1;padding:16px 20px 16px 64px;outline:none;
+      font-family:var(--font-body);font-size:.97rem;line-height:32px;
+      border:none;resize:none;background:transparent;color:var(--ink);
+      background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule-line) 31px,var(--rule-line) 32px);
+      position:relative;min-height:200px}
+    .de-body::placeholder{color:var(--ink-muted)}
+    .de-statusbar{padding:7px 18px;background:var(--cream);border-top:1.5px solid var(--rule-line);
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .de-status-left{display:flex;align-items:center;gap:10px;
+      font-family:var(--font-mono);font-size:.69rem;color:var(--ink-muted)}
+    .save-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);transition:background .3s;display:inline-block}
+    .save-dot.saved{background:#28c840}
+    .de-status-right{display:flex;gap:7px}
+    .small-btn{padding:5px 11px;border-radius:var(--radius);border:1.5px solid var(--rule-line);
+      background:none;font-size:.7rem;font-family:var(--font-mono);color:var(--ink-muted);
+      transition:all var(--transition)}
+    .small-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+    .small-btn.danger:hover{background:var(--red-pen);border-color:var(--red-pen)}
+
+    /* CALENDAR PANEL */
+    .calendar-panel{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);padding:24px;box-shadow:0 8px 32px var(--shadow);
+      margin-top:32px}
+    .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .cal-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700}
+    .cal-nav{width:30px;height:30px;border-radius:var(--radius);background:none;
+      border:1.5px solid var(--rule-line);color:var(--ink-light);font-size:1rem;
+      display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+    .cal-nav:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+    .cal-day-name{text-align:center;font-family:var(--font-mono);font-size:.65rem;
+      color:var(--ink-muted);padding:4px 0;font-weight:700}
+    .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+      border-radius:50%;font-size:.8rem;cursor:pointer;transition:all .2s;
+      position:relative}
+    .cal-day:hover{background:var(--rose-pale);color:var(--rose)}
+    .cal-day.today{background:var(--rose);color:#fff;font-weight:700}
+    .cal-day.has-entry::after{content:'';position:absolute;bottom:2px;left:50%;
+      transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--amber)}
+    .cal-day.today.has-entry::after{background:#fff}
+    .cal-day.other-month{color:var(--ink-muted);opacity:.4}
+    .cal-day.empty{cursor:default}
+
+    /* MOOD CHART */
+    .mood-chart-wrap{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);padding:24px;box-shadow:0 8px 32px var(--shadow)}
+    .mood-bars{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:18px}
+    .mood-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+    .mood-bar{width:100%;background:var(--rose);border-radius:4px 4px 0 0;
+      transition:height .6s cubic-bezier(.4,0,.2,1);min-height:2px;position:relative}
+    .mood-bar-emoji{font-size:.85rem;text-align:center}
+    .mood-bar-label{font-family:var(--font-mono);font-size:.6rem;color:var(--ink-muted)}
+
+    /* STREAK WIDGET */
+    .streak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .streak-card{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);padding:18px;text-align:center;
+      transition:all var(--transition)}
+    .streak-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow)}
+    .streak-num{font-family:var(--font-mono);font-size:1.8rem;font-weight:700;
+      color:var(--rose);line-height:1;margin-bottom:4px}
+    .streak-label{font-size:.78rem;color:var(--ink-muted)}
+
+    /* TIPS */
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .tip-card{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);padding:26px;transition:all var(--transition);
+      border-top:4px solid var(--rose)}
+    .tip-card:nth-child(2){border-top-color:var(--amber)}
+    .tip-card:nth-child(3){border-top-color:var(--teal)}
+    .tip-card:nth-child(4){border-top-color:var(--violet)}
+    .tip-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px var(--shadow)}
+    .tip-icon{font-size:1.6rem;margin-bottom:12px}
+    .tip-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:8px}
+    .tip-text{font-size:.88rem;color:var(--ink-light);line-height:1.7}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .faq-item{background:var(--paper);border:1.5px solid var(--rule-line);
+      border-radius:var(--radius-lg);overflow:hidden}
+    .faq-q{width:100%;text-align:left;background:none;border:none;padding:17px 20px;
+      font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--ink);
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
+      transition:color var(--transition)}
+    .faq-q:hover{color:var(--rose)}
+    .faq-chev{font-size:.65rem;color:var(--ink-muted);transition:transform .3s}
+    .faq-item.open .faq-chev{transform:rotate(180deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;
+      font-size:.88rem;color:var(--ink-light);padding:0 20px}
+    .faq-item.open .faq-a{max-height:200px;padding:0 20px 16px}
+
+    /* CONTENT */
+    .content-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+    .content-block h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;
+      margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--rose-pale);display:inline-block}
+    .content-block p{font-size:.91rem;color:var(--ink-light);line-height:1.8;margin-bottom:10px}
+    .content-block ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .content-block li{font-size:.88rem;color:var(--ink-light);padding-left:16px;position:relative}
+    .content-block li::before{content:'📖';position:absolute;left:0;font-size:.7rem}
+
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg,var(--rose) 0%,#8b2635 100%);
+      padding:72px 24px;text-align:center}
+    .cta-section .section-title,.cta-section .section-sub{color:#fff}
+    .cta-section .section-sub{color:rgba(255,255,255,.78);margin:0 auto 32px}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn-white{background:#fff;color:var(--rose);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+    .btn-white:hover{background:var(--rose-pale);transform:translateY(-2px)}
+    .btn-ghost-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
+    .btn-ghost-white:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
+
+    /* FOOTER */
+    #site-footer{background:var(--ink);color:var(--cream);padding:54px 0 26px}
+    [data-theme="dark"] #site-footer{background:#0d0b07}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+    .footer-brand .logo{color:var(--cream);margin-bottom:12px}
+    .footer-brand p{font-size:.85rem;color:rgba(253,248,240,.5);max-width:250px;line-height:1.7}
+    .footer-col h4{font-family:var(--font-display);font-size:.88rem;font-weight:700;
+      color:var(--cream);margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col li a{font-size:.82rem;color:rgba(253,248,240,.45);transition:color var(--transition)}
+    .footer-col li a:hover{color:var(--amber)}
+    .footer-bottom{border-top:1px solid rgba(253,248,240,.1);padding-top:22px;
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    .footer-bottom p{font-size:.78rem;color:rgba(253,248,240,.38)}
+    .footer-badges{display:flex;gap:8px}
+    .fbadge{padding:4px 11px;border:1px solid rgba(253,248,240,.14);border-radius:100px;
+      font-size:.68rem;color:rgba(253,248,240,.45);font-family:var(--font-mono)}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--rose);
+      color:#fff;padding:11px 22px;border-radius:var(--radius-lg);font-size:.88rem;
+      font-weight:500;box-shadow:0 8px 24px rgba(192,82,92,.35);
+      transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .toast.show{transform:none;opacity:1}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;
+      display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--paper);border-radius:var(--radius-lg);padding:32px;
+      max-width:480px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.3);
+      animation:fadeUp .35s ease both}
+    .modal h3{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:16px}
+    .modal p{font-size:.9rem;color:var(--ink-light);margin-bottom:20px}
+    .modal-btns{display:flex;gap:10px;justify-content:flex-end}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-inner,.content-cols,.faq-grid{grid-template-columns:1fr}
+      .app-shell{grid-template-columns:1fr}
+      .diary-sidebar{border-right:none;border-bottom:1.5px solid var(--rule-line);max-height:220px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .streak-grid{grid-template-columns:repeat(2,1fr)}
+      .header-nav{display:none}
+      .menu-toggle{display:flex}
+    }
+    @media(max-width:600px){
+      .section{padding:52px 0}
+      .footer-grid{grid-template-columns:1fr}
+      .faq-grid{grid-template-columns:1fr}
+      .streak-grid{grid-template-columns:repeat(2,1fr)}
+      .de-title-row,.de-tags-row,.de-body{padding-left:20px}
+      .de-title-row::before,.de-tags-row::before{display:none}
+      .de-body{background-image:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="ruled-bg" aria-hidden="true"></div>
+  <div id="toast-el" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Delete Confirm Modal -->
+  <div class="modal-overlay" id="del-modal">
+    <div class="modal">
+      <h3>Delete Entry?</h3>
+      <p>This diary entry will be permanently deleted. This action cannot be undone.</p>
+      <div class="modal-btns">
+        <button class="btn btn-ghost" id="del-cancel">Cancel</button>
+        <button class="btn btn-primary" id="del-confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Component Injection -->
+  <div id="header-root"></div>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-badge">Free Private Online Diary — No Signup</div>
+            <h1 class="hero-title">Your Private<br><em>Online Diary</em></h1>
+            <p class="hero-desc">
+              Write daily journal entries, track your moods, and preserve your memories —
+              completely free and private. Stored only in your browser.
+            </p>
+            <div class="hero-ctas">
+              <a href="#app" class="btn btn-primary">📖 Start My Diary</a>
+              <a href="#tips" class="btn btn-outline">Journal Tips</a>
+            </div>
+            <div class="hero-features">
+              <span class="hf-item">Auto-Save</span>
+              <span class="hf-item">Mood Tracker</span>
+              <span class="hf-item">100% Private</span>
+              <span class="hf-item">No Account</span>
+              <span class="hf-item">Export Diary</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="diary-book">
+              <div class="diary-topbar">
+                <span class="diary-topbar-title">📖 My Diary</span>
+                <span class="diary-topbar-date" id="hero-date"></span>
+              </div>
+              <div class="diary-body">
+                <div class="diary-entry-preview" id="hero-typed"></div>
+              </div>
+              <div class="diary-footer">
+                <span>😊 Feeling good</span>
+                <span>Auto-saved ✓</span>
+              </div>
+            </div>
+            <div class="mood-bubble">😊 Happy day!</div>
+            <div class="mood-bubble mood-bubble-2">✓ 7-day streak</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APP ===== -->
+    <section id="app" class="section section-alt" aria-label="Online Diary Application">
+      <div class="container">
+        <div class="reveal" style="margin-bottom:28px">
+          <span class="eyebrow">The App</span>
+          <h2 class="section-title">Write Today's Entry</h2>
+          <p class="section-sub">Your private diary — right in your browser. Auto-saved, never shared.</p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="streak-grid reveal" id="stats-row" style="margin-bottom:24px">
+          <div class="streak-card">
+            <div class="streak-num" id="stat-total">0</div>
+            <div class="streak-label">Total Entries</div>
+          </div>
+          <div class="streak-card">
+            <div class="streak-num" id="stat-streak">0</div>
+            <div class="streak-label">Day Streak 🔥</div>
+          </div>
+          <div class="streak-card">
+            <div class="streak-num" id="stat-words">0</div>
+            <div class="streak-label">Total Words</div>
+          </div>
+          <div class="streak-card">
+            <div class="streak-num" id="stat-days">0</div>
+            <div class="streak-label">Days Journaled</div>
+          </div>
+        </div>
+
+        <!-- App Shell -->
+        <div class="app-shell reveal">
+          <!-- Sidebar -->
+          <aside class="diary-sidebar" aria-label="Diary entries">
+            <div class="ds-header">
+              <div class="ds-header-top">
+                <h2>📓 Entries</h2>
+                <button class="btn btn-primary" id="new-entry-btn" style="padding:6px 14px;font-size:.78rem;">+ New</button>
+              </div>
+              <div class="ds-stats" id="ds-stats-row"></div>
+            </div>
+            <div class="ds-search">
+              <input type="search" id="diary-search" placeholder="🔍 Search entries…" aria-label="Search diary entries" />
+            </div>
+            <div class="ds-filters" id="mood-filters">
+              <button class="filter-chip active" data-mood="all">All</button>
+              <button class="filter-chip" data-mood="😄">😄</button>
+              <button class="filter-chip" data-mood="😊">😊</button>
+              <button class="filter-chip" data-mood="😐">😐</button>
+              <button class="filter-chip" data-mood="😔">😔</button>
+              <button class="filter-chip" data-mood="😢">😢</button>
+              <button class="filter-chip" data-mood="😡">😡</button>
+            </div>
+            <div class="ds-entries" id="entries-list" role="listbox" aria-label="Diary entries"></div>
+            <div class="ds-footer" id="ds-footer">0 entries</div>
+          </aside>
+
+          <!-- Editor -->
+          <div class="diary-editor" role="main">
+            <div class="de-topbar">
+              <div class="de-date-time" id="de-datetime"></div>
+              <div class="de-mood-picker">
+                <span class="de-mood-label">Mood:</span>
+                <button class="mood-btn" data-mood="😄" title="Happy">😄</button>
+                <button class="mood-btn" data-mood="😊" title="Good">😊</button>
+                <button class="mood-btn" data-mood="😐" title="Neutral">😐</button>
+                <button class="mood-btn" data-mood="😔" title="Sad">😔</button>
+                <button class="mood-btn" data-mood="😢" title="Tearful">😢</button>
+                <button class="mood-btn" data-mood="😡" title="Angry">😡</button>
+              </div>
+            </div>
+            <div class="de-toolbar" role="toolbar" aria-label="Formatting">
+              <button class="tb-btn" id="tb-b" title="Bold"><b>B</b></button>
+              <button class="tb-btn" id="tb-i" title="Italic"><i>I</i></button>
+              <button class="tb-btn" id="tb-u" title="Underline"><u>U</u></button>
+              <div class="tb-sep"></div>
+              <button class="tb-btn" id="tb-ul" title="List">☰</button>
+              <button class="tb-btn" id="tb-ol" title="Numbered">1.</button>
+              <div class="tb-sep"></div>
+              <button class="tb-btn" id="tb-h1" title="Heading">H1</button>
+              <button class="tb-btn" id="tb-h2" title="Subheading">H2</button>
+              <div class="tb-sep"></div>
+              <button class="tb-btn" id="tb-prompt" title="Writing Prompt" style="font-size:.7rem;width:auto;padding:0 8px">💡 Prompt</button>
+              <div class="tb-sep"></div>
+              <select class="tb-select" id="font-size">
+                <option value="14px">14</option>
+                <option value="16px" selected>16</option>
+                <option value="18px">18</option>
+                <option value="20px">20</option>
+              </select>
+            </div>
+            <div class="de-title-row">
+              <input type="text" id="entry-title" class="de-title-input" placeholder="Today's diary title…" aria-label="Entry title" />
+            </div>
+            <div class="de-tags-row" id="tags-row">
+              <span>🏷</span>
+              <div id="tags-display"></div>
+              <input type="text" id="tag-input" class="tag-input" placeholder="add tag, press Enter" aria-label="Add tag" />
+            </div>
+            <textarea id="entry-body" class="de-body" placeholder="Dear Diary,&#10;&#10;Today was…" aria-label="Diary entry body"></textarea>
+            <div class="de-statusbar">
+              <div class="de-status-left">
+                <span class="save-dot" id="save-dot"></span>
+                <span id="save-status">Unsaved</span>
+                <span id="wc-display">0 words</span>
+              </div>
+              <div class="de-status-right">
+                <button class="small-btn" id="copy-btn">📋 Copy</button>
+                <button class="small-btn" id="export-btn">⬇ Export All</button>
+                <button class="small-btn danger" id="del-entry-btn">🗑 Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar + Mood Chart -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px" class="reveal" id="cal-mood-grid">
+          <div class="calendar-panel">
+            <div class="cal-header">
+              <button class="cal-nav" id="cal-prev" aria-label="Previous month">‹</button>
+              <h3 class="cal-title" id="cal-title"></h3>
+              <button class="cal-nav" id="cal-next" aria-label="Next month">›</button>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+          <div class="mood-chart-wrap">
+            <span class="eyebrow" style="font-size:.65rem">Mood This Week</span>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700">Your Emotional Landscape</h3>
+            <div class="mood-bars" id="mood-bars"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== JOURNAL TIPS ===== -->
+    <section id="tips" class="section" aria-label="Journaling Tips">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom:48px">
+          <span class="eyebrow">Write Better</span>
+          <h2 class="section-title">Journaling Tips for Beginners & Pros</h2>
+          <p class="section-sub mx-auto">Whether you're starting your first diary or a seasoned journaler, these tips will help you write more meaningfully.</p>
+        </div>
+        <div class="tips-grid" id="tips-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== BENEFITS ===== -->
+    <section class="section section-alt" aria-label="Benefits of keeping a diary">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+          <div>
+            <span class="eyebrow reveal">Why Keep a Diary</span>
+            <h2 class="section-title reveal">The Proven Benefits of<br>Keeping an Online Journal</h2>
+            <p class="section-sub reveal" style="margin-bottom:28px">Research consistently shows that regular journaling improves mental health, boosts self-awareness, and sharpens memory.</p>
+            <div id="benefits-list" class="reveal"></div>
+          </div>
+          <div class="reveal-r" id="benefits-visual"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTENT / SEO ===== -->
+    <section class="section" aria-label="About online diary and journaling">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom:44px">
+          <span class="eyebrow">Learn More</span>
+          <h2 class="section-title">Everything About Online Diaries & Journaling</h2>
+          <p class="section-sub mx-auto">Explore the history of diary writing, types of journals, and how a digital diary differs from a paper one.</p>
+        </div>
+        <div class="content-cols" id="content-cols"></div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="section section-alt" aria-label="FAQ">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom:48px">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-sub mx-auto">Everything you need to know about your free online diary.</p>
+        </div>
+        <div class="faq-grid" id="faq-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container">
+        <span class="eyebrow reveal" style="color:rgba(255,255,255,.65)">Start Today</span>
+        <h2 class="section-title reveal" style="color:#fff;margin:0 auto 14px">Begin Your Diary Journey</h2>
+        <p class="section-sub reveal" style="color:rgba(255,255,255,.75);margin:0 auto 32px">Your first diary entry is one click away. Free, private, and always available.</p>
+        <div class="cta-btns reveal">
+          <a href="#app" class="btn btn-white">📖 Write First Entry</a>
+          <a href="/" class="btn btn-ghost-white">← Back to Notepad</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <!-- Footer Component Injection -->
+  <div id="footer-root"></div>  
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="app.js"></script>
+  <script>
+  (function(){
+    'use strict';
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ─── THEME ─── */
+    const themeBtn = document.getElementById('theme-btn');
+    const saved = localStorage.getItem('memo-theme')||'light';
+    if(saved==='dark'){document.documentElement.setAttribute('data-theme','dark');themeBtn.textContent='☀️';}
+    themeBtn.addEventListener('click',()=>{
+      const d=document.documentElement.getAttribute('data-theme')==='dark';
+      document.documentElement.setAttribute('data-theme',d?'light':'dark');
+      themeBtn.textContent=d?'🌙':'☀️';
+      localStorage.setItem('memo-theme',d?'light':'dark');
+    });
+
+    /* ─── HEADER ─── */
+    const hdr=document.getElementById('site-header');
+    window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+    const menuBtn=document.getElementById('menu-btn');
+    const mobileNav=document.getElementById('mobile-nav');
+    menuBtn.addEventListener('click',()=>{
+      const o=mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',o);
+    });
+
+    /* ─── HERO TYPED ─── */
+    const heroTyped=document.getElementById('hero-typed');
+    const heroDate=document.getElementById('hero-date');
+    heroDate.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    const sample="Dear Diary,\n\nToday I woke up feeling grateful. The morning light was beautiful and I took a long walk through the park.\n\nI've decided to start journaling every day. It helps me clear my mind and reflect on what matters most…";
+    let hIdx=0;
+    function typeHero(){
+      if(hIdx<=sample.length){
+        heroTyped.textContent=sample.slice(0,hIdx++);
+        setTimeout(typeHero,hIdx<sample.length?32:3000);
+      } else { hIdx=0; setTimeout(typeHero,600); }
+    }
+    typeHero();
+
+    /* ─── DIARY DATA ─── */
+    const KEY='diary-entries-v2';
+    const WRITING_PROMPTS=[
+      "What made you smile today?",
+      "Describe a challenge you overcame recently.",
+      "What are you grateful for right now?",
+      "Write about a person who inspired you this week.",
+      "What is one thing you want to improve about yourself?",
+      "Describe your perfect day in detail.",
+      "What lesson did today teach you?",
+      "Write a letter to your future self.",
+      "What fears are holding you back?",
+      "Describe a childhood memory that still brings you joy.",
+    ];
+    let entries=[], activeId=null, activeMood='😊', saveTimer=null, filterMood='all', delTarget=null;
+
+    function loadEntries(){
+      try{entries=JSON.parse(localStorage.getItem(KEY))||[];}catch{entries=[];}
+      if(!entries.length) createEntry(true);
+      else renderSidebar();
+      activateEntry(entries[0].id);
+      updateStats();
+    }
+
+    function saveAll(){localStorage.setItem(KEY,JSON.stringify(entries));}
+
+    function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
+
+    function todayStr(){return new Date().toISOString().split('T')[0];}
+
+    function createEntry(silent){
+      const id=uid();
+      const e={id,title:'',body:'',mood:'😊',tags:[],created:new Date().toISOString(),updated:new Date().toISOString(),date:todayStr()};
+      entries.unshift(e);
+      saveAll();renderSidebar();
+      if(!silent){activateEntry(id);showToast('📖 New entry created');}
+    }
+
+    function activateEntry(id){
+      activeId=id;
+      const e=entries.find(x=>x.id===id);
+      if(!e)return;
+      document.getElementById('entry-title').value=e.title;
+      document.getElementById('entry-body').value=e.body;
+      document.getElementById('entry-body').style.fontSize='16px';
+      activeMood=e.mood||'😊';
+      setMoodUI(activeMood);
+      renderTags(e.tags||[]);
+      updateWC();setSaved(true);
+      document.querySelectorAll('.entry-card').forEach(c=>c.classList.toggle('active',c.dataset.id===id));
+    }
+
+    function getActive(){return entries.find(e=>e.id===activeId);}
+
+    function updateActive(){
+      const e=getActive();if(!e)return;
+      e.title=document.getElementById('entry-title').value;
+      e.body=document.getElementById('entry-body').value;
+      e.mood=activeMood;
+      e.updated=new Date().toISOString();
+      renderSidebar();setSaved(false);
+      clearTimeout(saveTimer);
+      saveTimer=setTimeout(()=>{saveAll();setSaved(true);updateStats();renderCalendar();renderMoodBars();},700);
+      updateWC();
+    }
+
+    function deleteEntry(id){
+      entries=entries.filter(e=>e.id!==id);
+      saveAll();
+      if(!entries.length)createEntry(true);
+      else{renderSidebar();activateEntry(entries[0].id);}
+      updateStats();
+    }
+
+    function setSaved(ok){
+      const dot=document.getElementById('save-dot');
+      const s=document.getElementById('save-status');
+      dot.classList.toggle('saved',ok);
+      s.textContent=ok?'Saved':'Saving…';
+    }
+
+    function updateWC(){
+      const b=document.getElementById('entry-body').value;
+      const w=b.trim()?b.trim().split(/\s+/).length:0;
+      document.getElementById('wc-display').textContent=`${w} words`;
+    }
+
+    function setMoodUI(mood){
+      document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('selected',b.dataset.mood===mood));
+    }
+
+    /* TAGS */
+    function renderTags(tags){
+      const d=document.getElementById('tags-display');
+      d.innerHTML=tags.map(t=>`<span class="tag-chip">${t}<button data-tag="${t}" aria-label="Remove tag">×</button></span>`).join('');
+      d.querySelectorAll('[data-tag]').forEach(b=>b.addEventListener('click',()=>{
+        const e=getActive();if(!e)return;
+        e.tags=e.tags.filter(x=>x!==b.dataset.tag);
+        renderTags(e.tags);updateActive();
+      }));
+    }
+
+    document.getElementById('tag-input').addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===','){
+        e.preventDefault();
+        const val=e.target.value.trim().replace(',','');
+        if(!val)return;
+        const ent=getActive();if(!ent)return;
+        if(!ent.tags.includes(val)){ent.tags.push(val);renderTags(ent.tags);updateActive();}
+        e.target.value='';
+      }
+    });
+
+    /* SIDEBAR */
+    function fmtDate(iso){
+      return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    }
+    function renderSidebar(q){
+      const list=document.getElementById('entries-list');
+      const query=(q||document.getElementById('diary-search').value||'').toLowerCase();
+      let visible=entries.filter(e=>{
+        const matchQ=!query||e.title.toLowerCase().includes(query)||e.body.toLowerCase().includes(query);
+        const matchM=filterMood==='all'||e.mood===filterMood;
+        return matchQ&&matchM;
+      });
+      list.innerHTML=visible.map(e=>`
+        <div class="entry-card${e.id===activeId?' active':''}" data-id="${e.id}" role="option" tabindex="0" aria-selected="${e.id===activeId}">
+          <div class="ec-date">
+            <span>${fmtDate(e.date||e.created)}</span>
+            <span class="ec-mood">${e.mood||'📝'}</span>
+          </div>
+          <div class="ec-title">${e.title||'Untitled Entry'}</div>
+          <div class="ec-preview">${(e.body||'').replace(/\n/g,' ').slice(0,55)||'Empty entry…'}</div>
+        </div>
+      `).join('');
+      document.getElementById('ds-footer').textContent=`${entries.length} entr${entries.length!==1?'ies':'y'}`;
+      list.querySelectorAll('.entry-card').forEach(c=>{
+        c.addEventListener('click',()=>activateEntry(c.dataset.id));
+        c.addEventListener('keydown',ev=>{if(ev.key==='Enter')activateEntry(c.dataset.id);});
+      });
+    }
+
+    /* STATS */
+    function computeStreak(){
+      const dates=[...new Set(entries.map(e=>e.date||e.created.split('T')[0]))].sort().reverse();
+      if(!dates.length)return 0;
+      let streak=0,cur=new Date();
+      cur.setHours(0,0,0,0);
+      for(let d of dates){
+        const dd=new Date(d);dd.setHours(0,0,0,0);
+        const diff=Math.round((cur-dd)/(1000*60*60*24));
+        if(diff===0||diff===streak){streak++;cur=dd;}
+        else break;
+      }
+      return streak;
+    }
+
+    function updateStats(){
+      const total=entries.length;
+      const streak=computeStreak();
+      const words=entries.reduce((s,e)=>s+(e.body.trim()?e.body.trim().split(/\s+/).length:0),0);
+      const days=new Set(entries.map(e=>e.date||e.created.split('T')[0])).size;
+      document.getElementById('stat-total').textContent=total;
+      document.getElementById('stat-streak').textContent=streak;
+      document.getElementById('stat-words').textContent=words>999?Math.round(words/1000)+'k':words;
+      document.getElementById('stat-days').textContent=days;
+      document.getElementById('ds-stats-row').innerHTML=`
+        <div class="ds-stat"><strong>${total}</strong>entries</div>
+        <div class="ds-stat"><strong>${streak}</strong>streak</div>
+        <div class="ds-stat"><strong>${days}</strong>days</div>
+      `;
+    }
+
+    /* TOOLBAR */
+    function wrap(before,after){
+      const ta=document.getElementById('entry-body');
+      const s=ta.selectionStart,en=ta.selectionEnd,sel=ta.value.slice(s,en);
+      ta.value=ta.value.slice(0,s)+before+sel+after+ta.value.slice(en);
+      ta.selectionStart=s+before.length;ta.selectionEnd=en+before.length;
+      ta.focus();updateActive();
+    }
+    function prefix(p){
+      const ta=document.getElementById('entry-body');
+      const s=ta.selectionStart,en=ta.selectionEnd;
+      const lines=ta.value.slice(s,en).split('\n').map(l=>p+l).join('\n');
+      ta.value=ta.value.slice(0,s)+lines+ta.value.slice(en);
+      ta.focus();updateActive();
+    }
+    document.getElementById('tb-b').addEventListener('click',()=>wrap('**','**'));
+    document.getElementById('tb-i').addEventListener('click',()=>wrap('_','_'));
+    document.getElementById('tb-u').addEventListener('click',()=>wrap('<u>','</u>'));
+    document.getElementById('tb-ul').addEventListener('click',()=>prefix('• '));
+    document.getElementById('tb-ol').addEventListener('click',()=>{
+      const ta=document.getElementById('entry-body');
+      const s=ta.selectionStart,en=ta.selectionEnd;
+      const lines=ta.value.slice(s,en).split('\n').map((l,i)=>`${i+1}. ${l}`).join('\n');
+      ta.value=ta.value.slice(0,s)+lines+ta.value.slice(en);
+      ta.focus();updateActive();
+    });
+    document.getElementById('tb-h1').addEventListener('click',()=>prefix('# '));
+    document.getElementById('tb-h2').addEventListener('click',()=>prefix('## '));
+    document.getElementById('tb-prompt').addEventListener('click',()=>{
+      const p=WRITING_PROMPTS[Math.floor(Math.random()*WRITING_PROMPTS.length)];
+      const ta=document.getElementById('entry-body');
+      const ins=`\n\n💡 Prompt: ${p}\n\n`;
+      const pos=ta.selectionStart;
+      ta.value=ta.value.slice(0,pos)+ins+ta.value.slice(pos);
+      ta.focus();updateActive();
+      showToast('💡 Writing prompt inserted!');
+    });
+    document.getElementById('font-size').addEventListener('change',e=>{
+      document.getElementById('entry-body').style.fontSize=e.target.value;
+    });
+
+    /* MOOD */
+    document.querySelectorAll('.mood-btn').forEach(b=>b.addEventListener('click',()=>{
+      activeMood=b.dataset.mood;setMoodUI(activeMood);updateActive();
+    }));
+
+    /* SEARCH & FILTER */
+    document.getElementById('diary-search').addEventListener('input',e=>renderSidebar(e.target.value));
+    document.querySelectorAll('.filter-chip').forEach(c=>c.addEventListener('click',()=>{
+      filterMood=c.dataset.mood;
+      document.querySelectorAll('.filter-chip').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');renderSidebar();
+    }));
+
+    /* EVENTS */
+    document.getElementById('new-entry-btn').addEventListener('click',()=>createEntry(false));
+    document.getElementById('entry-title').addEventListener('input',updateActive);
+    document.getElementById('entry-body').addEventListener('input',updateActive);
+
+    /* COPY */
+    document.getElementById('copy-btn').addEventListener('click',()=>{
+      const e=getActive();if(!e)return;
+      navigator.clipboard.writeText((e.title?e.title+'\n\n':'')+e.body).then(()=>showToast('✓ Copied!'));
+    });
+
+    /* EXPORT */
+    document.getElementById('export-btn').addEventListener('click',()=>{
+      const txt=entries.map(e=>
+        `=== ${e.title||'Untitled'} | ${fmtDate(e.created)} | Mood: ${e.mood||'—'} ===\n\n${e.body}\n\n`
+      ).join('---\n\n');
+      const blob=new Blob([txt],{type:'text/plain'});
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download=`my-diary-${todayStr()}.txt`;a.click();
+      showToast('⬇ Diary exported!');
+    });
+
+    /* DELETE */
+    document.getElementById('del-entry-btn').addEventListener('click',()=>{
+      delTarget=activeId;document.getElementById('del-modal').classList.add('open');
+    });
+    document.getElementById('del-cancel').addEventListener('click',()=>{
+      document.getElementById('del-modal').classList.remove('open');delTarget=null;
+    });
+    document.getElementById('del-confirm').addEventListener('click',()=>{
+      if(delTarget){deleteEntry(delTarget);showToast('🗑 Entry deleted');}
+      document.getElementById('del-modal').classList.remove('open');delTarget=null;
+    });
+
+    /* DATETIME */
+    function updateDatetime(){
+      document.getElementById('de-datetime').textContent=
+        new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+
+        '  '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+    }
+    updateDatetime();setInterval(updateDatetime,30000);
+
+    /* CALENDAR */
+    let calYear=new Date().getFullYear(),calMonth=new Date().getMonth();
+    function renderCalendar(){
+      const title=document.getElementById('cal-title');
+      const grid=document.getElementById('cal-grid');
+      title.textContent=new Date(calYear,calMonth).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+      const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
+      const entryDates=new Set(entries.map(e=>(e.date||e.created.split('T')[0])));
+      const today=todayStr();
+      const firstDay=new Date(calYear,calMonth,1).getDay();
+      const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+      grid.innerHTML=days.map(d=>`<div class="cal-day-name">${d}</div>`).join('');
+      for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="cal-day empty other-month"></div>`;
+      for(let d=1;d<=daysInMonth;d++){
+        const ds=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const isToday=ds===today,hasEntry=entryDates.has(ds);
+        grid.innerHTML+=`<div class="cal-day${isToday?' today':''}${hasEntry?' has-entry':''}" title="${hasEntry?'Entry written':'No entry'}" data-date="${ds}">${d}</div>`;
+      }
+      grid.querySelectorAll('.cal-day[data-date]').forEach(d=>d.addEventListener('click',()=>{
+        const match=entries.find(e=>(e.date||e.created.split('T')[0])===d.dataset.date);
+        if(match){activateEntry(match.id);document.getElementById('app').scrollIntoView({behavior:'smooth'});}
+      }));
+    }
+    document.getElementById('cal-prev').addEventListener('click',()=>{calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar();});
+    document.getElementById('cal-next').addEventListener('click',()=>{calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCalendar();});
+
+    /* MOOD BARS */
+    const moodScore={'😄':5,'😊':4,'😐':3,'😔':2,'😢':1,'😡':1};
+    function renderMoodBars(){
+      const container=document.getElementById('mood-bars');
+      const days=[];
+      for(let i=6;i>=0;i--){
+        const d=new Date();d.setDate(d.getDate()-i);
+        const ds=d.toISOString().split('T')[0];
+        const dayEntries=entries.filter(e=>(e.date||e.created.split('T')[0])===ds);
+        const avgScore=dayEntries.length?dayEntries.reduce((s,e)=>s+(moodScore[e.mood]||3),0)/dayEntries.length:0;
+        days.push({ds,avgScore,mood:dayEntries[0]?.mood||'',label:d.toLocaleDateString('en-US',{weekday:'short'})});
+      }
+      const max=Math.max(...days.map(d=>d.avgScore),1);
+      container.innerHTML=days.map(d=>`
+        <div class="mood-bar-wrap">
+          <div class="mood-bar-emoji">${d.mood}</div>
+          <div class="mood-bar" style="height:${d.avgScore?(d.avgScore/max*90):4}px;opacity:${d.avgScore?1:.3}" title="${d.label}: ${d.mood||'No entry'}"></div>
+          <div class="mood-bar-label">${d.label}</div>
+        </div>
+      `).join('');
+    }
+
+    /* ─── KEYBOARD SHORTCUTS ─── */
+    document.addEventListener('keydown',e=>{
+      if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveAll();setSaved(true);showToast('✓ Saved!');}
+      if((e.ctrlKey||e.metaKey)&&e.key==='n'){e.preventDefault();createEntry(false);}
+    });
+
+    /* TOAST */
+    function showToast(msg){
+      const t=document.getElementById('toast-el');
+      t.textContent=msg;t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'),2400);
+    }
+
+    /* INIT */
+    loadEntries();renderCalendar();renderMoodBars();
+
+    /* ─── TIPS ─── */
+    const tips=[
+      {icon:'🌅',title:'Write at the Same Time Daily',text:'Consistency is the key to a lasting diary habit. Try writing first thing in the morning or just before bed — when your thoughts are clearest.'},
+      {icon:'💡',title:'Use Writing Prompts',text:'Staring at a blank page? Use the "💡 Prompt" button in the editor for inspiration. Questions spark deeper reflection than open-ended writing.'},
+      {icon:'😊',title:'Track Your Mood Every Entry',text:'Select your mood with every entry. Over time, the mood chart reveals patterns — when you feel your best, what drains you, and what uplifts you.'},
+      {icon:'🏷️',title:'Tag Your Entries',text:'Add tags like "work", "family", or "travel" to categorize your entries. Tags make it easy to find related memories later and spot life themes.'},
+      {icon:'📅',title:'Review Past Entries Weekly',text:'Set aside 10 minutes each Sunday to reread last week\'s entries. Reflection deepens self-awareness and shows how much you\'ve grown.'},
+      {icon:'📥',title:'Export Your Diary Regularly',text:'Download your diary as a .txt file every few weeks. It\'s your backup and a beautiful record of your life stored safely on your own device.'},
+      {icon:'✍️',title:'Write Honestly — It\'s Private',text:'Your diary is stored only in your browser. Nobody else can see it. Write without filtering — honesty makes journaling truly therapeutic.'},
+      {icon:'🎯',title:'Set an Entry Length Goal',text:'Aim for at least 100 words per entry. This is enough to capture a meaningful moment without feeling like a burden. Quality beats length every time.'},
+    ];
+    const tg=document.getElementById('tips-grid');
+    tips.forEach(t=>{
+      const d=document.createElement('div');
+      d.className='tip-card reveal';
+      d.innerHTML=`<div class="tip-icon">${t.icon}</div><div class="tip-title">${t.title}</div><p class="tip-text">${t.text}</p>`;
+      tg.appendChild(d);
+    });
+
+    /* ─── BENEFITS ─── */
+    const bens=[
+      {icon:'🧠',title:'Reduces Stress & Anxiety',desc:'Writing about your feelings helps process emotions and reduces mental load, proven by multiple studies.'},
+      {icon:'💡',title:'Boosts Self-Awareness',desc:'Regular journaling helps you recognize patterns in your thoughts, behaviors, and emotional triggers.'},
+      {icon:'🎯',title:'Clarifies Goals',desc:'Writing down goals and aspirations makes them more concrete and measurable, increasing achievement.'},
+      {icon:'🧘',title:'Improves Mental Health',desc:'Expressive writing is linked to lower depression scores and improved overall psychological wellbeing.'},
+      {icon:'📚',title:'Sharpens Memory',desc:'The act of writing reinforces memory consolidation, helping you remember experiences more vividly.'},
+      {icon:'🌱',title:'Tracks Personal Growth',desc:'Reading past entries reveals how far you\'ve come — a powerful motivator for continued self-improvement.'},
+    ];
+    const bl=document.getElementById('benefits-list');
+    bl.innerHTML=bens.map(b=>`
+      <div style="display:flex;gap:14px;margin-bottom:16px;padding:14px;background:var(--paper);border:1.5px solid var(--rule-line);border-radius:var(--radius-lg);transition:all var(--transition)" 
+           onmouseover="this.style.borderColor='rgba(192,82,92,.4)'" onmouseout="this.style.borderColor='var(--rule-line)'">
+        <span style="font-size:1.3rem;flex-shrink:0">${b.icon}</span>
+        <div><strong style="font-family:var(--font-display);font-size:.95rem;display:block;margin-bottom:3px">${b.title}</strong>
+        <span style="font-size:.85rem;color:var(--ink-light)">${b.desc}</span></div>
+      </div>
+    `).join('');
+
+    const bv=document.getElementById('benefits-visual');
+    bv.innerHTML=`
+      <div style="background:var(--paper);border:1.5px solid var(--rule-line);border-radius:var(--radius-lg);padding:28px;box-shadow:0 16px 48px var(--shadow-strong);text-align:center">
+        <div style="font-size:3rem;margin-bottom:12px">📖</div>
+        <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:8px">Start Your Diary Today</div>
+        <p style="font-size:.88rem;color:var(--ink-muted);margin-bottom:20px">Join thousands who use free online journals to live more mindfully.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          ${[['76%','report lower stress'],['83%','feel more self-aware'],['68%','sleep better'],['91%','recommend journaling']].map(([n,l])=>`
+            <div style="background:var(--rose-pale);border-radius:var(--radius);padding:12px">
+              <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--rose)">${n}</div>
+              <div style="font-size:.75rem;color:var(--ink-muted)">${l}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+
+    /* ─── CONTENT BLOCKS ─── */
+    const cbs=[
+      {title:'What Is an Online Diary?',p:'An online diary is a digital version of a personal diary or journal kept in a web browser rather than on paper. At MemoNotePad.online, your online diary is completely private — entries are stored in your browser and never sent to any server. You can write daily, track your moods, and export your diary at any time.'},
+      {title:'Online Diary vs Paper Diary',ul:['No paper or pen needed — write on any device','Auto-save means you never lose an entry','Search across years of entries instantly','Export and back up your diary any time','Mood tracking and writing statistics','Available anywhere with a browser']},
+      {title:'Types of Journals to Keep',ul:['Gratitude journal — focus on daily positives','Dream journal — capture nightly dreams','Bullet journal — structured daily planning','Travel diary — document adventures','Reflective journal — process emotions','Goal journal — track ambitions and progress']},
+      {title:'How to Start a Journaling Habit',p:'The key to consistent journaling is removing friction. Keep your online diary open in a pinned browser tab, write at the same time each day, and start with just 5 minutes. Use mood tracking and writing prompts to maintain momentum when inspiration is low.'},
+      {title:'Privacy & Your Diary',p:'Your diary entries on MemoNotePad.online are stored exclusively in your browser\'s localStorage. No account is required, no data is ever transmitted to a server, and no one else can read your entries. For extra peace of mind, download your diary as a .txt file regularly.'},
+      {title:'Benefits of Digital Journaling',ul:['Instantly accessible from phone or desktop','Full-text search across all entries','Mood history and pattern recognition','Unlimited entries with no paper cost','Formatting tools for expressive writing','Easy export and backup options']},
+    ];
+    const cc=document.getElementById('content-cols');
+    cbs.forEach((b,i)=>{
+      const d=document.createElement('div');
+      d.className='content-block reveal';
+      d.style.transitionDelay=(i*.07)+'s';
+      d.innerHTML=`<h3>${b.title}</h3>${b.p?`<p>${b.p}</p>`:''}${b.ul?`<ul>${b.ul.map(l=>`<li>${l}</li>`).join('')}</ul>`:''}`;
+      cc.appendChild(d);
+    });
+
+    /* ─── FAQ ─── */
+    const faqs=[
+      {q:'Is this online diary free?',a:'Yes, completely free. No subscriptions, no premium tier, no ads. MemoNotePad.online is a free tool for everyone.'},
+      {q:'Is my diary private and secure?',a:'Completely private. Entries are stored only in your browser\'s localStorage — never sent to any server, never read by anyone else.'},
+      {q:'Do I need an account to write a diary?',a:'No account needed. Open the page and start writing immediately. Your entries are saved automatically.'},
+      {q:'Can I export or download my diary?',a:'Yes. Click "Export All" in the editor to download your entire diary as a .txt file, organized by date with mood labels.'},
+      {q:'What happens if I clear my browser?',a:'Clearing browser data or localStorage will erase your diary. To prevent loss, regularly export your diary using the Export All button.'},
+      {q:'Can I use writing prompts?',a:'Yes! Click the "💡 Prompt" button in the toolbar to insert a random writing prompt into your entry for instant inspiration.'},
+      {q:'Can I track my mood in this diary?',a:'Yes. Select a mood emoji for each entry and view your weekly mood chart and history in the mood tracker panel.'},
+      {q:'Does the diary work on mobile?',a:'Absolutely. The online diary is fully mobile-responsive and works on iOS and Android browsers without any app to install.'},
+    ];
+    const fg=document.getElementById('faq-grid');
+    faqs.forEach((item,i)=>{
+      const d=document.createElement('div');
+      d.className='faq-item reveal';
+      d.style.transitionDelay=(i*.05)+'s';
+      d.innerHTML=`<button class="faq-q" aria-expanded="false">${item.q}<span class="faq-chev">▼</span></button><div class="faq-a">${item.a}</div>`;
+      d.querySelector('.faq-q').addEventListener('click',()=>{
+        const o=d.classList.toggle('open');
+        d.querySelector('.faq-q').setAttribute('aria-expanded',o);
+      });
+      fg.appendChild(d);
+    });
+
+    /* ─── REVEAL ─── */
+    const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+    function observe(){document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));}
+    observe();setTimeout(observe,300);
+
+  })();
+  </script>
+</body>
+</html>
