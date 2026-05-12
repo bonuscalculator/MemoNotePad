@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BX53Q83EYZ');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Online Diary & Journal – Free Private Digital Diary | memonotepad.online</title>
-  <meta name="description" content="Write your private online diary and journal for free at memonotepad.online. Daily entries, mood tracker, rich text, search, export — all stored securely in your browser. No signup needed." />
+  <title>Online Diary & Journal – Free Private Digital Diary | MemoNotePad.online</title>
+  <meta name="description" content="Write your private online diary and journal for free at MemoNotePad.online. Daily entries, mood tracker, rich text, search, export — all stored securely in your browser. No signup needed." />
   <meta name="keywords" content="online diary, free online journal, digital diary, personal journal online, private diary online, daily journal, write diary online, diary app, journal app, online diary no signup" />
   <meta name="author" content="MemoNotePad Online" />
-  <link rel="canonical" href="https://www.memonotepad.online/diary" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="canonical" href="https://memonotepad.online/diary" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Online Diary & Journal – Free Private Digital Diary | memonotepad.online" />
+  <meta property="og:title" content="Online Diary & Journal – Free Private Digital Diary | MemoNotePad.online" />
   <meta property="og:description" content="Free private online diary. Write daily journal entries, track your mood, search your past, and export your diary — no signup, no server, 100% private." />
-  <meta property="og:url" content="https://www.memonotepad.online/diary" />
+  <meta property="og:url" content="https://memonotepad.online/diary" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.memonotepad.online/og-diary.png" />
+  <meta property="og:image" content="https://memonotepad.online/og-diary.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Online Diary & Journal – www.memonotepad.online" />
+  <meta name="twitter:title" content="Online Diary & Journal – MemoNotePad.online" />
   <meta name="twitter:description" content="Write your private digital diary online. Free, auto-saved, mood tracking, no account needed." />
 
   <!-- Schema -->
@@ -34,8 +24,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Online Diary & Journal – memonotepad.online",
-    "url": "https://www.memonotepad.online/diary",
+    "name": "Online Diary & Journal – MemoNotePad.online",
+    "url": "https://memonotepad.online/diary",
     "description": "A free, private online diary and journal application. Write daily entries, track moods, search past entries, and export your journal without any account.",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Any",
@@ -48,8 +38,8 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"MemoNotePad Online","item":"https://www.memonotepad.online/"},
-      {"@type":"ListItem","position":2,"name":"Online Diary","item":"https://www.memonotepad.online/diary"}
+      {"@type":"ListItem","position":1,"name":"MemoNotePad Online","item":"https://memonotepad.online/"},
+      {"@type":"ListItem","position":2,"name":"Online Diary","item":"https://memonotepad.online/diary"}
     ]
   }
   </script>
@@ -69,7 +59,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+
   <style>
     :root {
       --cream: #fdf8f0; --paper: #fffef9; --ink: #1a1208; --ink-light: #4a3f2f;
@@ -417,7 +407,7 @@
     .btn-ghost-white:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
 
     /* FOOTER */
-    #site-footer{background:var(--ink);color:var(--cream);padding:54px 0 26px}
+    #site-footer{background:var(--ink);z-index:1;color:var(--cream);padding:54px 0 26px}
     [data-theme="dark"] #site-footer{background:#0d0b07}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
     .footer-brand .logo{color:var(--cream);margin-bottom:12px}
@@ -489,8 +479,38 @@
     </div>
   </div>
 
-  <!-- Header Component Injection -->
-  <div id="header-root"></div>
+  <!-- ===== HEADER ===== -->
+  <header id="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="MemoNotePad Online Home">
+        <div class="logo-icon" aria-hidden="true">📖</div>
+        Memo<span>Note</span>Pad
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="/">Notepad</a>
+        <a href="/diary.html" class="active">Diary</a>
+        <a href="/bucket-list.html">Bucket List</a>
+        <a href="#app">Write Now</a>
+        <a href="#tips">Tips</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        <a href="#app" class="btn btn-primary" style="padding:8px 18px;font-size:.84rem;">📖 New Entry</a>
+        <button class="menu-toggle" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="/">Notepad</a>
+      <a href="/diary.html">Diary</a>
+      <a href="/bucket-list.html">Bucket List</a>
+      <a href="#app">Write Now</a>
+      <a href="#tips">Journal Tips</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
 
   <main>
     <!-- ===== HERO ===== -->
@@ -736,11 +756,40 @@
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <!-- Footer Component Injection -->
-  <div id="footer-root"></div>  
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><div style="width:32px;height:32px;background:var(--rose);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem">📖</div> Memo<span style="color:var(--amber)">Note</span>Pad</div>
+          <p>Free online diary, notepad, and productivity tools. Private, fast, and always free.</p>
+        </div>
+        <div class="footer-col"><h4>Tools</h4><ul>
+          <li><a href="/">Memo Notepad</a></li>
+          <li><a href="/diary.html">Online Diary</a></li>
+          <li><a href="/bucket-list.html">Bucket List</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Diary</h4><ul>
+          <li><a href="#app">Write Entry</a></li>
+          <li><a href="#tips">Journal Tips</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="yr"></span> MemoNotePad.online — All rights reserved.</p>
+        <div class="footer-badges">
+          <span class="fbadge">🔒 Private</span>
+          <span class="fbadge">⚡ Free</span>
+          <span class="fbadge">📱 Mobile</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  <script src="header.js"></script>
-  <script src="footer.js"></script>  
   <script>
   (function(){
     'use strict';
@@ -1171,11 +1220,11 @@
 
     /* ─── CONTENT BLOCKS ─── */
     const cbs=[
-      {title:'What Is an Online Diary?',p:'An online diary is a digital version of a personal diary or journal kept in a web browser rather than on paper. At www.memonotepad.online, your online diary is completely private — entries are stored in your browser and never sent to any server. You can write daily, track your moods, and export your diary at any time.'},
+      {title:'What Is an Online Diary?',p:'An online diary is a digital version of a personal diary or journal kept in a web browser rather than on paper. At MemoNotePad.online, your online diary is completely private — entries are stored in your browser and never sent to any server. You can write daily, track your moods, and export your diary at any time.'},
       {title:'Online Diary vs Paper Diary',ul:['No paper or pen needed — write on any device','Auto-save means you never lose an entry','Search across years of entries instantly','Export and back up your diary any time','Mood tracking and writing statistics','Available anywhere with a browser']},
       {title:'Types of Journals to Keep',ul:['Gratitude journal — focus on daily positives','Dream journal — capture nightly dreams','Bullet journal — structured daily planning','Travel diary — document adventures','Reflective journal — process emotions','Goal journal — track ambitions and progress']},
       {title:'How to Start a Journaling Habit',p:'The key to consistent journaling is removing friction. Keep your online diary open in a pinned browser tab, write at the same time each day, and start with just 5 minutes. Use mood tracking and writing prompts to maintain momentum when inspiration is low.'},
-      {title:'Privacy & Your Diary',p:'Your diary entries on www.memonotepad.online are stored exclusively in your browser\'s localStorage. No account is required, no data is ever transmitted to a server, and no one else can read your entries. For extra peace of mind, download your diary as a .txt file regularly.'},
+      {title:'Privacy & Your Diary',p:'Your diary entries on MemoNotePad.online are stored exclusively in your browser\'s localStorage. No account is required, no data is ever transmitted to a server, and no one else can read your entries. For extra peace of mind, download your diary as a .txt file regularly.'},
       {title:'Benefits of Digital Journaling',ul:['Instantly accessible from phone or desktop','Full-text search across all entries','Mood history and pattern recognition','Unlimited entries with no paper cost','Formatting tools for expressive writing','Easy export and backup options']},
     ];
     const cc=document.getElementById('content-cols');
@@ -1189,7 +1238,7 @@
 
     /* ─── FAQ ─── */
     const faqs=[
-      {q:'Is this online diary free?',a:'Yes, completely free. No subscriptions, no premium tier, no ads. www.memonotepad.online is a free tool for everyone.'},
+      {q:'Is this online diary free?',a:'Yes, completely free. No subscriptions, no premium tier, no ads. MemoNotePad.online is a free tool for everyone.'},
       {q:'Is my diary private and secure?',a:'Completely private. Entries are stored only in your browser\'s localStorage — never sent to any server, never read by anyone else.'},
       {q:'Do I need an account to write a diary?',a:'No account needed. Open the page and start writing immediately. Your entries are saved automatically.'},
       {q:'Can I export or download my diary?',a:'Yes. Click "Export All" in the editor to download your entire diary as a .txt file, organized by date with mood labels.'},
