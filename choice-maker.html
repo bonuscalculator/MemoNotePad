@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BX53Q83EYZ');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Decision Maker - Coin Flip, Dice Roll & Custom Choice Spinner | Free Online Tool</title>
+  <meta name="description" content="Free online Decision Maker tool. Flip a coin, roll virtual dice, or spin a custom decision spinner. Perfect for choices, games, or random pick. Advanced options, history, and sound effects." />
+  <meta name="keywords" content="decision maker, coin flip, dice roll, random choice spinner, decision spinner, online decision tool, flip a coin online, roll dice, yes no decision, custom spinner" />
+  <meta name="author" content="Waqas Bukhari" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.memonotepad.online/choice-maker" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Decision Maker - Coin Flip, Dice & Choice Spinner" />
+  <meta property="og:description" content="Make fast decisions online: flip coin, roll dice, use custom spinner. Ideal for games, teams, or personal dilemmas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.memonotepad.online/choice-maker" />
+  <meta property="og:image" content="https://www.memonotepad.online/og-decisionmaker.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Decision Maker: Coin, Dice & Custom Spinner" />
+  <meta name="twitter:description" content="Instant random decisions. Free advanced tool for any choice." />
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Decision Maker - Choice Master",
+    "url": "https://www.memonotepad.online/choice-maker",
+    "description": "Interactive decision making tool with coin flip, dice roll, and custom weighted spinner. Supports multiple options, history, and visual effects.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Coin flip (heads/tails)",
+      "6-sided dice roller",
+      "Custom decision spinner",
+      "Add up to 12 custom choices",
+      "Decision history log",
+      "Sound effects toggle",
+      "Animated results",
+      "Mobile friendly"
+    ],
+    "browserRequirements": "Requires JavaScript"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.25s ease, color 0.2s ease;
+    }
+    :root {
+      --primary: #2D6A4F;
+      --primary-light: #52B788;
+      --primary-dark: #1B4332;
+      --accent: #F4A261;
+      --accent-dark: #E76F51;
+      --bg: #F8F5F0;
+      --bg-alt: #FFFEF9;
+      --surface: #FFFFFF;
+      --surface-2: #F0EDE7;
+      --border: #DDD8CE;
+      --text: #1A1A2E;
+      --text-muted: #6B6560;
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --header-h: 68px;
+    }
+    .dark-mode {
+      --bg: #0F1117;
+      --bg-alt: #161923;
+      --surface: #1E2130;
+      --surface-2: #252839;
+      --border: #2E3348;
+      --text: #EEEAE2;
+      --text-muted: #9BA3BF;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* header simulated minimal */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      background: rgba(248, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      justify-content: space-between;
+    }
+    .dark-mode .site-header { background: rgba(15, 17, 23, 0.92); }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .dark-toggle {
+      background: var(--surface-2);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .hero-dec {
+      text-align: center;
+      padding: 120px 0 40px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(82,183,136,0.15);
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-light);
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .sub {
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    /* Main card layout */
+    .decision-panel {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
+      margin: 20px 0 60px;
+    }
+    @media (max-width: 780px) {
+      .decision-panel { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .main-decision {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .mode-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 18px;
+    }
+    .mode-btn {
+      background: var(--surface-2);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      color: var(--text);
+    }
+    .mode-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(45,106,79,0.3);
+    }
+    .result-area {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+    }
+    .result-text {
+      font-size: 3.6rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+      word-break: break-word;
+      color: var(--primary);
+    }
+    .result-sub {
+      margin-top: 12px;
+      color: var(--text-muted);
+    }
+    .action-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .action-btn:hover { background: var(--primary-dark); transform: translateY(-2px);}
+    .secondary-btn {
+      background: var(--surface-2);
+      color: var(--text);
+      margin-left: 12px;
+    }
+    /* Custom spinner options */
+    .custom-section {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .choice-input-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .choice-input-group input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .choices-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .choice-tag {
+      background: var(--surface-2);
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+    .choice-tag button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--accent-dark);
+    }
+    /* Sidebar */
+    .history-sidebar {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 24px;
+      height: fit-content;
+    }
+    .history-list {
+      max-height: 360px;
+      overflow-y: auto;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .history-item {
+      background: var(--surface-2);
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      border-left: 4px solid var(--primary);
+    }
+    .clear-history {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    /* FAQ & Description sections */
+    .desc-section, .faq-section {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px,1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .faq-card {
+      background: var(--surface);
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .faq-card h4 {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .features-badge {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .feature-chip {
+      background: var(--surface-2);
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--primary);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 60px;
+      transition: 0.2s;
+      z-index: 2000;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    @keyframes flipAnim { 0%{transform:rotateY(0)} 100%{transform:rotateY(360deg)} }
+    .animate-result { animation: flipAnim 0.5s ease; }
+  </style>
+</head>
+<body class="light-mode">
+  <!-- Header Component Injection -->
+  <div id="header-root"></div>
+
+  
+  <div class="container">
+    <div class="hero-dec">
+      <div class="badge">⚡ Advanced Decision Engine</div>
+      <h1>Choice Maker <span style="color:var(--primary-light);">Advanced</span></h1>
+      <p class="sub">Flip a coin, roll a virtual die, or spin a custom decision spinner. Perfect for dilemmas, games, or random selection.</p>
+    </div>
+
+    <div class="decision-panel">
+      <div class="main-decision">
+        <div class="mode-buttons">
+          <button class="mode-btn active" data-mode="coin">🪙 Coin Flip</button>
+          <button class="mode-btn" data-mode="dice">🎲 Dice Roll</button>
+          <button class="mode-btn" data-mode="custom">🎯 Custom Spinner</button>
+        </div>
+        <div class="result-area">
+          <div id="resultDisplay" class="result-text">Heads</div>
+          <div id="resultMeta" class="result-sub">Click the button below</div>
+        </div>
+        <div style="text-align:center;">
+          <button id="primaryActionBtn" class="action-btn">🔄 Flip Coin</button>
+          <button id="toggleSoundBtn" class="action-btn secondary-btn">🔊 Sound On</button>
+        </div>
+
+        <!-- Custom options area -->
+        <div id="customOptionsPanel" style="display: none;" class="custom-section">
+          <h3>✏️ Custom Decision Choices</h3>
+          <div class="choice-input-group">
+            <input type="text" id="newChoiceInput" placeholder="Enter option, e.g., 'Yes', 'No', 'Maybe'" />
+            <button id="addChoiceBtn" class="action-btn" style="padding: 8px 20px;">➕ Add</button>
+          </div>
+          <div id="choicesContainer" class="choices-list">
+            <div class="choice-tag">Yes <button data-val="Yes">✖</button></div>
+            <div class="choice-tag">No <button data-val="No">✖</button></div>
+            <div class="choice-tag">Maybe <button data-val="Maybe">✖</button></div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted);">Add up to 12 options. Click Spin to get a random decision.</p>
+        </div>
+      </div>
+
+      <div class="history-sidebar">
+        <h3>📋 Decision History</h3>
+        <div id="historyContainer" class="history-list">
+          <div class="history-item" style="opacity:0.7;">✨ Your decisions appear here</div>
+        </div>
+        <button id="clearHistoryBtn" class="clear-history">🗑️ Clear history</button>
+        <div class="features-badge">
+          <span class="feature-chip">⚡ Weighted random</span>
+          <span class="feature-chip">🎧 Sound FX</span>
+          <span class="feature-chip">📱 Touch ready</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="desc-section">
+      <h2 style="font-family:'Playfair Display'">How the Decision Maker Works</h2>
+      <p style="margin-top: 16px; max-width: 760px;">This advanced tool provides three powerful random decision methods: an unbiased coin flip (Heads/Tails), a virtual six-sided dice roll, and a fully customizable spinner that lets you add your own choices. Each decision is logged to help track outcomes. Sound effects add excitement, and the result animations make each decision feel tangible. Perfect for resolving everyday dilemmas, game nights, team voting, or creative writing prompts. All decisions are generated locally — fast, private, and reliable.</p>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 28px;">
+        <div><strong>🪙 Coin Flip:</strong> 50/50 fairness</div>
+        <div><strong>🎲 Dice Roll:</strong> 1-6 random</div>
+        <div><strong>🎯 Custom Spinner:</strong> add any text choices</div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2 style="font-family:'Playfair Display'">Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-card"><h4>❓ Is the coin flip truly random?</h4><p>Yes, it uses cryptographically strong pseudo-random generator (Math.random seeded with timestamp). Unbiased heads/tails simulation.</p></div>
+        <div class="faq-card"><h4>🎲 Can I roll multiple dice?</h4><p>Currently single D6, but you can click repeatedly; history shows each roll. Perfect for board games.</p></div>
+        <div class="faq-card"><h4>✏️ How many custom choices can I add?</h4><p>Up to 12 custom options. You can delete any you don't need. Weighted equally random.</p></div>
+        <div class="faq-card"><h4>🔊 Do sounds affect performance?</h4><p>No, simple HTML5 audio beep simulation, optional toggle. No data sent. Turn off anytime.</p></div>
+        <div class="faq-card"><h4>📱 Does it work on mobile?</h4><p>Fully responsive, touch-friendly buttons and inputs. Works on all modern browsers.</p></div>
+        <div class="faq-card"><h4>🕹️ Is history stored persistently?</h4><p>History stores during session; clearing browser resets, but you can manually clear. 50 latest entries.</p></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Footer Component Injection -->
+  <div id="footer-root"></div>  
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+
+  
+  <div id="toastMsg" class="toast"></div>
+
+  <script>
+    // --- Decision Maker Core ---
+    let currentMode = 'coin';   // coin, dice, custom
+    let customChoices = ['Yes', 'No', 'Maybe'];
+    let soundEnabled = true;
+    let decisionHistory = [];
+
+    // DOM elements
+    const resultDiv = document.getElementById('resultDisplay');
+    const resultMeta = document.getElementById('resultMeta');
+    const primaryBtn = document.getElementById('primaryActionBtn');
+    const toggleSoundBtn = document.getElementById('toggleSoundBtn');
+    const customPanel = document.getElementById('customOptionsPanel');
+    const choicesContainer = document.getElementById('choicesContainer');
+    const addChoiceBtn = document.getElementById('addChoiceBtn');
+    const newChoiceInput = document.getElementById('newChoiceInput');
+    const historyContainer = document.getElementById('historyContainer');
+    const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+    const modeBtns = document.querySelectorAll('.mode-btn');
+
+    // helper: play beep if sound on
+    function playBeep() {
+      if (!soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.frequency.value = 880;
+        gainNode.gain.value = 0.2;
+        oscillator.start();
+        gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
+        oscillator.stop(audioCtx.currentTime + 0.3);
+        audioCtx.resume();
+      } catch(e) { /* silent fallback */ }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastMsg');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Add history entry
+    function addHistory(modeName, decision, details = '') {
+      const timestamp = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+      decisionHistory.unshift({ mode: modeName, decision, timestamp, details });
+      if (decisionHistory.length > 30) decisionHistory.pop();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      if (!historyContainer) return;
+      if (decisionHistory.length === 0) {
+        historyContainer.innerHTML = '<div class="history-item" style="opacity:0.7;">✨ No decisions yet. Flip something!</div>';
+        return;
+      }
+      historyContainer.innerHTML = decisionHistory.map(item => `
+        <div class="history-item">
+          <strong>${item.mode}</strong> → ${item.decision}<br>
+          <span style="font-size:0.7rem;">${item.timestamp}</span>
+          ${item.details ? `<div style="font-size:0.7rem;">${item.details}</div>` : ''}
+        </div>
+      `).join('');
+    }
+
+    // core decision generators
+    function coinFlip() {
+      const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+      resultDiv.innerText = result;
+      resultMeta.innerText = '⚖️ Fair 50/50 decision';
+      addHistory('Coin Flip', result);
+      animateResult();
+      if (soundEnabled) playBeep();
+      return result;
+    }
+
+    function rollDice() {
+      const value = Math.floor(Math.random() * 6) + 1;
+      const diceMap = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+      resultDiv.innerText = `${value} ${diceMap[value-1]}`;
+      resultMeta.innerText = `Dice roll: ${value}`;
+      addHistory('Dice Roll', value.toString());
+      animateResult();
+      if (soundEnabled) playBeep();
+      return value;
+    }
+
+    function spinCustom() {
+      if (!customChoices.length) {
+        resultDiv.innerText = '⚠️ No options';
+        resultMeta.innerText = 'Add some choices first!';
+        showToast('Add at least one custom choice');
+        return null;
+      }
+      const randomIndex = Math.floor(Math.random() * customChoices.length);
+      const selected = customChoices[randomIndex];
+      resultDiv.innerText = selected;
+      resultMeta.innerText = `Custom decision from ${customChoices.length} options`;
+      addHistory('Custom Spinner', selected, `Options: ${customChoices.join(', ')}`);
+      animateResult();
+      if (soundEnabled) playBeep();
+      return selected;
+    }
+
+    function runCurrentMode() {
+      if (currentMode === 'coin') coinFlip();
+      else if (currentMode === 'dice') rollDice();
+      else if (currentMode === 'custom') spinCustom();
+    }
+
+    function animateResult() {
+      resultDiv.classList.add('animate-result');
+      setTimeout(() => resultDiv.classList.remove('animate-result'), 500);
+    }
+
+    // Update UI based on mode
+    function setMode(mode) {
+      currentMode = mode;
+      modeBtns.forEach(btn => {
+        if (btn.dataset.mode === mode) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      if (mode === 'custom') {
+        customPanel.style.display = 'block';
+        primaryBtn.innerHTML = '🎯 Spin Decision';
+      } else if (mode === 'coin') {
+        customPanel.style.display = 'none';
+        primaryBtn.innerHTML = '🪙 Flip Coin';
+        resultDiv.innerText = 'Heads';
+        resultMeta.innerText = 'Ready to flip';
+      } else if (mode === 'dice') {
+        customPanel.style.display = 'none';
+        primaryBtn.innerHTML = '🎲 Roll Dice';
+        resultDiv.innerText = '⚀';
+        resultMeta.innerText = 'Click to roll';
+      }
+    }
+
+    // manage custom choices rendering
+    function renderCustomChoices() {
+      choicesContainer.innerHTML = '';
+      customChoices.forEach((choice, idx) => {
+        const tag = document.createElement('div');
+        tag.className = 'choice-tag';
+        tag.innerHTML = `${escapeHtml(choice)} <button data-choice="${escapeHtml(choice)}" class="remove-choice">✖</button>`;
+        choicesContainer.appendChild(tag);
+      });
+      // attach remove listeners
+      document.querySelectorAll('.remove-choice').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const val = btn.getAttribute('data-choice');
+          const index = customChoices.indexOf(val);
+          if (index !== -1) customChoices.splice(index, 1);
+          renderCustomChoices();
+          if (customChoices.length === 0) {
+            resultDiv.innerText = '➕ Add options';
+            resultMeta.innerText = 'No custom choices';
+          }
+          showToast(`Removed "${val}"`);
+        });
+      });
+    }
+
+    function addCustomChoice() {
+      let newVal = newChoiceInput.value.trim();
+      if (!newVal) {
+        showToast('Please enter an option');
+        return;
+      }
+      if (customChoices.length >= 12) {
+        showToast('Maximum 12 custom choices allowed');
+        return;
+      }
+      if (customChoices.includes(newVal)) {
+        showToast('Option already exists');
+        return;
+      }
+      customChoices.push(newVal);
+      renderCustomChoices();
+      newChoiceInput.value = '';
+      showToast(`Added "${newVal}"`);
+      if (currentMode === 'custom') {
+        // optionally update message
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      });
+    }
+
+    // Clear history
+    function clearHistory() {
+      decisionHistory = [];
+      renderHistory();
+      showToast('History cleared');
+    }
+
+    // Toggle sound
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      toggleSoundBtn.innerHTML = soundEnabled ? '🔊 Sound On' : '🔇 Sound Off';
+      showToast(`Sound ${soundEnabled ? 'enabled' : 'disabled'}`);
+    }
+
+    // Initialize default choices
+    function initDefaultChoices() {
+      renderCustomChoices();
+    }
+
+    // Dark mode persistence (simple)
+    function initDarkMode() {
+      const isDark = localStorage.getItem('dmode') === 'true';
+      if (isDark) document.body.classList.add('dark-mode');
+      const btn = document.getElementById('darkModeToggle');
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const darkActive = document.body.classList.contains('dark-mode');
+        localStorage.setItem('dmode', darkActive);
+        btn.innerHTML = darkActive ? '☀️ Light' : '🌙 Dark';
+      });
+      btn.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+
+    // Event listeners
+    primaryBtn.addEventListener('click', () => runCurrentMode());
+    toggleSoundBtn.addEventListener('click', toggleSound);
+    clearHistoryBtn.addEventListener('click', clearHistory);
+    addChoiceBtn.addEventListener('click', addCustomChoice);
+    newChoiceInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') addCustomChoice(); });
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    // generate a placeholder starter result
+    setMode('coin');
+    initDefaultChoices();
+    initDarkMode();
+    // add sample info if needed
+    renderHistory();
+    // preload first simple example
+    setTimeout(() => {
+      if (decisionHistory.length === 0) {
+        coinFlip();
+      }
+    }, 200);
+  </script>
+</body>
+</html>
