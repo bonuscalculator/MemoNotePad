@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link rel="stylesheet" href="styles.css" />
   <style>
     * {
       margin: 0;
@@ -109,63 +109,7 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    /* header simulated minimal */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--header-h);
-      background: rgba(248, 245, 240, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      padding: 0 24px;
-      justify-content: space-between;
-    }
-    .dark-mode .site-header { background: rgba(15, 17, 23, 0.92); }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-    .dark-toggle {
-      background: var(--surface-2);
-      border: none;
-      padding: 8px 14px;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-    .hero-dec {
-      text-align: center;
-      padding: 120px 0 40px;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(82,183,136,0.15);
-      padding: 6px 16px;
-      border-radius: 60px;
-      font-size: 0.8rem;
-      margin-bottom: 20px;
-      color: var(--primary-light);
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    .sub {
-      color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 40px;
-    }
+    /* header simulated minimal */    
 
     /* Main card layout */
     .decision-panel {
@@ -384,7 +328,7 @@
   <div class="container">
     <div class="hero-dec">
       <div class="badge">⚡ Advanced Decision Engine</div>
-      <h1>Choice Maker <span style="color:var(--primary-light);">Advanced</span></h1>
+      <h1>Decision Maker <span style="color:var(--primary-light);">Advanced</span></h1>
       <p class="sub">Flip a coin, roll a virtual die, or spin a custom decision spinner. Perfect for dilemmas, games, or random selection.</p>
     </div>
 
