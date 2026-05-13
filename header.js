@@ -20,7 +20,7 @@
           <a href="/list-maker" class="nav-link">List Maker</a>
           <a href="/choice-maker" class="nav-link">Decision Maker</a>
           <a href="/word-counter" class="nav-link">Word Counter</a>
-          <a href="/#faq" class="nav-link">FAQ</a>
+          <a href="/study-planner" class="nav-link">Study Planner</a>
         </nav>
 
         <div class="header-actions">
@@ -40,7 +40,7 @@
         <a href="/list-maker" class="nav-link">List Maker</a>
         <a href="/choice-maker" class="nav-link">Decision Maker</a>
         <a href="/word-counter" class="nav-link">Word Counter</a>
-        <a href="/#faq" class="nav-link">FAQ</a>
+        <a href="/study-planner" class="nav-link">Study Planner</a>
       </nav>
     </header>
   `;
