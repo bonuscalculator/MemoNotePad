@@ -12,7 +12,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Study Planner for Students – Weekly & Exam Study Planner Online</title>
+  <title>Free Study Planner for Students – Weekly & Exam Study Planner Online | MemoNotePad</title>
   <meta name="description" content="The best free study planner for students online. Plan your weekly study schedule, track exam dates, manage subjects, and set study goals. No login required. Works on all devices." />
   <meta name="keywords" content="study planner for students, weekly study planner, exam study planner, best study planner, exam planner, free study planner, study planner website" />
   <meta name="author" content="Waqas Bukhari" />
@@ -500,8 +500,32 @@
 <body class="light-mode">
 
   <!-- HEADER -->
-  <!-- Header Component Injection -->
-  <div id="header-root"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="header-logo">
+        <div class="logo-icon">📝</div>
+        MemoNotePad
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="/" class="nav-link">Notepad</a>
+        <a href="/word-counter" class="nav-link">Word Counter</a>
+        <a href="/study-planner" class="nav-link active">Study Planner</a>
+        <a href="/#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/" class="nav-link">Notepad</a>
+      <a href="/word-counter" class="nav-link">Word Counter</a>
+      <a href="/study-planner" class="nav-link active">Study Planner</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+    </nav>
+  </header>
 
   <!-- HERO -->
   <section id="hero" class="hero-section">
@@ -1017,12 +1041,50 @@
   </section>
 
   <!-- FOOTER -->
-  <!-- Footer Component Injection -->
-  <div id="footer-root"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="header-logo"><div class="logo-icon">📝</div>MemoNotePad</div>
+          <p>Free online tools for students, writers, and professionals. No login. No ads. Just clarity.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/">Memo Notepad</a></li>
+            <li><a href="/word-counter">Word Counter</a></li>
+            <li><a href="/study-planner">Study Planner</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Planner</h4>
+          <ul>
+            <li><a href="/study-planner#planner">Weekly Planner</a></li>
+            <li><a href="/study-planner#planner">Exam Tracker</a></li>
+            <li><a href="/study-planner#planner">Pomodoro Timer</a></li>
+            <li><a href="/study-planner#planner">Study Goals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/study-planner#faq">FAQ</a></li>
+            <li><a href="/study-planner#tips">Study Tips</a></li>
+            <li><a href="/study-planner#features">Features</a></li>
+            <li><a href="/study-planner#how">How It Works</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 MemoNotePad Online. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
-  <script src="app.js"></script>
   <!-- =============================================
        JAVASCRIPT
   ============================================= -->
