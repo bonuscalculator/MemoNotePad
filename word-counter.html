@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BX53Q83EYZ');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Word Counter Tool – Online Word & Character Count | MemoNotePad</title>
+  <meta name="description" content="Free online word counter tool. Instantly count words, characters, sentences, and paragraphs. No login required. Works on all devices. The fastest word count calculator online." />
+  <meta name="keywords" content="word counter, word counter tool, word counter website, word calculator, free word counter, word count calculator, character checker, paragraph counter, character count online, online word counter tool, character count tool, character limit counter, sentence counter tool, words and characters counter, word count app" />
+  <meta name="author" content="Waqas Bukhari" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.memonotepad.online/word-counter" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Word Counter Tool – Online Word & Character Count" />
+  <meta property="og:description" content="Count words, characters, sentences, and paragraphs instantly. Free, no login required. Works on all devices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.memonotepad.online/word-counter" />
+  <meta property="og:image" content="https://www.memonotepad.online/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Word Counter Tool – MemoNotePad Online" />
+  <meta name="twitter:description" content="Count words, characters, sentences, and paragraphs instantly. 100% free." />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Word Counter Tool",
+    "url": "https://www.memonotepad.online/word-counter",
+    "description": "A free online word counter tool for counting words, characters, sentences, paragraphs, and more instantly without any login.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Count words in real time",
+      "Count characters with and without spaces",
+      "Count sentences and paragraphs",
+      "Reading time estimator",
+      "Speaking time estimator",
+      "Character limit checker",
+      "Keyword density analyzer",
+      "No login required",
+      "Mobile compatible"
+    ],
+    "browserRequirements": "Requires JavaScript",
+    "softwareVersion": "1.0"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the free word counter tool work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply paste or type your text into the editor above. The word counter automatically counts your words, characters, sentences, and paragraphs in real time as you type — no button click needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this word counter tool completely free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this is a 100% free word counter online. There are no hidden fees, no premium tiers, and no account required. All features are available to every user at no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the word count calculator count characters with or without spaces?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The character count tool shows both: characters with spaces and characters without spaces, so you can check against any character limit accurately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this as a character limit counter for social media?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Use the character limit presets (Twitter/X: 280, Instagram: 2200, LinkedIn: 3000, Meta Description: 160) to see instantly if your text fits within the platform's limit."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts — matches site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS VARIABLES — matches site design system
+       ============================================= */
+    :root {
+      --primary: #2D6A4F;
+      --primary-light: #52B788;
+      --primary-dark: #1B4332;
+      --accent: #F4A261;
+      --accent-dark: #E76F51;
+      --bg: #F8F5F0;
+      --bg-alt: #FFFEF9;
+      --surface: #FFFFFF;
+      --surface-2: #F0EDE7;
+      --border: #DDD8CE;
+      --text: #1A1A2E;
+      --text-muted: #6B6560;
+      --text-light: #9E998F;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.10);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.14);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --header-h: 68px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dark-mode {
+      --bg: #0F1117;
+      --bg-alt: #161923;
+      --surface: #1E2130;
+      --surface-2: #252839;
+      --border: #2E3348;
+      --text: #EEEAE2;
+      --text-muted: #9BA3BF;
+      --text-light: #6B7280;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.5);
+    }
+
+    /* ---- RESET ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input, select, textarea { font-family: inherit; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- TYPOGRAPHY ---- */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--primary-light);
+      background: rgba(82,183,136,0.12); padding: 6px 14px;
+      border-radius: 100px; margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.22;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 560px; margin-bottom: 56px;
+    }
+    .accent-text { color: var(--primary-light); position: relative; }
+    .accent-text::after {
+      content: ''; position: absolute; bottom: 2px; left: 0;
+      width: 100%; height: 6px;
+      background: rgba(82,183,136,0.22); border-radius: 4px; z-index: -1;
+    }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: var(--radius-md);
+      font-size: 0.95rem; font-weight: 600;
+      transition: all var(--transition); cursor: pointer;
+    }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-primary {
+      background: var(--primary); color: #fff;
+      box-shadow: 0 4px 20px rgba(45,106,79,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(45,106,79,0.45);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 2px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--primary-light); color: var(--primary-light); transform: translateY(-2px); }
+    .btn-large { padding: 16px 36px; font-size: 1.05rem; }
+    .btn-sm {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: var(--radius-sm);
+      font-size: 0.82rem; font-weight: 500;
+      background: var(--surface-2); color: var(--text);
+      transition: all var(--transition); border: 1px solid var(--border);
+    }
+    .btn-sm svg { width: 14px; height: 14px; }
+    .btn-sm:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn-sm.btn-danger:hover { background: #E63946; border-color: #E63946; }
+
+    /* ---- HEADER ---- */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--header-h); z-index: 1000;
+      background: rgba(248,245,240,0.88);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .dark-mode .site-header { background: rgba(15,17,23,0.88); }
+    .header-inner {
+      height: 100%; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .header-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 700; color: var(--text); white-space: nowrap;
+    }
+    .logo-icon {
+      width: 36px; height: 36px; background: var(--primary);
+      border-radius: 9px; display: flex; align-items: center;
+      justify-content: center; font-size: 1rem;
+    }
+    .header-nav { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface-2); }
+    .nav-link.active { color: var(--primary); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .dark-toggle {
+      width: 40px; height: 40px; display: flex; align-items: center;
+      justify-content: center; border-radius: var(--radius-sm);
+      background: var(--surface-2); color: var(--text); font-size: 1.1rem;
+      transition: all var(--transition); border: 1px solid var(--border);
+    }
+    .dark-toggle:hover { background: var(--primary); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px; transition: all var(--transition);
+    }
+    .mobile-nav {
+      display: none; flex-direction: column;
+      position: fixed; top: var(--header-h); left: 0; right: 0;
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 16px; gap: 4px; z-index: 999;
+      animation: slideDown 0.3s ease;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { padding: 12px 16px; border-radius: var(--radius-sm); }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- HERO ---- */
+    .hero-section {
+      min-height: 90vh;
+      padding-top: calc(var(--header-h) + 60px);
+      padding-bottom: 80px;
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .lines-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(45,106,79,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,106,79,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .floating-stats {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .float-chip {
+      position: absolute; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 8px 14px; font-size: 0.78rem; font-weight: 600;
+      color: var(--text-muted); box-shadow: var(--shadow-sm);
+      animation: floatChip 6s ease-in-out infinite;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .float-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary-light); }
+    .float-chip:nth-child(1) { top: 18%; left: 6%; animation-delay: 0s; }
+    .float-chip:nth-child(2) { top: 30%; right: 7%; animation-delay: 1.5s; }
+    .float-chip:nth-child(3) { bottom: 30%; left: 4%; animation-delay: 3s; }
+    .float-chip:nth-child(4) { bottom: 20%; right: 5%; animation-delay: 0.8s; }
+    .float-chip:nth-child(5) { top: 55%; left: 8%; animation-delay: 2s; }
+    @keyframes floatChip {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 8px 18px; border-radius: 100px;
+      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      margin-bottom: 28px; box-shadow: var(--shadow-sm);
+    }
+    .badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 3px rgba(82,183,136,0.25); } 50% { box-shadow: 0 0 0 6px rgba(82,183,136,0.1); } }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.15;
+      color: var(--text); margin-bottom: 22px;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem; color: var(--text-muted);
+      max-width: 580px; margin: 0 auto 36px; line-height: 1.75;
+    }
+    .hero-cta { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
+    .hero-stats {
+      display: inline-flex; align-items: center; gap: 0;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 16px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat { padding: 0 24px; text-align: center; }
+    .stat-num { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+    .stat-label { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+    .stat-div { width: 1px; height: 36px; background: var(--border); }
+
+    /* ---- TOOL SECTION ---- */
+    .tool-section { padding: 80px 0 100px; }
+    .tool-wrapper {
+      display: grid; grid-template-columns: 1fr 320px; gap: 24px;
+      align-items: start;
+    }
+
+    /* Editor Panel */
+    .editor-panel {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .editor-toolbar {
+      display: flex; align-items: center; gap: 6px;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      background: var(--surface-2); flex-wrap: wrap;
+    }
+    .toolbar-group { display: flex; align-items: center; gap: 4px; }
+    .tool-btn {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;
+      color: var(--text-muted); transition: all var(--transition);
+      border: 1px solid transparent;
+    }
+    .tool-btn:hover { background: var(--surface); color: var(--primary); border-color: var(--border); }
+    .tool-btn.active { background: var(--primary); color: #fff; }
+    .tool-divider { width: 1px; height: 22px; background: var(--border); margin: 0 2px; }
+    .tool-select {
+      height: 32px; padding: 0 8px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); font-size: 0.82rem; cursor: pointer;
+    }
+    .editor-body {
+      position: relative;
+    }
+    #wordTextarea {
+      width: 100%; min-height: 380px;
+      padding: 24px; font-size: 1rem; line-height: 1.75;
+      border: none; outline: none; resize: vertical;
+      background: var(--surface); color: var(--text);
+      font-family: var(--font-body);
+    }
+    #wordTextarea::placeholder { color: var(--text-light); }
+    .char-limit-bar {
+      padding: 10px 16px; display: flex; align-items: center; gap: 12px;
+      border-top: 1px solid var(--border); background: var(--surface-2);
+      flex-wrap: wrap;
+    }
+    .limit-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .limit-presets { display: flex; gap: 6px; flex-wrap: wrap; }
+    .preset-btn {
+      padding: 4px 10px; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text-muted); cursor: pointer; transition: all var(--transition);
+    }
+    .preset-btn:hover, .preset-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .limit-progress-wrap { flex: 1; min-width: 120px; }
+    .limit-progress {
+      height: 6px; background: var(--surface-2);
+      border-radius: 100px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .limit-bar {
+      height: 100%; width: 0%;
+      background: var(--primary-light); border-radius: 100px;
+      transition: width 0.2s ease, background 0.2s ease;
+    }
+    .limit-bar.warn { background: var(--accent); }
+    .limit-bar.over { background: #E63946; }
+    .limit-count-text { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono); }
+    .editor-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px; border-top: 1px solid var(--border);
+      background: var(--surface-2); flex-wrap: wrap; gap: 10px;
+    }
+    .editor-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Stats Panel */
+    .stats-panel { display: flex; flex-direction: column; gap: 16px; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 20px 22px;
+      box-shadow: var(--shadow-sm); transition: all var(--transition);
+    }
+    .stat-card:hover { border-color: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .stat-card-label {
+      font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .stat-card-label .icon { font-size: 0.95rem; }
+    .stat-card-value {
+      font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+      color: var(--primary); line-height: 1; margin-bottom: 4px;
+    }
+    .stat-card-sub { font-size: 0.78rem; color: var(--text-light); }
+    .stat-card.accent { border-color: rgba(244,162,97,0.4); }
+    .stat-card.accent .stat-card-value { color: var(--accent-dark); }
+    .stat-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-card-sm { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 18px; box-shadow: var(--shadow-sm); }
+    .stat-card-sm .stat-card-label { margin-bottom: 6px; }
+    .stat-card-sm .stat-card-value { font-size: 1.6rem; }
+
+    .time-card {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: var(--radius-md); padding: 20px 22px;
+      color: #fff; box-shadow: var(--shadow-md);
+    }
+    .time-card-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; }
+    .time-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .time-row:last-child { margin-bottom: 0; }
+    .time-row-label { font-size: 0.85rem; opacity: 0.8; display: flex; align-items: center; gap: 6px; }
+    .time-row-val { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; }
+
+    /* Keyword density */
+    .keyword-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .keyword-card-title {
+      font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    #keywordList { display: flex; flex-direction: column; gap: 8px; }
+    .kw-row { display: flex; align-items: center; gap: 8px; }
+    .kw-word { font-size: 0.85rem; font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .kw-bar-wrap { flex: 2; height: 6px; background: var(--surface-2); border-radius: 100px; overflow: hidden; border: 1px solid var(--border); }
+    .kw-bar { height: 100%; background: var(--primary-light); border-radius: 100px; transition: width 0.4s ease; }
+    .kw-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); width: 24px; text-align: right; }
+    .kw-empty { font-size: 0.85rem; color: var(--text-light); font-style: italic; }
+
+    /* ---- FEATURES SECTION ---- */
+    .features-section { padding: 100px 0; background: var(--bg-alt); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .feature-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 30px 28px;
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: rgba(82,183,136,0.12); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ---- USE CASES ---- */
+    .usecases-section { padding: 100px 0; }
+    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .usecase-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 28px; transition: all var(--transition);
+    }
+    .usecase-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-md); }
+    .usecase-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      background: rgba(82,183,136,0.12); color: var(--primary-light);
+      padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .usecase-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .usecase-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ---- HOW IT WORKS ---- */
+    .how-section { padding: 100px 0; background: var(--bg-alt); }
+    .steps { display: flex; flex-direction: column; gap: 0; max-width: 760px; margin: 0 auto; position: relative; }
+    .steps-line {
+      position: absolute; left: 27px; top: 40px;
+      bottom: 40px; width: 2px;
+      background: linear-gradient(to bottom, var(--primary-light), transparent);
+    }
+    .step {
+      display: grid; grid-template-columns: 56px 1fr;
+      gap: 24px; padding: 24px 0; position: relative;
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+      flex-shrink: 0; z-index: 1; box-shadow: 0 4px 16px rgba(45,106,79,0.35);
+    }
+    .step-content { padding-top: 10px; }
+    .step-content h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .step-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ---- DESCRIPTION SECTION ---- */
+    .description-section { padding: 100px 0; }
+    .desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .desc-content h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; margin-bottom: 20px; line-height: 1.25; }
+    .desc-content p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.8; }
+    .desc-content p:last-child { margin-bottom: 0; }
+    .desc-list { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+    .desc-item { display: flex; align-items: flex-start; gap: 14px; }
+    .desc-check { width: 24px; height: 24px; background: var(--primary); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .desc-item-text strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .desc-item-text p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+    .comparison-table { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); }
+    .ct-header, .ct-row { display: grid; grid-template-columns: 1fr auto auto; }
+    .ct-header { background: var(--primary); color: #fff; font-size: 0.82rem; font-weight: 700; }
+    .ct-header > *, .ct-row > * { padding: 12px 18px; border-right: 1px solid rgba(255,255,255,0.12); font-size: 0.88rem; }
+    .ct-header .ct-us, .ct-row .ct-us { background: rgba(255,255,255,0.1); }
+    .ct-row { border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .ct-row:last-child { border-bottom: none; }
+    .ct-row > * { border-right: 1px solid var(--border); text-align: center; }
+    .ct-row > *:first-child { text-align: left; color: var(--text-muted); }
+    .ct-row .ct-us { background: rgba(82,183,136,0.07); color: var(--primary-light); font-weight: 600; }
+
+    /* ---- TIPS SECTION ---- */
+    .tips-section { padding: 100px 0; background: var(--bg-alt); }
+    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .tip-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 28px;
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .tip-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--primary);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .tip-card:hover::before { opacity: 1; }
+    .tip-card:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+    .tip-number {
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+      color: var(--primary-light); background: rgba(82,183,136,0.12);
+      display: inline-block; padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .tip-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .tip-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ---- FAQ ---- */
+    .faq-section { padding: 100px 0; }
+    .faq-section .section-title, .faq-section .section-label { text-align: center; }
+    .faq-section .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: var(--primary-light); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      padding: 18px 22px; text-align: left;
+      font-size: 0.97rem; font-weight: 600; color: var(--text);
+      transition: color var(--transition);
+    }
+    .faq-q:hover { color: var(--primary-light); }
+    .faq-icon { font-size: 1.3rem; font-weight: 300; color: var(--primary-light); transition: transform var(--transition); flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 0 22px 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+
+    /* ---- CTA ---- */
+    .cta-section { padding: 100px 0; }
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+      border-radius: var(--radius-lg); padding: 80px 48px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .cta-box h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; margin-bottom: 18px; position: relative; z-index: 1; }
+    .cta-box h2 .accent-text { color: #B7E4C7; }
+    .cta-box h2 .accent-text::after { background: rgba(183,228,199,0.25); }
+    .cta-box > p { color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 auto 36px; font-size: 1rem; position: relative; z-index: 1; }
+    .cta-box .btn-primary { background: #fff; color: var(--primary-dark); box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: relative; z-index: 1; }
+    .cta-box .btn-primary:hover { background: #F0FFF4; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.55); position: relative; z-index: 1; }
+
+    /* ---- FOOTER ---- */
+    .site-footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 64px 0 32px; }
+    .dark-mode .site-footer { background: #0A0C10; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+    .footer-brand .header-logo { color: #fff; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.87rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.55); transition: color var(--transition); }
+    .footer-col a:hover { color: var(--primary-light); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.82rem; }
+    .footer-bottom p { color: rgba(255,255,255,0.35); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: rgba(255,255,255,0.35); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--primary-light); }
+
+    /* ---- TOAST ---- */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--text); color: var(--bg);
+      padding: 12px 24px; border-radius: var(--radius-sm);
+      font-size: 0.88rem; font-weight: 500;
+      box-shadow: var(--shadow-lg); z-index: 9999;
+      transition: transform 0.3s ease; pointer-events: none;
+    }
+    .dark-mode .toast { background: #E8E8E8; color: #111; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.2s; }
+    .fade-up-3 { animation-delay: 0.3s; }
+    .fade-up-4 { animation-delay: 0.4s; }
+
+    /* ---- SCROLLBAR ---- */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .tool-wrapper { grid-template-columns: 1fr; }
+      .stats-panel { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .time-card { grid-column: 1 / -1; }
+      .keyword-card { grid-column: 1 / -1; }
+      .stat-grid-2 { display: contents; }
+    }
+    @media (max-width: 960px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .usecases-grid { grid-template-columns: repeat(2, 1fr); }
+      .tips-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .desc-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      :root { --header-h: 60px; }
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+      .features-grid { grid-template-columns: 1fr; }
+      .usecases-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-stats { padding: 14px 16px; }
+      .stat { padding: 0 14px; }
+      .stat-num { font-size: 1.4rem; }
+      .cta-box { padding: 48px 24px; }
+      .section-sub { margin-bottom: 36px; }
+      .float-chip { display: none; }
+    }
+    @media (max-width: 600px) {
+      .stats-panel { grid-template-columns: 1fr; }
+      .stat-grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
+      .hero-cta { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 500px) {
+      .editor-toolbar { gap: 2px; }
+      .toolbar-group { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body class="light-mode">
+
+  <!-- HEADER -->
+ <!-- Header Component Injection -->
+  <div id="header-root"></div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg">
+      <div class="lines-bg"></div>
+      <div class="floating-stats">
+        <div class="float-chip"><div class="dot"></div> Words: 1,024</div>
+        <div class="float-chip"><div class="dot"></div> Characters: 6,280</div>
+        <div class="float-chip"><div class="dot"></div> Read time: 4 min</div>
+        <div class="float-chip"><div class="dot"></div> Sentences: 87</div>
+        <div class="float-chip"><div class="dot"></div> Paragraphs: 12</div>
+      </div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge fade-up">
+        <span class="badge-dot"></span>
+        Free · Real-Time · No Login Required
+      </div>
+      <h1 class="hero-title fade-up fade-up-1">
+        The Smartest <span class="accent-text">Word Counter</span><br />Tool Online
+      </h1>
+      <p class="hero-subtitle fade-up fade-up-2">
+        Count words, characters, sentences, and paragraphs instantly. Check reading time, speaking time, keyword density, and character limits — all in one free online word counter.
+      </p>
+      <div class="hero-cta fade-up fade-up-3">
+        <a href="#tool" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Count Words Now
+        </a>
+        <a href="#features" class="btn btn-ghost">See All Features</a>
+      </div>
+      <div class="hero-stats fade-up fade-up-4">
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free Forever</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">Login Needed</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Metrics Tracked</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Words Supported</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL SECTION -->
+  <section id="tool" class="tool-section">
+    <div class="container">
+      <div class="section-label">✦ Live Tool</div>
+      <h2 class="section-title">Word Counter — <span class="accent-text">Start Typing</span></h2>
+      <p class="section-sub">Paste or type any text below. All stats update instantly as you write.</p>
+
+      <div class="tool-wrapper">
+        <!-- Editor -->
+        <div class="editor-panel">
+          <div class="editor-toolbar">
+            <div class="toolbar-group">
+              <button class="tool-btn" id="btnCopy" title="Copy text">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+              <button class="tool-btn" id="btnClear" title="Clear text">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              </button>
+              <button class="tool-btn" id="btnDownload" title="Download as .txt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </button>
+            </div>
+            <div class="tool-divider"></div>
+            <div class="toolbar-group">
+              <select id="fontSizeSelect" class="tool-select" title="Font size">
+                <option value="14px">14px</option>
+                <option value="16px" selected>16px</option>
+                <option value="18px">18px</option>
+                <option value="20px">20px</option>
+                <option value="24px">24px</option>
+              </select>
+            </div>
+            <div class="tool-divider"></div>
+            <div class="toolbar-group" style="margin-left:auto; font-size:0.8rem; color:var(--text-muted); font-family: var(--font-mono);">
+              <span id="liveWordBadge" style="background: rgba(82,183,136,0.12); color: var(--primary-light); padding: 4px 10px; border-radius: 100px; font-weight:700;">0 words</span>
+            </div>
+          </div>
+
+          <div class="editor-body">
+            <textarea
+              id="wordTextarea"
+              placeholder="Paste or type your text here… All word count, character count, sentence count, paragraph count, and reading time statistics will update instantly."
+              spellcheck="true"
+              aria-label="Text input for word counting"
+            ></textarea>
+          </div>
+
+          <!-- Character limit bar -->
+          <div class="char-limit-bar">
+            <span class="limit-label">Limit:</span>
+            <div class="limit-presets">
+              <button class="preset-btn" data-limit="0">Off</button>
+              <button class="preset-btn" data-limit="280">X/Twitter</button>
+              <button class="preset-btn" data-limit="160">Meta Desc</button>
+              <button class="preset-btn" data-limit="2200">Instagram</button>
+              <button class="preset-btn" data-limit="3000">LinkedIn</button>
+              <button class="preset-btn" data-limit="500">Custom</button>
+            </div>
+            <div class="limit-progress-wrap" id="limitWrap" style="display:none;">
+              <div class="limit-progress"><div class="limit-bar" id="limitBar"></div></div>
+              <div class="limit-count-text" id="limitCountText"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Panel -->
+        <aside class="stats-panel" aria-label="Word count statistics">
+          <!-- Words -->
+          <div class="stat-card">
+            <div class="stat-card-label"><span class="icon">📝</span> Words</div>
+            <div class="stat-card-value" id="statWords">0</div>
+            <div class="stat-card-sub">total word count</div>
+          </div>
+
+          <!-- Characters -->
+          <div class="stat-card accent">
+            <div class="stat-card-label"><span class="icon">🔤</span> Characters</div>
+            <div class="stat-card-value" id="statChars">0</div>
+            <div class="stat-card-sub" id="statCharsNoSpace">0 without spaces</div>
+          </div>
+
+          <!-- 2-col grid -->
+          <div class="stat-grid-2">
+            <div class="stat-card-sm">
+              <div class="stat-card-label"><span class="icon">💬</span> Sentences</div>
+              <div class="stat-card-value" id="statSentences">0</div>
+            </div>
+            <div class="stat-card-sm">
+              <div class="stat-card-label"><span class="icon">¶</span> Paragraphs</div>
+              <div class="stat-card-value" id="statParagraphs">0</div>
+            </div>
+          </div>
+
+          <!-- Time card -->
+          <div class="time-card">
+            <div class="time-card-title">⏱ Estimated Time</div>
+            <div class="time-row">
+              <span class="time-row-label">📖 Reading</span>
+              <span class="time-row-val" id="statReadTime">0 sec</span>
+            </div>
+            <div class="time-row">
+              <span class="time-row-label">🎙 Speaking</span>
+              <span class="time-row-val" id="statSpeakTime">0 sec</span>
+            </div>
+            <div class="time-row">
+              <span class="time-row-label">🖊 Unique Words</span>
+              <span class="time-row-val" id="statUnique">0</span>
+            </div>
+            <div class="time-row">
+              <span class="time-row-label">📏 Avg Word Len</span>
+              <span class="time-row-val" id="statAvgWord">0</span>
+            </div>
+          </div>
+
+          <!-- Keyword density -->
+          <div class="keyword-card">
+            <div class="keyword-card-title"><span>🔑</span> Top Keywords</div>
+            <div id="keywordList"><p class="kw-empty">Start typing to see keyword density…</p></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-label">✦ Features</div>
+      <h2 class="section-title">Everything in One <span class="accent-text">Word Counter Tool</span></h2>
+      <p class="section-sub">More than a simple word count. Our online word counter tool packs every metric you need.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Real-Time Word Count</h3>
+          <p>Your word count updates the instant you type or paste. No button click, no lag. The fastest word count calculator online, period.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔤</div>
+          <h3>Character Count Online</h3>
+          <p>See character count with and without spaces simultaneously. Essential when hitting a character limit for social media, email subjects, or SEO meta descriptions.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Sentence & Paragraph Counter</h3>
+          <p>Count sentences and paragraphs automatically. Ideal for academic writing, blog structure analysis, and ensuring readable, well-paced content.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <h3>Reading & Speaking Time</h3>
+          <p>Instantly know how long your text takes to read (250 wpm average) or speak aloud (130 wpm). Perfect for speeches, presentations, and podcast scripts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔑</div>
+          <h3>Keyword Density Analyzer</h3>
+          <p>See the top 5 most-used words ranked by frequency. Essential for SEO writers checking keyword density and avoiding unintentional repetition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Character Limit Counter</h3>
+          <p>Set a character limit for Twitter/X, Instagram, LinkedIn, or meta descriptions. A live progress bar shows how close you are — turning red when over the limit.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h3>Unique Word Count</h3>
+          <p>Discover how many distinct words appear in your text. A high unique word ratio signals vocabulary richness, while a low ratio may indicate repetition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Average Word Length</h3>
+          <p>Track the average number of characters per word. Shorter averages indicate conversational writing; longer averages suggest technical or academic tone.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📥</div>
+          <h3>Download Your Text</h3>
+          <p>Save your counted text as a .txt file with one click. Never lose your edited copy — download anytime, no account required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES SECTION -->
+  <section id="usecases" class="usecases-section">
+    <div class="container">
+      <div class="section-label">✦ Use Cases</div>
+      <h2 class="section-title">Who Uses This <span class="accent-text">Word Counter?</span></h2>
+      <p class="section-sub">From students to SEO pros — everyone benefits from accurate word and character counting.</p>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-tag">Students</div>
+          <h3>Essay Word Counter</h3>
+          <p>Hit your assignment's word limit exactly. Use this free essay word counter to track progress toward 500, 1,000, or 5,000-word essay targets in real time — no surprises at submission.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Content Writers</div>
+          <h3>Blog & Article Counter</h3>
+          <p>Check your article's word count against SEO targets (typically 1,500–2,500 words for ranking content). Use keyword density analysis to optimize without over-stuffing.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Social Media</div>
+          <h3>Character Count Tool</h3>
+          <p>Use built-in Twitter, Instagram, and LinkedIn character limit presets. Write your caption or post, watch the progress bar, and never get cut off mid-sentence again.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">SEO Specialists</div>
+          <h3>Meta Description Checker</h3>
+          <p>Google recommends meta descriptions under 160 characters. Use the Meta Desc preset to check instantly — the bar turns orange when approaching and red when over the limit.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Public Speakers</div>
+          <h3>Speech & Script Timer</h3>
+          <p>The speaking time estimate (based on 130 words/minute) tells you exactly how long your speech will run. Great for TED talks, classroom presentations, and wedding speeches.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Translators</div>
+          <h3>Chinese Character Counter</h3>
+          <p>Count individual characters in Chinese, Japanese, or Korean text. Each CJK character is counted as one unit, making this a reliable tool for CJK content billing and analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how-section">
+    <div class="container">
+      <div class="section-label" style="display:block; text-align:center;">✦ How It Works</div>
+      <h2 class="section-title" style="text-align:center;">Three Steps to <span class="accent-text">Count Words Online</span></h2>
+      <p class="section-sub" style="text-align:center; margin-left:auto; margin-right:auto;">No account, no download, no complexity. Just instant results.</p>
+      <div class="steps">
+        <div class="steps-line"></div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Paste or Type Your Text</h4>
+            <p>Click inside the text area above and paste any content — essays, articles, social posts, scripts, emails, or anything else. You can also type directly if you're drafting from scratch.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Read Your Stats Instantly</h4>
+            <p>Word count, character count, sentences, paragraphs, reading time, speaking time, unique word count, and keyword density all update in real time as you type — no button required.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Set a Limit (Optional)</h4>
+            <p>Choose a platform preset (Twitter: 280, Meta Description: 160, Instagram: 2,200, LinkedIn: 3,000) to activate the character limit progress bar. Watch it turn orange and red as you approach and exceed the limit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Copy or Download</h4>
+            <p>Use the toolbar to copy your edited text to clipboard or download it as a .txt file. Everything stays private — no text is ever sent to a server.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESCRIPTION SECTION -->
+  <section id="about" class="description-section">
+    <div class="container">
+      <div class="desc-grid">
+        <div class="desc-content">
+          <div class="section-label">✦ About This Tool</div>
+          <h2>The Best Free <span class="accent-text">Online Word Counter Tool</span></h2>
+          <p>Whether you're a student trying to hit a word count for an assignment, a content writer optimizing for SEO, a social media manager checking character limits, or a developer testing input fields — you need a fast, reliable, and free word counter tool.</p>
+          <p>Our word count calculator goes far beyond simply counting words. It calculates characters (with and without spaces), sentences, paragraphs, unique words, average word length, reading time, and speaking time — all simultaneously and in real time.</p>
+          <div class="desc-list">
+            <div class="desc-item">
+              <div class="desc-check">✓</div>
+              <div class="desc-item-text">
+                <strong>Word Count in Real Time</strong>
+                <p>Statistics update with every keystroke — no need to click a button. See your live word count as you draft.</p>
+              </div>
+            </div>
+            <div class="desc-item">
+              <div class="desc-check">✓</div>
+              <div class="desc-item-text">
+                <strong>Count Words and Characters</strong>
+                <p>Get both word count and character count (with and without spaces) in one view, covering all use cases simultaneously.</p>
+              </div>
+            </div>
+            <div class="desc-item">
+              <div class="desc-check">✓</div>
+              <div class="desc-item-text">
+                <strong>100% Private — No Server Upload</strong>
+                <p>All counting happens in your browser. Your text is never sent to any server, ensuring complete privacy.</p>
+              </div>
+            </div>
+            <div class="desc-item">
+              <div class="desc-check">✓</div>
+              <div class="desc-item-text">
+                <strong>Works on All Devices</strong>
+                <p>Fully responsive design. Use this word counter tool on desktop, tablet, or mobile — it adapts perfectly to every screen size.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="comparison-table">
+            <div class="ct-header">
+              <div>Feature</div>
+              <div class="ct-us">This Tool</div>
+              <div>Others</div>
+            </div>
+            <div class="ct-row"><div>Real-Time Count</div><div class="ct-us">✅</div><div>⚠️</div></div>
+            <div class="ct-row"><div>No Login</div><div class="ct-us">✅</div><div>❌</div></div>
+            <div class="ct-row"><div>Character Limits</div><div class="ct-us">✅</div><div>❌</div></div>
+            <div class="ct-row"><div>Keyword Density</div><div class="ct-us">✅</div><div>❌</div></div>
+            <div class="ct-row"><div>Reading Time</div><div class="ct-us">✅</div><div>⚠️</div></div>
+            <div class="ct-row"><div>Speaking Time</div><div class="ct-us">✅</div><div>❌</div></div>
+            <div class="ct-row"><div>100% Private</div><div class="ct-us">✅</div><div>❌</div></div>
+            <div class="ct-row"><div>Mobile Optimized</div><div class="ct-us">✅</div><div>⚠️</div></div>
+            <div class="ct-row"><div>Always Free</div><div class="ct-us">✅</div><div>⚠️</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS SECTION -->
+  <section id="tips" class="tips-section">
+    <div class="container">
+      <div class="section-label">✦ Tips & Tricks</div>
+      <h2 class="section-title">Get More from Your <span class="accent-text">Word Count Tool</span></h2>
+      <p class="section-sub">Pro strategies for students, writers, and content professionals.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-number">01</div>
+          <h4>Paste First, Edit Second</h4>
+          <p>Paste your full draft into the counter first to see its current word and character count. Then trim or expand as needed while watching the live stats change.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">02</div>
+          <h4>Use Keyword Density for SEO</h4>
+          <p>Aim for a primary keyword density of 1–2% (about 15–30 mentions in a 1,500-word article). The top keywords panel makes this easy to check at a glance.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">03</div>
+          <h4>Check Speaking Time Before Presenting</h4>
+          <p>Paste your speech script and check the speaking time estimate. If your 5-minute slot shows 8 minutes in the tool, trim before rehearsal — not on stage.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">04</div>
+          <h4>Meta Descriptions Should Be 120–160 Chars</h4>
+          <p>Use the Meta Desc preset to ensure your meta description sits in the optimal range. Descriptions over 160 characters get cut off in Google search results.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">05</div>
+          <h4>Watch Unique Word Ratio</h4>
+          <p>Divide unique words by total words for your vocabulary ratio. A ratio below 30% often indicates repetitive writing. Aim for 40–60% in polished prose.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">06</div>
+          <h4>Download a Copy of Every Draft</h4>
+          <p>Always download your text with the toolbar button. It's a one-click backup that keeps your work safe locally — no cloud, no login, no risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-label">✦ FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="accent-text">Questions</span></h2>
+      <p class="section-sub">Everything you need to know about our free word counter online.</p>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">How does the free word counter tool work?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Simply paste or type your text into the editor above. The word counter automatically counts your words, characters, sentences, and paragraphs in real time as you type — no button click needed. All processing happens locally in your browser; no text is sent to any server.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is this word counter tool completely free?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes, this is a 100% free word counter online. There are no hidden fees, no premium tiers, no sign-up, and no account required. Every feature — including character counting, keyword density, and reading time — is available to everyone at no cost.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does the word count calculator count characters with or without spaces?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>The character count tool shows both simultaneously. The main "Characters" stat shows the total character count including spaces. Directly below it, you'll see the character count without spaces. This covers both counting methods used by different platforms and style guides.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I use this as a character limit counter for social media?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Absolutely. Use the character limit presets — Twitter/X (280), Meta Description (160), Instagram (2,200), or LinkedIn (3,000) — to activate a live progress bar below the editor. The bar turns orange when approaching the limit and red when over it, so you always know exactly where you stand.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How accurate is the reading time estimate?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>The reading time is calculated at 250 words per minute, which is the widely accepted average adult silent reading speed. The speaking time uses 130 words per minute, representing a comfortable presentation pace. Both are estimates — individual speeds vary — but they're reliable for planning purposes.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can this count words in a website or document?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes. Simply copy any text from a website, Word document, Google Doc, PDF, or any other source and paste it into the editor. The tool works with any plain text and will count words, characters, and all other metrics instantly.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does the word counter work for Chinese or other languages?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes. For CJK (Chinese, Japanese, Korean) text, each individual character is counted as one unit — which is the correct method for these languages. For Latin-script languages, words are counted by spaces between tokens. The character counter works accurately for all Unicode text.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is my text private when I use this word counter?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Completely. All word counting and analysis happens entirely inside your browser using JavaScript. Your text is never transmitted to any server. You can use this tool with sensitive documents, confidential drafts, or private writing without any privacy concerns.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is keyword density and how does the keyword counter work?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Keyword density is the percentage of times a specific word appears in your total word count. Our tool automatically removes common stop words (like "the", "and", "is") and shows you the top 5 most frequent meaningful words ranked by count, with a visual bar chart for easy comparison. This helps SEO writers ensure they're using their target keywords at an appropriate frequency.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I count words in Word using this online tool?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Open your Word document, press Ctrl+A to select all text, then Ctrl+C to copy it. Come back here and paste with Ctrl+V into the text box. Your word count, character count, and all other stats will appear instantly. This is often faster than navigating Word's built-in word count tool, especially for quick checks.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-dots"></div>
+        <h2>Ready to Count Your<br/><span class="accent-text">Words Right Now?</span></h2>
+        <p>Join writers, students, SEO professionals, and content creators who rely on this free online word counter tool daily. No account. No limits. Just results.</p>
+        <a href="#tool" class="btn btn-primary btn-large">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Start Counting — It's Free
+        </a>
+        <p class="cta-note">No login needed · 100% private · Works on all devices</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- Footer Component Injection -->
+  <div id="footer-root"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- =============================================
+       JAVASCRIPT
+       ============================================= -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---- DOM ---- */
+    const textarea      = document.getElementById('wordTextarea');
+    const statWords     = document.getElementById('statWords');
+    const statChars     = document.getElementById('statChars');
+    const statCharsNoSp = document.getElementById('statCharsNoSpace');
+    const statSentences = document.getElementById('statSentences');
+    const statParagraphs= document.getElementById('statParagraphs');
+    const statReadTime  = document.getElementById('statReadTime');
+    const statSpeakTime = document.getElementById('statSpeakTime');
+    const statUnique    = document.getElementById('statUnique');
+    const statAvgWord   = document.getElementById('statAvgWord');
+    const keywordList   = document.getElementById('keywordList');
+    const liveWordBadge = document.getElementById('liveWordBadge');
+    const limitBar      = document.getElementById('limitBar');
+    const limitWrap     = document.getElementById('limitWrap');
+    const limitCountTxt = document.getElementById('limitCountText');
+    const fontSizeSelect= document.getElementById('fontSizeSelect');
+    const btnCopy       = document.getElementById('btnCopy');
+    const btnClear      = document.getElementById('btnClear');
+    const btnDownload   = document.getElementById('btnDownload');
+    const toast         = document.getElementById('toast');
+    const darkToggle    = document.getElementById('darkToggle');
+    const hamburger     = document.getElementById('hamburger');
+    const mobileNav     = document.getElementById('mobileNav');
+
+    let charLimit = 0;
+
+    /* ---- STOP WORDS ---- */
+    const STOP = new Set(['the','a','an','and','or','but','in','on','at','to','for',
+      'of','with','is','are','was','were','be','been','being','have','has','had',
+      'do','does','did','will','would','could','should','may','might','shall',
+      'can','i','you','he','she','it','we','they','me','him','her','us','them',
+      'my','your','his','its','our','their','this','that','these','those','not',
+      'no','so','if','as','by','up','out','from','about','into','through','after',
+      'before','between','then','than','also','just','more','some','what','which',
+      'who','how','when','where','all','one','two','there','here']);
+
+    /* ---- ANALYSIS ---- */
+    function analyze(text) {
+      const trimmed = text.trim();
+
+      // Words
+      const wordMatches = trimmed.length ? trimmed.match(/\b\S+\b/g) || [] : [];
+      const wordCount = wordMatches.length;
+
+      // Characters
+      const charCount = text.length;
+      const charNoSpace = text.replace(/\s/g, '').length;
+
+      // Sentences (split on . ! ? followed by space/end)
+      const sentenceCount = trimmed.length
+        ? (trimmed.match(/[^.!?]*[.!?]+/g) || [trimmed]).length
+        : 0;
+
+      // Paragraphs
+      const paragraphCount = trimmed.length
+        ? trimmed.split(/\n\s*\n+/).filter(p => p.trim().length > 0).length
+        : 0;
+
+      // Time estimates
+      const READ_WPM = 250, SPEAK_WPM = 130;
+      const readSec = Math.round((wordCount / READ_WPM) * 60);
+      const speakSec = Math.round((wordCount / SPEAK_WPM) * 60);
+
+      // Unique words
+      const wordArr = wordMatches.map(w => w.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]/g, ''));
+      const uniqueWords = new Set(wordArr.filter(w => w.length > 0));
+      const uniqueCount = uniqueWords.size;
+
+      // Avg word length
+      const totalCharsInWords = wordArr.reduce((s, w) => s + w.length, 0);
+      const avgWordLen = wordCount > 0 ? (totalCharsInWords / wordCount).toFixed(1) : '0';
+
+      // Keyword density (top 5 non-stop words)
+      const freq = {};
+      wordArr.forEach(w => {
+        if (w.length > 2 && !STOP.has(w)) freq[w] = (freq[w] || 0) + 1;
+      });
+      const topKeywords = Object.entries(freq)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+
+      return { wordCount, charCount, charNoSpace, sentenceCount, paragraphCount,
+               readSec, speakSec, uniqueCount, avgWordLen, topKeywords };
+    }
+
+    /* ---- FORMAT TIME ---- */
+    function fmtTime(sec) {
+      if (sec < 60) return sec + ' sec';
+      const m = Math.floor(sec / 60), s = sec % 60;
+      return s > 0 ? `${m} min ${s} sec` : `${m} min`;
+    }
+
+    /* ---- ANIMATE NUMBER ---- */
+    function animNum(el, val) {
+      const prev = parseInt(el.textContent.replace(/,/g, '')) || 0;
+      if (prev === val) return;
+      const diff = val - prev, steps = 12, dur = 200;
+      let step = 0;
+      const id = setInterval(() => {
+        step++;
+        const v = Math.round(prev + diff * (step / steps));
+        el.textContent = v.toLocaleString();
+        if (step >= steps) { el.textContent = val.toLocaleString(); clearInterval(id); }
+      }, dur / steps);
+    }
+
+    /* ---- UPDATE UI ---- */
+    function updateUI() {
+      const text = textarea.value;
+      const r = analyze(text);
+
+      animNum(statWords, r.wordCount);
+      animNum(statChars, r.charCount);
+      statCharsNoSp.textContent = r.charNoSpace.toLocaleString() + ' without spaces';
+      animNum(statSentences, r.sentenceCount);
+      animNum(statParagraphs, r.paragraphCount);
+      statReadTime.textContent = fmtTime(r.readSec);
+      statSpeakTime.textContent = fmtTime(r.speakSec);
+      statUnique.textContent = r.uniqueCount.toLocaleString();
+      statAvgWord.textContent = r.avgWordLen + ' chars';
+      liveWordBadge.textContent = r.wordCount.toLocaleString() + ' word' + (r.wordCount !== 1 ? 's' : '');
+
+      // Keywords
+      if (r.topKeywords.length === 0) {
+        keywordList.innerHTML = '<p class="kw-empty">Start typing to see keyword density…</p>';
+      } else {
+        const maxCount = r.topKeywords[0][1];
+        keywordList.innerHTML = r.topKeywords.map(([word, count]) => `
+          <div class="kw-row">
+            <span class="kw-word">${escHtml(word)}</span>
+            <div class="kw-bar-wrap"><div class="kw-bar" style="width:${Math.round(count/maxCount*100)}%"></div></div>
+            <span class="kw-count">${count}</span>
+          </div>`).join('');
+      }
+
+      // Character limit bar
+      if (charLimit > 0) {
+        const pct = Math.min((r.charCount / charLimit) * 100, 100);
+        limitBar.style.width = pct + '%';
+        limitBar.className = 'limit-bar' + (pct >= 100 ? ' over' : pct >= 80 ? ' warn' : '');
+        limitCountTxt.textContent = r.charCount + ' / ' + charLimit + ' chars';
+        limitWrap.style.display = 'block';
+      } else {
+        limitWrap.style.display = 'none';
+      }
+    }
+
+    function escHtml(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    /* ---- EVENTS ---- */
+    let rafId;
+    textarea.addEventListener('input', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateUI);
+    });
+
+    /* Font size */
+    fontSizeSelect.addEventListener('change', () => {
+      textarea.style.fontSize = fontSizeSelect.value;
+    });
+
+    /* Presets */
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        charLimit = parseInt(btn.dataset.limit) || 0;
+        updateUI();
+      });
+    });
+
+    /* Copy */
+    btnCopy.addEventListener('click', () => {
+      navigator.clipboard.writeText(textarea.value).then(() => showToast('Text copied!')).catch(() => {
+        textarea.select();
+        document.execCommand('copy');
+        showToast('Text copied!');
+      });
+    });
+
+    /* Clear */
+    btnClear.addEventListener('click', () => {
+      if (textarea.value && confirm('Clear all text?')) {
+        textarea.value = '';
+        updateUI();
+        showToast('Text cleared.');
+      }
+    });
+
+    /* Download */
+    btnDownload.addEventListener('click', () => {
+      const text = textarea.value;
+      if (!text.trim()) { showToast('Nothing to download.'); return; }
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'text-' + Date.now() + '.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showToast('Downloaded!');
+    });
+
+    /* Dark mode */
+    const saved = localStorage.getItem('memonotepad_theme');
+    if (saved === 'dark') { document.body.className = 'dark-mode'; darkToggle.textContent = '☀️'; }
+    darkToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark-mode');
+      document.body.className = isDark ? 'dark-mode' : 'light-mode';
+      darkToggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('memonotepad_theme', isDark ? 'dark' : 'light');
+    });
+
+    /* Hamburger */
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+
+    /* FAQ */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); mobileNav.classList.remove('open'); }
+      });
+    });
+
+    /* Toast */
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    /* Init */
+    updateUI();
+  })();
+  </script>
+</body>
+</html>
