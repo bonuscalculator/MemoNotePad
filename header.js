@@ -18,8 +18,8 @@
           <a href="/diary" class="nav-link">Diary</a>
           <a href="/random-text" class="nav-link">Random Text</a>
           <a href="/list-maker" class="nav-link">List Maker</a>
-          <a href="/#why-us" class="nav-link">Why Us</a>
-          <a href="/#tips" class="nav-link">Tips</a>
+          <a href="/choice-maker" class="nav-link">Decision Maker</a>
+          <a href="/word-counter" class="nav-link">Word Counter</a>
           <a href="/#faq" class="nav-link">FAQ</a>
         </nav>
 
@@ -38,8 +38,8 @@
         <a href="/diary" class="nav-link">Diary</a>
         <a href="/random-text" class="nav-link">Random Text</a>
         <a href="/list-maker" class="nav-link">List Maker</a>
-        <a href="/#why-us" class="nav-link">Why Us</a>
-        <a href="/#tips" class="nav-link">Tips</a>
+        <a href="/choice-maker" class="nav-link">Decision Maker</a>
+        <a href="/word-counter" class="nav-link">Word Counter</a>
         <a href="/#faq" class="nav-link">FAQ</a>
       </nav>
     </header>
