@@ -683,7 +683,7 @@
         filtered.forEach(article => {
           const card = document.createElement("a");
           card.className = "article-card";
-          card.href = `/article/${article.id}`;
+          card.href = `/${article.id}`;
           card.setAttribute("data-id", article.id);
           
           card.innerHTML = `
