@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BX53Q83EYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BX53Q83EYZ');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Blog | Memo NotePad Online – Productivity Tips & Free Tools</title>
+  <meta name="description" content="Explore expert articles on digital journaling, study planners, word counters, decision making, and productivity tools. Free guides for students and professionals." />
+  <meta name="keywords" content="productivity blog, online notepad tips, study planner, word counter, decision maker, digital diary, list maker, random text generator" />
+  <meta name="author" content="Memo NotePad Team" />
+  <link rel="canonical" href="https://www.memonotepad.online/blog" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Memo NotePad Blog – Smart Writing & Productivity" />
+  <meta property="og:description" content="Free guides: digital diary, study schedules, word counter tips, decision frameworks & more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.memonotepad.online/blog" />
+  <meta property="og:image" content="https://www.memonotepad.online/og-blog.png" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2D6A4F;
+      --primary-light: #52B788;
+      --primary-dark: #1B4332;
+      --accent: #F4A261;
+      --accent-dark: #E76F51;
+      --bg: #F8F5F0;
+      --bg-alt: #FFFEF9;
+      --surface: #FFFFFF;
+      --surface-2: #F0EDE7;
+      --border: #DDD8CE;
+      --text: #1A1A2E;
+      --text-muted: #6B6560;
+      --text-light: #9E998F;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --header-h: 68px;
+      --transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .dark-mode {
+      --bg: #0F1117;
+      --bg-alt: #161923;
+      --surface: #1E2130;
+      --surface-2: #252839;
+      --border: #2E3348;
+      --text: #EEEAE2;
+      --text-muted: #9BA3BF;
+      --text-light: #6B7280;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.2s, color 0.2s;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles (mirror main site) */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      background: rgba(248, 245, 240, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: background 0.2s;
+    }
+    .dark-mode .site-header {
+      background: rgba(15, 17, 23, 0.92);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--text);
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+    .dark-toggle {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: 0.2s;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+    .mobile-nav a {
+      padding: 12px;
+      font-weight: 500;
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    /* Main Blog Layout */
+    .blog-hero {
+      padding-top: calc(var(--header-h) + 60px);
+      padding-bottom: 48px;
+      text-align: center;
+      background: linear-gradient(145deg, var(--bg) 0%, var(--surface) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .blog-sub {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .pill {
+      padding: 8px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pill.active, .pill:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .articles-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+    }
+    .article-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+    .card-badge {
+      padding: 12px 18px 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+    .card-content {
+      padding: 8px 22px 22px;
+      flex: 1;
+    }
+    .card-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .card-excerpt {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-top: auto;
+    }
+    .article-footer {
+      padding: 16px 22px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+    .modal-content {
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      background: var(--surface);
+      border-radius: 28px;
+      overflow-y: auto;
+      padding: 32px 36px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: var(--surface-2);
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      transition: 0.2s;
+    }
+    .modal-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      padding-right: 40px;
+    }
+    .modal-meta {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+    }
+    .modal-body {
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .modal-body p {
+      margin-bottom: 1rem;
+    }
+    .modal-body ul {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    .tooltip-cta {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      border-radius: 30px;
+      padding: 10px 18px;
+      margin-top: 20px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.65);
+      padding: 40px 24px 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .articles-grid { gap: 20px; padding: 32px 20px; }
+      .modal-content { padding: 24px; }
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      z-index: 3000;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body class="light-mode">
+
+<div id="header-root"></div>
+
+<section class="blog-hero">
+  <div class="container">
+    <h1>📖 The NotePad Journal</h1>
+    <p class="blog-sub">Expert insights on digital productivity, smart writing tools, and free online apps — curated for students, writers & professionals.</p>
+    <div class="category-pills" id="categoryFilter">
+      <button class="pill active" data-filter="all">All Articles</button>
+      <button class="pill" data-filter="productivity">Productivity</button>
+      <button class="pill" data-filter="students">For Students</button>
+      <button class="pill" data-filter="writing">Writing & SEO</button>
+      <button class="pill" data-filter="tools">Free Tools</button>
+    </div>
+  </div>
+</section>
+
+<div class="articles-grid" id="articlesGrid"></div>
+
+<div id="articleModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-close" id="closeModalBtn">&times;</div>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<div id="footer-root"></div>
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+
+<script>
+  (function() {
+    // ---------- ARTICLE DATABASE (from Topics.txt) ----------
+    const articlesData = [
+      {
+        id: 1,
+        title: "How to Keep a Digital Diary Online for Free – Privacy & Productivity Tips",
+        category: "productivity",
+        tags: ["diary", "privacy", "journaling"],
+        excerpt: "Learn how to journal daily with full privacy. Use your online notepad as a secure digital diary. Prompts, best practices & zero-login peace of mind.",
+        content: `<p>Keeping a digital diary has never been easier with Memo NotePad Online. Unlike traditional journaling apps, our tool requires no login, stores everything locally, and respects your privacy.</p>
+        <p><strong>Benefits of daily journaling:</strong> Reduces stress, boosts creativity, and tracks personal growth. Using your free memo notepad as a diary means your thoughts stay only on your device—zero cloud leaks.</p>
+        <p><strong>Privacy best practices:</strong> Use descriptive but coded titles (e.g., "June Reflections"). Download your diary entries as encrypted .txt files monthly. Never share your browser storage.</p>
+        <p><strong>Prompts to start:</strong> "What made me smile today?", "One thing I learned", "3 goals for tomorrow". Just create a new memo and write freely—auto-save keeps everything safe.</p>
+        <a href="/#app" class="tooltip-cta">✍️ Start Your Digital Diary →</a>`,
+        readTime: "5 min read",
+        date: "Apr 12, 2026"
+      },
+      {
+        id: 2,
+        title: "Best Free Word Counter Tools for Writers, Students & Bloggers",
+        category: "writing",
+        tags: ["word counter", "SEO", "essays"],
+        excerpt: "Master SEO word counts, meet essay limits, and track daily writing goals with our powerful free Word Counter tool. Real-time stats inside Memo Notepad.",
+        content: `<p>Our integrated <strong>Word Counter</strong> automatically shows word & character count as you type. Perfect for SEO articles (ideal length: 1500-2500 words), college essays (500-1000 words), or daily journaling goals.</p>
+        <p><strong>Writing goals:</strong> Set a daily word target and watch the counter rise. Use the download feature to export drafts for submission.</p>
+        <p>Bloggers can check keyword density & readability—just copy text into the memo editor. Students benefit from real-time feedback avoiding last-minute length surprises.</p>
+        <a href="/#app" class="tooltip-cta">🔢 Open Word Counter →</a>`,
+        readTime: "4 min read",
+        date: "Apr 10, 2026"
+      },
+      {
+        id: 3,
+        title: "How to Create Perfect Study Schedules with a Free Online Study Planner",
+        category: "students",
+        tags: ["study planner", "Pomodoro", "exam prep"],
+        excerpt: "In-depth tutorial on building weekly study plans, Pomodoro integration, and exam strategies using a completely free online study planner.",
+        content: `<p>Combine Memo NotePad with proven study methods. Use a dedicated memo as your study planner: create time blocks, track Pomodoro sessions, and list weekly goals.</p>
+        <p><strong>Sample weekly plan:</strong> Monday: Math (2hrs Pomodoro 25/5), Tuesday: Essay outline, Wednesday: Active recall. Leverage checklists with rich text formatting.</p>
+        <p>Set priorities with bullet lists and bold deadlines. The auto-save ensures you never lose progress. Integrate with timer apps and review your planner every morning.</p>
+        <a href="/#app" class="tooltip-cta">📚 Create Your Study Plan →</a>`,
+        readTime: "6 min read",
+        date: "Apr 5, 2026"
+      },
+      {
+        id: 4,
+        title: "Decision Maker Tool: How to Make Better Choices Quickly (With Examples)",
+        category: "productivity",
+        tags: ["decision maker", "frameworks"],
+        excerpt: "Use our Decision Maker app for career dilemmas, daily choices, food decisions, and more. Real-life frameworks that eliminate second-guessing.",
+        content: `<p>Stuck between options? Create a "Decision Matrix" memo. List pros and cons, use bold for decisive factors, and let the random generator break ties.</p>
+        <p><strong>Career example:</strong> Compare job offers via a numbered list: salary, culture, growth. Weight each point. Use highlighter for top priorities.</p>
+        <p><strong>Everyday decisions:</strong> "What to eat?" or "Weekend plans?" – write down 3 random choices and generate a random text pick with our upcoming randomizer or simply close eyes and point.</p>
+        <a href="/#app" class="tooltip-cta">🎲 Try Decision Framework →</a>`,
+        readTime: "5 min read",
+        date: "Mar 28, 2026"
+      },
+      {
+        id: 5,
+        title: "25 Creative Ways to Use a Random Text Generator for Writers & Designers",
+        category: "writing",
+        tags: ["lorem ipsum", "story prompts", "UI testing"],
+        excerpt: "Explore lorem ipsum, writing prompts, password ideas, and brainstorming hacks using our Random Text tool. Essential for designers and authors.",
+        content: `<p>Random text isn't just filler. Writers can generate story prompts: "Describe a mysterious door in a forest." Designers use lorem ipsum for mockups. Brainstorm product names by mixing random words.</p>
+        <p><strong>Pro tip:</strong> Keep a "Random Inspo" memo and generate 3 words, then write a paragraph. Use passwords ideas as secure passphrases. UI/UX testers can quickly fill forms with dummy text.</p>
+        <p>List 25 creative methods inside one memo: from comedy sketches to coding variable names.</p>
+        <a href="/#app" class="tooltip-cta">✨ Spark Creativity →</a>`,
+        readTime: "7 min read",
+        date: "Mar 22, 2026"
+      },
+      {
+        id: 6,
+        title: "How to Make To-Do Lists That Actually Work (Free List Maker Included)",
+        category: "productivity",
+        tags: ["to-do list", "list maker", "task management"],
+        excerpt: "Deep dive into effective list-making techniques – daily, weekly, project-based, and shopping lists using our free online List Maker.",
+        content: `<p>Stop ineffective lists. Use Memo NotePad as your ultimate list maker. Group tasks by context: work, home, errands. Use checkboxes or bullet points for subtasks.</p>
+        <p><strong>Ivy Lee Method:</strong> Each evening, write 6 priority tasks for tomorrow. <strong>Eisenhower Matrix:</strong> urgent/important quadrants in separate sections.</p>
+        <p>Create reusable templates: "Weekly Review", "Grocery Master List", "Project milestones". Search lets you find any task instantly across all memos.</p>
+        <a href="/#app" class="tooltip-cta">✅ Build Your Smart List →</a>`,
+        readTime: "5 min read",
+        date: "Mar 18, 2026"
+      },
+      {
+        id: 7,
+        title: "Online Notepad vs Traditional Notebook: Why Digital Wins in 2026",
+        category: "tools",
+        tags: ["digital notepad", "productivity comparison"],
+        excerpt: "Comparison: auto-save, cloudless privacy, searchability, and accessibility. See why Memo Notepad outperforms paper notebooks for modern workflows.",
+        content: `<p>Traditional notebooks are beautiful, but digital notepads offer auto-save (never lose notes), instant search, and zero weight. Memo NotePad adds no login, rich text, and free forever.</p>
+        <p><strong>Key advantages:</strong> Ctrl+F to find a note from 6 months ago. Edit anywhere on any device. Export to text for archival. Plus the dark mode protects eyes at night.</p>
+        <p>Paper is static; digital memos can be reorganized, duplicated, and formatted. Make the switch today.</p>
+        <a href="/#app" class="tooltip-cta">🚀 Switch to Digital →</a>`,
+        readTime: "4 min read",
+        date: "Mar 10, 2026"
+      },
+      {
+        id: 8,
+        title: "Free Productivity Tools Every Student Needs in 2026",
+        category: "students",
+        tags: ["student toolkit", "study planner", "word counter"],
+        excerpt: "Roundup featuring all your essential free tools: Study Planner, Word Counter, List Maker, Diary, and Notepad – ultimate student toolkit.",
+        content: `<p>Students, meet the complete academic toolkit: <strong>Memo NotePad</strong> for lecture notes, <strong>Word Counter</strong> for essays, <strong>Study Planner</strong> for exam schedules, <strong>List Maker</strong> for assignments, <strong>Decision Maker</strong> for choosing electives.</p>
+        <p>All tools are 100% free, no subscriptions. Use the search feature to find specific notes across semesters. Download revision notes before exams.</p>
+        <p>Replace expensive apps with this lightweight, privacy-first ecosystem. Start with a weekly planner memo and track your GPA goals.</p>
+        <a href="/#app" class="tooltip-cta">🎓 Get Free Toolkit →</a>`,
+        readTime: "6 min read",
+        date: "Mar 5, 2026"
+      },
+      {
+        id: 9,
+        title: "How to Use Memo Notepad for Meeting Notes, Quick Ideas & Brain Dumps",
+        category: "productivity",
+        tags: ["meeting notes", "brain dump", "quick memos"],
+        excerpt: "Practical guide showing real-world workflows for professionals and students using the online memo notepad for maximum efficiency.",
+        content: `<p>Replace sticky notes: create a fresh memo before each meeting, write action items in bold, and share via copy-paste. For brain dumps, use a "Daily Overflow" memo to capture random ideas before organizing later.</p>
+        <p><strong>Workflow example:</strong> Morning brain dump (5 min), then sort into project memos. For collaborative meetings, copy minutes to Slack or email directly from the editor.</p>
+        <p>Remote workers can keep a "Standup Notes" memo updated daily. Auto-save ensures nothing vanishes during power outages.</p>
+        <a href="/#app" class="tooltip-cta">⚡ Master Meeting Notes →</a>`,
+        readTime: "4 min read",
+        date: "Feb 27, 2026"
+      }
+    ];
+
+    // helper functions
+    let currentFilter = "all";
+    const grid = document.getElementById("articlesGrid");
+    const modal = document.getElementById("articleModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalBody = document.getElementById("modalBody");
+    const toastDiv = document.getElementById("toast");
+    
+    function showToast(msg, duration = 2000) {
+      toastDiv.textContent = msg;
+      toastDiv.classList.add("show");
+      setTimeout(() => toastDiv.classList.remove("show"), duration);
+    }
+    
+    function renderArticles() {
+      const filtered = articlesData.filter(art => currentFilter === "all" || art.category === currentFilter);
+      if (!grid) return;
+      grid.innerHTML = "";
+      filtered.forEach(article => {
+        const card = document.createElement("div");
+        card.className = "article-card";
+        card.setAttribute("data-id", article.id);
+        card.innerHTML = `
+          <div class="card-badge">${article.category.toUpperCase()} • ${article.readTime}</div>
+          <div class="card-content">
+            <h3>${escapeHtml(article.title)}</h3>
+            <div class="card-excerpt">${escapeHtml(article.excerpt)}</div>
+            <div class="read-more">Read full article →</div>
+          </div>
+          <div class="article-footer">
+            <span>📅 ${article.date}</span>
+            <span>💡 ${article.tags.slice(0,2).join(", ")}</span>
+          </div>
+        `;
+        card.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openModal(article.id);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(id) {
+      const article = articlesData.find(a => a.id === id);
+      if (!article) return;
+      modalTitle.innerHTML = escapeHtml(article.title);
+      modalMeta.innerHTML = `${article.date} · ${article.readTime} · ${article.category}`;
+      modalBody.innerHTML = article.content;
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+
+    // modal close
+    function closeModal() {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    // filter pills
+    function initFilters() {
+      const pills = document.querySelectorAll(".pill");
+      pills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          const filterVal = pill.getAttribute("data-filter");
+          if (!filterVal) return;
+          currentFilter = filterVal;
+          pills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          renderArticles();
+        });
+      });
+    }
+
+    // dark mode integration
+    function initDarkMode() {
+      const stored = localStorage.getItem("memo_notepad_settings");
+      let dark = false;
+      if (stored) {
+        try {
+          const settings = JSON.parse(stored);
+          dark = settings.darkMode === true;
+        } catch(e) {}
+      }
+      if (dark) {
+        document.body.classList.add("dark-mode");
+        document.body.classList.remove("light-mode");
+        const toggleBtn = document.getElementById("darkModeToggle");
+        if (toggleBtn) toggleBtn.innerHTML = "☀️";
+      }
+      const toggleBtn = document.getElementById("darkModeToggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const isDark = document.body.classList.contains("dark-mode");
+          if (isDark) {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+            toggleBtn.innerHTML = "🌙";
+            localStorage.setItem("memo_notepad_settings", JSON.stringify({ darkMode: false }));
+          } else {
+            document.body.classList.add("dark-mode");
+            document.body.classList.remove("light-mode");
+            toggleBtn.innerHTML = "☀️";
+            localStorage.setItem("memo_notepad_settings", JSON.stringify({ darkMode: true }));
+          }
+        });
+      }
+    }
+
+    // mobile nav
+    const hamburger = document.getElementById("hamburgerBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener("click", () => {
+        mobileNav.classList.toggle("open");
+        if (mobileNav.style.display === "flex") mobileNav.style.display = "none";
+        else mobileNav.style.display = "flex";
+      });
+      document.querySelectorAll(".mobile-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNav.style.display = "none";
+          mobileNav.classList.remove("open");
+        });
+      });
+    }
+    
+    // close modal on background or close btn
+    window.onclick = function(e) {
+      if (e.target === modal) closeModal();
+    };
+    document.getElementById("closeModalBtn")?.addEventListener("click", closeModal);
+    
+    // init
+    renderArticles();
+    initFilters();
+    initDarkMode();
+    // optional smooth anchor on header home link
+    document.querySelectorAll('.logo, .nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href === '/') return; // root, fine
+      });
+    });
+    showToast("📰 Latest articles loaded", 1500);
+  })();
+</script>
+</body>
+</html>
