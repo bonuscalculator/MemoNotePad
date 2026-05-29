@@ -666,7 +666,7 @@
         const article = articlesData.find(a => a.id === articleId);
         if (article) {
           sessionStorage.setItem("blogArticle", JSON.stringify(article));
-          window.location.href = `/article/${articleId}`;
+          window.location.href = `/${articleId}`;
         }
       }
 
