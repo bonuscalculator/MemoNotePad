@@ -11,7 +11,7 @@
   </script>
   
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
   <title>Random Text Generator - Free Online Lorem Ipsum & Dummy Text Tool</title>
   <meta name="description" content="Free online Random Text Generator. Create realistic dummy text, Lorem Ipsum, random sentences, paragraphs, and placeholder content instantly. Perfect for designers, developers & writers." />
   <meta name="keywords" content="random text generator, lorem ipsum generator, dummy text generator, placeholder text, online text generator, fake text generator, random paragraph generator" />
@@ -70,23 +70,62 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Fixed Feature Card Styles - Ensures visibility */
+    /* ===== MOBILE-FIXED STYLES ===== */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Fix for mobile viewport */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* Container fixes */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 12px;
+      }
+    }
+
+    /* Fixed Feature Card Styles */
     .features-section {
       background: var(--bg-alt);
-      padding: 100px 0;
+      padding: 60px 0 80px;
       position: relative;
       z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .features-section {
+        padding: 100px 0;
+      }
     }
 
     .feature-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 30px;
+      padding: 24px 20px;
       transition: all var(--transition);
       opacity: 1;
       transform: translateY(0);
       box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 500px) {
+      .feature-card {
+        padding: 30px;
+      }
     }
 
     .feature-card:hover {
@@ -96,78 +135,162 @@
     }
 
     .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 14px;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 500px) {
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 14px;
+      }
     }
 
     .feature-card h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--text);
     }
 
+    @media (min-width: 500px) {
+      .feature-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+      }
+    }
+
     .feature-card p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.65;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 500px) {
+      .feature-card p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
     }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 480px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
     }
 
     .section-label {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
+      gap: 6px;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--primary-light);
       background: rgba(82, 183, 136, 0.12);
-      padding: 6px 14px;
+      padding: 4px 12px;
       border-radius: 100px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 500px) {
+      .section-label {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+        margin-bottom: 18px;
+        gap: 8px;
+        letter-spacing: 0.14em;
+      }
     }
 
     .section-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
       font-weight: 700;
       line-height: 1.22;
       color: var(--text);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 500px) {
+      .section-title {
+        margin-bottom: 16px;
+      }
     }
 
     .section-sub {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       max-width: 560px;
-      margin-bottom: 56px;
+      margin-bottom: 32px;
     }
 
-    /* Use Cases Styling */
+    @media (min-width: 500px) {
+      .section-sub {
+        font-size: 1.05rem;
+        margin-bottom: 56px;
+      }
+    }
+
+    /* Use Cases */
     .usecases-section {
-      padding: 100px 0;
+      padding: 60px 0 80px;
       background: var(--bg);
+    }
+
+    @media (min-width: 768px) {
+      .usecases-section {
+        padding: 100px 0;
+      }
     }
 
     .usecases-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 480px) {
+      .usecases-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .usecases-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
     }
 
     .usecase-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 28px;
+      padding: 24px 20px;
       transition: all var(--transition);
+    }
+
+    @media (min-width: 500px) {
+      .usecase-card {
+        padding: 28px;
+      }
     }
 
     .usecase-card:hover {
@@ -177,37 +300,79 @@
     }
 
     .usecase-emoji {
-      font-size: 2.2rem;
-      margin-bottom: 14px;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 500px) {
+      .usecase-emoji {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+      }
     }
 
     .usecase-card h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 500px) {
+      .usecase-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+      }
     }
 
     .usecase-card p {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
+    @media (min-width: 500px) {
+      .usecase-card p {
+        font-size: 0.88rem;
+      }
+    }
+
     /* CTA Box */
+    .cta-section {
+      padding: 60px 0;
+    }
+
+    @media (min-width: 768px) {
+      .cta-section {
+        padding: 100px 0;
+      }
+    }
+
     .cta-box {
       background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
       border-radius: var(--radius-lg);
-      padding: 80px 48px;
+      padding: 40px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
+    @media (min-width: 500px) {
+      .cta-box {
+        padding: 60px 36px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .cta-box {
+        padding: 80px 48px;
+      }
+    }
+
     .cta-box h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-size: clamp(1.5rem, 4vw, 2.6rem);
       font-weight: 700;
       color: #fff;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       position: relative;
       z-index: 1;
     }
@@ -215,10 +380,17 @@
     .cta-box p {
       color: rgba(255,255,255,0.78);
       max-width: 520px;
-      margin: 0 auto 36px;
-      font-size: 1rem;
+      margin: 0 auto 28px;
+      font-size: 0.95rem;
       position: relative;
       z-index: 1;
+    }
+
+    @media (min-width: 500px) {
+      .cta-box p {
+        font-size: 1rem;
+        margin-bottom: 36px;
+      }
     }
 
     .cta-box .btn-primary {
@@ -227,11 +399,86 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       position: relative;
       z-index: 1;
+      padding: 12px 24px;
+      font-size: 0.95rem;
     }
 
-    .cta-box .btn-primary:hover {
-      background: #F0FFF4;
-      transform: translateY(-3px);
+    @media (min-width: 500px) {
+      .cta-box .btn-primary {
+        padding: 16px 36px;
+        font-size: 1.05rem;
+      }
+    }
+
+    .cta-box .btn-primary:active {
+      transform: scale(0.96);
+    }
+
+    /* App section mobile */
+    .app-section {
+      padding: 60px 0 80px;
+      background: var(--bg-alt);
+    }
+
+    @media (min-width: 768px) {
+      .app-section {
+        padding: 100px 0;
+      }
+    }
+
+    .app-wrapper {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: auto;
+      min-height: 600px;
+    }
+
+    @media (min-width: 768px) {
+      .app-wrapper {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        height: auto;
+        min-height: 580px;
+      }
+    }
+
+    /* Sidebar - mobile */
+    .app-sidebar {
+      display: flex;
+      flex-direction: column;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+      height: auto;
+      padding-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .app-sidebar {
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+        height: 100%;
+        padding-bottom: 20px;
+      }
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sidebar-header h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     /* Generator output area */
@@ -239,34 +486,842 @@
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 28px;
-      min-height: 320px;
-      font-size: 1.02rem;
-      line-height: 1.8;
+      padding: 20px 16px;
+      min-height: 200px;
+      font-size: 0.92rem;
+      line-height: 1.7;
       white-space: pre-wrap;
       position: relative;
+      margin: 16px;
     }
-    
+
+    @media (min-width: 500px) {
+      .generator-output {
+        padding: 28px;
+        min-height: 320px;
+        font-size: 1.02rem;
+        line-height: 1.8;
+        margin: 20px;
+      }
+    }
+
     .output-actions {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 12px;
+      right: 12px;
       display: flex;
-      gap: 8px;
+      gap: 6px;
       opacity: 0.9;
+      flex-wrap: wrap;
     }
-    
+
+    @media (min-width: 500px) {
+      .output-actions {
+        top: 16px;
+        right: 16px;
+        gap: 8px;
+      }
+    }
+
+    .output-actions .btn-sm {
+      padding: 4px 10px;
+      font-size: 0.7rem;
+    }
+
+    @media (min-width: 500px) {
+      .output-actions .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.82rem;
+      }
+    }
+
+    /* History list */
+    #historyList {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 180px;
+      overflow-y: auto;
+      padding: 0 16px 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 500px) {
+      #historyList {
+        gap: 8px;
+        max-height: 240px;
+        padding: 0 20px 20px;
+      }
+    }
+
+    #historyList::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    #historyList::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #historyList::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
     .note-item {
-      padding: 11px 12px;
+      padding: 10px 12px;
       border-radius: var(--radius-sm);
       cursor: pointer;
       transition: all var(--transition);
       border: 1px solid transparent;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
-    
+
+    .note-item:active {
+      transform: scale(0.98);
+    }
+
     .note-item:hover {
       background: var(--surface);
       border-color: var(--border);
+    }
+
+    /* Controls */
+    .controls-group {
+      padding: 0 14px 16px;
+    }
+
+    @media (min-width: 500px) {
+      .controls-group {
+        padding: 0 16px 20px;
+      }
+    }
+
+    .controls-group label {
+      display: block;
+      margin: 16px 0 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 500px) {
+      .controls-group label {
+        margin: 18px 0 8px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .tool-select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    @media (min-width: 500px) {
+      .tool-select {
+        padding: 12px 14px;
+        font-size: 1rem;
+      }
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    @media (min-width: 500px) {
+      .format-grid {
+        gap: 10px;
+      }
+    }
+
+    .format-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--surface-2);
+      color: var(--text);
+      transition: all var(--transition);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      text-align: center;
+    }
+
+    @media (min-width: 500px) {
+      .format-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .format-btn:active {
+      transform: scale(0.95);
+    }
+
+    .format-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (min-width: 500px) {
+      .quantity-control {
+        gap: 12px;
+      }
+    }
+
+    .quantity-control input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      outline: none;
+    }
+
+    .quantity-control input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (min-width: 500px) {
+      .quantity-control input[type="range"]::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .quantity-control input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      border: none;
+    }
+
+    @media (min-width: 500px) {
+      .quantity-control input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .quantity-control input[type="number"] {
+      width: 60px;
+      text-align: center;
+      padding: 6px 4px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.9rem;
+      -moz-appearance: textfield;
+    }
+
+    @media (min-width: 500px) {
+      .quantity-control input[type="number"] {
+        width: 70px;
+        padding: 8px;
+        font-size: 1rem;
+      }
+    }
+
+    .quantity-control input[type="number"]::-webkit-outer-spin-button,
+    .quantity-control input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .quantity-label {
+      text-align: center;
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    @media (min-width: 500px) {
+      .quantity-label {
+        margin-top: 6px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      text-align: center;
+    }
+
+    @media (min-width: 500px) {
+      .btn {
+        padding: 13px 26px;
+        font-size: 0.95rem;
+        gap: 8px;
+      }
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(45, 106, 79, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+    }
+
+    .btn-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: var(--surface-2);
+      color: var(--text);
+      transition: all var(--transition);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 500px) {
+      .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.82rem;
+      }
+    }
+
+    .btn-sm:active {
+      transform: scale(0.95);
+    }
+
+    .btn-sm.btn-danger:hover {
+      background: #E63946;
+      border-color: #E63946;
+      color: #fff;
+    }
+
+    /* Hero section mobile */
+    .hero-section {
+      background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
+      color: #fff;
+      padding-top: calc(var(--header-h) + 30px) !important;
+      padding-bottom: 40px !important;
+      min-height: 70vh;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem) !important;
+      font-weight: 900;
+      line-height: 1.14;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 500px) {
+      .hero-title {
+        margin-bottom: 22px;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
+      color: rgba(255,255,255,0.9);
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+
+    @media (min-width: 500px) {
+      .hero-subtitle {
+        margin-bottom: 36px;
+      }
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 500px) {
+      .hero-cta {
+        gap: 14px;
+        margin-bottom: 40px;
+      }
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 500px) {
+      .hero-stats {
+        padding: 18px 32px;
+        margin-top: 40px;
+      }
+    }
+
+    .stat {
+      text-align: center;
+      padding: 4px 12px;
+    }
+
+    @media (min-width: 500px) {
+      .stat {
+        padding: 0 28px;
+      }
+    }
+
+    .stat-num {
+      display: block;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #B7E4C7;
+    }
+
+    @media (min-width: 500px) {
+      .stat-num {
+        font-size: 1.8rem;
+      }
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+
+    @media (min-width: 500px) {
+      .stat-label {
+        font-size: 0.78rem;
+      }
+    }
+
+    .stat-div {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    @media (min-width: 500px) {
+      .stat-div {
+        height: 36px;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 500px) {
+      .hero-badge {
+        padding: 8px 18px;
+        font-size: 0.82rem;
+        margin-bottom: 28px;
+      }
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #F4A261;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @media (min-width: 500px) {
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      z-index: 9999;
+      transition: transform 0.3s ease;
+      pointer-events: none;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    @media (min-width: 500px) {
+      .toast {
+        padding: 12px 24px;
+        font-size: 0.88rem;
+        max-width: 100%;
+      }
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dark-mode .toast {
+      background: #E8E8E8;
+      color: #111;
+    }
+
+    /* Fix for header on mobile */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(248, 245, 240, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .dark-mode .site-header {
+      background: rgba(15, 17, 23, 0.95);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 12px;
+    }
+
+    @media (min-width: 500px) {
+      .header-inner {
+        gap: 24px;
+        padding: 0 24px;
+      }
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    @media (min-width: 500px) {
+      .header-logo {
+        font-size: 1.25rem;
+        gap: 10px;
+      }
+    }
+
+    .header-logo .logo-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 500px) {
+      .header-logo .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        border-radius: 9px;
+      }
+    }
+
+    .dark-toggle {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      border: 1px solid var(--border);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    @media (min-width: 500px) {
+      .dark-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+    }
+
+    .dark-toggle:active {
+      transform: scale(0.9);
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+      background: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px;
+      gap: 2px;
+      z-index: 999;
+      animation: slideDown 0.3s ease;
+      max-height: calc(100vh - var(--header-h));
+      overflow-y: auto;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav .nav-link {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 500px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 56px;
+      }
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.75rem;
+    }
+
+    @media (min-width: 500px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 0.82rem;
+        gap: 12px;
+        padding-top: 24px;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 8px;
+    }
+
+    /* Fix for floating elements on mobile */
+    .floating-papers {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .floating-papers {
+        display: block;
+      }
+    }
+
+    .lines-bg {
+      opacity: 0.5;
+    }
+
+    @media (min-width: 768px) {
+      .lines-bg {
+        opacity: 1;
+      }
+    }
+
+    .cta-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .accent-text {
+      color: var(--primary-light);
+      position: relative;
+    }
+
+    .accent-text::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: rgba(82, 183, 136, 0.22);
+      border-radius: 4px;
+      z-index: -1;
     }
   </style>
 </head>
@@ -276,31 +1331,31 @@
   <div id="header-root"></div>
 
   <!-- HERO SECTION -->
-  <section class="hero-section" style="background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%); color: #fff; padding-top: calc(var(--header-h) + 50px); min-height: 85vh;">
+  <section class="hero-section">
     <div class="container hero-inner" style="max-width: 860px; text-align: center;">
-      <div class="hero-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.35); color: #fff;">
-        <span class="badge-dot" style="background: #F4A261;"></span>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
         Instant · Customizable · Free
       </div>
-      <h1 class="hero-title" style="color: #fff;">
-        Random Text<br><span class="accent-text" style="color: #B7E4C7;">Generator</span>
+      <h1 class="hero-title">
+        Random Text<br><span class="accent-text">Generator</span>
       </h1>
-      <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">
+      <p class="hero-subtitle">
         Generate realistic Lorem Ipsum, dummy text, random sentences, and placeholder content in seconds. 
         Perfect for designers, developers, and content creators.
       </p>
       <div class="hero-cta">
-        <a href="#generator-app" class="btn btn-primary" style="background: white; color: var(--primary-dark); font-size: 1.1rem;">
+        <a href="#generator-app" class="btn btn-primary" style="background: white; color: var(--primary-dark);">
           Generate Text Now
         </a>
         <a href="#features" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.6); color: white;">Explore Features</a>
       </div>
-      <div class="hero-stats" style="background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); margin-top: 40px;">
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">∞</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Unlimited</span></div>
-        <div class="stat-div" style="background: rgba(255,255,255,0.3);"></div>
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">4</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Text Types</span></div>
-        <div class="stat-div" style="background: rgba(255,255,255,0.3);"></div>
-        <div class="stat"><span class="stat-num" style="color: #B7E4C7;">Free</span><span class="stat-label" style="color: rgba(255,255,255,0.8);">Forever</span></div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Unlimited</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">Text Types</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Forever</span></div>
       </div>
     </div>
   </section>
@@ -312,76 +1367,72 @@
       <h2 class="section-title">Create Dummy Text Instantly</h2>
       <p class="section-sub">Powerful controls. Beautiful output. Zero limits.</p>
 
-      <div class="app-wrapper" style="grid-template-columns: 300px 1fr; height: auto; min-height: 580px;">
+      <div class="app-wrapper">
         
         <!-- Controls Sidebar -->
-        <aside class="app-sidebar" style="height: auto; padding-bottom: 20px;">
+        <aside class="app-sidebar">
           <div class="sidebar-header">
             <h3>Generator Settings</h3>
           </div>
 
-          <div style="padding: 0 16px 20px;">
-            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Text Type</label>
-            <select id="textType" class="tool-select" style="width: 100%; padding: 12px 14px; font-size: 1rem;">
+          <div class="controls-group">
+            <label>Text Type</label>
+            <select id="textType" class="tool-select">
               <option value="lorem">Lorem Ipsum</option>
               <option value="realistic" selected>Realistic English</option>
               <option value="nonsense">Nonsense Words</option>
               <option value="tech">Tech Jargon</option>
             </select>
 
-            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Output Format</label>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-              <button class="btn-sm format-btn active" data-format="paragraphs">Paragraphs</button>
-              <button class="btn-sm format-btn" data-format="sentences">Sentences</button>
+            <label>Output Format</label>
+            <div class="format-grid">
+              <button class="format-btn active" data-format="paragraphs">Paragraphs</button>
+              <button class="format-btn" data-format="sentences">Sentences</button>
             </div>
 
-            <label style="display: block; margin: 18px 0 8px; font-weight: 600; font-size: 0.9rem;">Quantity</label>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <input type="range" id="quantitySlider" min="1" max="20" value="3" style="flex: 1;">
-              <input type="number" id="quantityInput" value="3" min="1" max="50" style="width: 70px; text-align: center; padding: 8px;">
+            <label>Quantity</label>
+            <div class="quantity-control">
+              <input type="range" id="quantitySlider" min="1" max="20" value="3">
+              <input type="number" id="quantityInput" value="3" min="1" max="50">
             </div>
-            <div id="quantityLabel" style="text-align: center; margin-top: 6px; font-size: 0.9rem; color: var(--primary);">3 Paragraphs</div>
+            <div class="quantity-label" id="quantityLabel">3 Paragraphs</div>
           </div>
 
-          <div style="padding: 16px; border-top: 1px solid var(--border);">
-            <button id="generateBtn" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22" style="display: inline-block; margin-right: 8px;"><path d="M14 5l7 7-7 7M5 12h14"/></svg>
+          <div style="padding: 0 14px 12px;">
+            <button id="generateBtn" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" style="display: inline-block; margin-right: 6px;"><path d="M14 5l7 7-7 7M5 12h14"/></svg>
               Generate Text
             </button>
           </div>
 
-          <div style="padding: 0 16px 16px;">
-            <button id="clearBtn" class="btn btn-ghost" style="width: 100%;">Clear Output</button>
+          <div style="padding: 0 14px 16px;">
+            <button id="clearBtn" class="btn btn-ghost" style="width: 100%; padding: 10px;">Clear Output</button>
           </div>
         </aside>
 
         <!-- Output Area -->
-        <main class="app-editor" style="height: auto; min-height: 580px;">
+        <main class="app-editor" style="height: auto; min-height: 400px; display: flex; flex-direction: column;">
           <div class="generator-output" id="outputArea">
             <div class="output-actions">
-              <button class="btn-sm" id="copyBtn" title="Copy">
-                📋 Copy
-              </button>
-              <button class="btn-sm" id="downloadBtn" title="Download">
-                ⬇️ TXT
-              </button>
+              <button class="btn-sm" id="copyBtn">📋 Copy</button>
+              <button class="btn-sm" id="downloadBtn">⬇️ TXT</button>
             </div>
-            <div id="generatedText" style="margin-top: 20px; min-height: 260px; color: var(--text);">
+            <div id="generatedText" style="margin-top: 30px; min-height: 160px; color: var(--text);">
               <em style="color: var(--text-muted);">Click "Generate Text" to create random content...</em>
             </div>
           </div>
 
           <!-- History -->
-          <div style="margin-top: 24px;">
-            <h4 style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;">Recent Generations</h4>
-            <div id="historyList" style="display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto;"></div>
+          <div style="padding: 0 16px 16px;">
+            <h4 style="margin-bottom: 10px; color: var(--text-muted); font-size: 0.85rem;">Recent Generations</h4>
+            <div id="historyList"></div>
           </div>
         </main>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES SECTION - Fixed: Now properly visible -->
+  <!-- FEATURES SECTION -->
   <section id="features" class="features-section">
     <div class="container">
       <div class="section-label">✦ Features</div>
@@ -470,264 +1521,284 @@
   <script src="footer.js"></script>
   <script>
     // Comprehensive word lists for different text types
-    const realisticWords = ["the", "and", "with", "from", "this", "that", "which", "where", "when", "how", "experience", "knowledge", "development", "creative", "innovation", "beautiful", "amazing", "incredible", "journey", "moment", "future", "success", "passion", "inspiration", "dream", "achieve", "wonderful", "peaceful", "harmony", "balance", "growth", "learning", "discovery", "adventure", "memories", "thoughtful", "meaningful"];
-    
-    const loremWords = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi", "aliquip", "exea", "commodo", "consequat", "duis", "aute", "irure", "dolor", "reprehenderit", "voluptate", "velit", "esse", "cillum", "eu", "fugiat", "nulla", "pariatur", "excepteur", "sint", "occaecat", "cupidatat", "proident", "culpa", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"];
-    
-    const techWords = ["API", "database", "frontend", "backend", "deployment", "scalability", "authentication", "middleware", "asynchronous", "callback", "promise", "closure", "prototype", "component", "state", "props", "hooks", "reducer", "middleware", "endpoint", "microservice", "container", "orchestration", "kubernetes", "docker", "ci", "cd", "pipeline", "repository", "branching", "merge", "commit", "pull request", "refactor", "optimization", "cache", "latency", "throughput", "encryption", "token", "oauth", "jwt", "graphql", "restful", "soap", "websocket", "streaming", "buffer"];
-    
-    const nonsenseWords = ["flibbertigibbet", "gobbledygook", "hullabaloo", "lollygag", "malarkey", "ragamuffin", "snollygoster", "whippersnapper", "bamboozle", "cattywampus", "discombobulate", "fiddlesticks", "gazump", "hijinks", "kerfuffle", "nincompoop", "persnickety", "skedaddle", "tomfoolery", "vim", "whoopla", "yada", "zany"];
-    
-    let history = [];
+    (function() {
+      'use strict';
 
-    function getWordList(type) {
-      switch(type) {
-        case 'lorem': return loremWords;
-        case 'realistic': return realisticWords;
-        case 'tech': return techWords;
-        case 'nonsense': return nonsenseWords;
-        default: return realisticWords;
-      }
-    }
+      const realisticWords = ["the", "and", "with", "from", "this", "that", "which", "where", "when", "how", "experience", "knowledge", "development", "creative", "innovation", "beautiful", "amazing", "incredible", "journey", "moment", "future", "success", "passion", "inspiration", "dream", "achieve", "wonderful", "peaceful", "harmony", "balance", "growth", "learning", "discovery", "adventure", "memories", "thoughtful", "meaningful"];
+      
+      const loremWords = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi", "aliquip", "exea", "commodo", "consequat", "duis", "aute", "irure", "dolor", "reprehenderit", "voluptate", "velit", "esse", "cillum", "eu", "fugiat", "nulla", "pariatur", "excepteur", "sint", "occaecat", "cupidatat", "proident", "culpa", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"];
+      
+      const techWords = ["API", "database", "frontend", "backend", "deployment", "scalability", "authentication", "middleware", "asynchronous", "callback", "promise", "closure", "prototype", "component", "state", "props", "hooks", "reducer", "middleware", "endpoint", "microservice", "container", "orchestration", "kubernetes", "docker", "ci", "cd", "pipeline", "repository", "branching", "merge", "commit", "pull request", "refactor", "optimization", "cache", "latency", "throughput", "encryption", "token", "oauth", "jwt", "graphql", "restful", "soap", "websocket", "streaming", "buffer"];
+      
+      const nonsenseWords = ["flibbertigibbet", "gobbledygook", "hullabaloo", "lollygag", "malarkey", "ragamuffin", "snollygoster", "whippersnapper", "bamboozle", "cattywampus", "discombobulate", "fiddlesticks", "gazump", "hijinks", "kerfuffle", "nincompoop", "persnickety", "skedaddle", "tomfoolery", "vim", "whoopla", "yada", "zany"];
+      
+      let history = [];
 
-    function capitalizeFirst(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    function generateSentence(type) {
-      let wordList = getWordList(type);
-      let sentence = [];
-      const length = Math.floor(Math.random() * 10) + 6;
-      
-      for (let i = 0; i < length; i++) {
-        let word = wordList[Math.floor(Math.random() * wordList.length)];
-        sentence.push(word);
-      }
-      
-      let text = sentence.join(" ");
-      text = capitalizeFirst(text);
-      
-      // Add punctuation variations
-      const punctuations = [".", ".", ".", "!", "?"];
-      return text + punctuations[Math.floor(Math.random() * punctuations.length)];
-    }
-
-    function generateParagraph(type, numSentences) {
-      let sentences = [];
-      for (let i = 0; i < numSentences; i++) {
-        sentences.push(generateSentence(type));
-      }
-      return sentences.join(" ");
-    }
-
-    function generateText() {
-      const type = document.getElementById('textType').value;
-      let format = 'paragraphs';
-      const activeFormatBtn = document.querySelector('.format-btn.active');
-      if (activeFormatBtn) format = activeFormatBtn.dataset.format;
-      
-      const quantity = parseInt(document.getElementById('quantityInput').value) || 3;
-      
-      let output = '';
-      
-      if (format === 'paragraphs') {
-        const paragraphs = [];
-        for (let i = 0; i < quantity; i++) {
-          const sentenceCount = Math.floor(Math.random() * 5) + 3;
-          paragraphs.push(generateParagraph(type, sentenceCount));
+      function getWordList(type) {
+        switch(type) {
+          case 'lorem': return loremWords;
+          case 'realistic': return realisticWords;
+          case 'tech': return techWords;
+          case 'nonsense': return nonsenseWords;
+          default: return realisticWords;
         }
-        output = paragraphs.join("\n\n");
-      } else {
-        const sentences = [];
-        for (let i = 0; i < quantity; i++) {
+      }
+
+      function capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      function generateSentence(type) {
+        let wordList = getWordList(type);
+        let sentence = [];
+        const length = Math.floor(Math.random() * 10) + 6;
+        
+        for (let i = 0; i < length; i++) {
+          let word = wordList[Math.floor(Math.random() * wordList.length)];
+          sentence.push(word);
+        }
+        
+        let text = sentence.join(" ");
+        text = capitalizeFirst(text);
+        
+        const punctuations = [".", ".", ".", "!", "?"];
+        return text + punctuations[Math.floor(Math.random() * punctuations.length)];
+      }
+
+      function generateParagraph(type, numSentences) {
+        let sentences = [];
+        for (let i = 0; i < numSentences; i++) {
           sentences.push(generateSentence(type));
         }
-        output = sentences.join("\n");
+        return sentences.join(" ");
       }
-      
-      // Display output with proper formatting
-      const outputDiv = document.getElementById('generatedText');
-      outputDiv.innerHTML = output.replace(/\n/g, '<br>');
-      
-      // Save to history
-      const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-      const typeNames = { lorem: 'Lorem Ipsum', realistic: 'English', tech: 'Tech Jargon', nonsense: 'Nonsense' };
-      
-      history.unshift({
-        text: output,
-        type: typeNames[type] || type,
-        timestamp: timestamp,
-        preview: output.substring(0, 100)
-      });
-      
-      if (history.length > 8) history.pop();
-      renderHistory();
-      
-      // Show toast on generation
-      showToast('✨ Text generated successfully');
-    }
 
-    function renderHistory() {
-      const container = document.getElementById('historyList');
-      if (!container) return;
-      
-      container.innerHTML = '';
-      
-      if (history.length === 0) {
-        container.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">No history yet. Generate some text!</div>';
-        return;
-      }
-      
-      history.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'note-item';
-        div.style.cursor = 'pointer';
-        div.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-size:0.75rem; color:var(--primary-light);">${item.timestamp} • ${item.type}</span>
-          </div>
-          <div style="margin-top:6px; font-size:0.85rem; line-height:1.5; color: var(--text-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-            ${item.preview}...
-          </div>
-        `;
-        div.onclick = () => {
-          document.getElementById('generatedText').innerHTML = item.text.replace(/\n/g, '<br>');
-          showToast('📋 Loaded from history');
-        };
-        container.appendChild(div);
-      });
-    }
-
-    function copyToClipboard() {
-      const textDiv = document.getElementById('generatedText');
-      const plainText = textDiv.innerText || textDiv.textContent;
-      if (!plainText || plainText.includes('Click "Generate Text"')) {
-        showToast('⚠️ Nothing to copy. Generate text first.');
-        return;
-      }
-      
-      navigator.clipboard.writeText(plainText).then(() => {
-        showToast('✅ Text copied to clipboard');
-      }).catch(() => {
-        showToast('❌ Could not copy');
-      });
-    }
-
-    function downloadText() {
-      const textDiv = document.getElementById('generatedText');
-      const plainText = textDiv.innerText || textDiv.textContent;
-      if (!plainText || plainText.includes('Click "Generate Text"')) {
-        showToast('⚠️ Nothing to download. Generate text first.');
-        return;
-      }
-      
-      const blob = new Blob([plainText], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `random-text-${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      
-      showToast('📥 Text downloaded as .txt file');
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      if (toast) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 2500);
-      }
-    }
-
-    function clearOutput() {
-      document.getElementById('generatedText').innerHTML = '<em style="color: var(--text-muted);">Click "Generate Text" to create random content...</em>';
-      showToast('🧹 Output cleared');
-    }
-
-    // Initialize the generator
-    function initRandomTextGenerator() {
-      // Format buttons
-      document.querySelectorAll('.format-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const unit = btn.dataset.format === 'paragraphs' ? 'Paragraphs' : 'Sentences';
-          const val = document.getElementById('quantityInput').value;
-          document.getElementById('quantityLabel').textContent = `${val} ${unit}`;
-        });
-      });
-      
-      // Quantity sync
-      const slider = document.getElementById('quantitySlider');
-      const input = document.getElementById('quantityInput');
-      const label = document.getElementById('quantityLabel');
-      
-      function updateLabel() {
-        const val = parseInt(input.value);
-        const format = document.querySelector('.format-btn.active').dataset.format;
-        const unit = format === 'paragraphs' ? 'Paragraphs' : 'Sentences';
-        label.textContent = `${val} ${unit}`;
-      }
-      
-      if (slider) {
-        slider.addEventListener('input', () => {
-          input.value = slider.value;
-          updateLabel();
-        });
-      }
-      
-      if (input) {
-        input.addEventListener('input', () => {
-          let val = parseInt(input.value);
-          if (isNaN(val)) val = 1;
-          val = Math.min(50, Math.max(1, val));
-          input.value = val;
-          if (slider) slider.value = val;
-          updateLabel();
-        });
-      }
-      
-      // Generate button
-      const generateBtn = document.getElementById('generateBtn');
-      if (generateBtn) generateBtn.addEventListener('click', generateText);
-      
-      // Copy & Download
-      const copyBtn = document.getElementById('copyBtn');
-      if (copyBtn) copyBtn.addEventListener('click', copyToClipboard);
-      
-      const downloadBtn = document.getElementById('downloadBtn');
-      if (downloadBtn) downloadBtn.addEventListener('click', downloadText);
-      
-      // Clear
-      const clearBtn = document.getElementById('clearBtn');
-      if (clearBtn) clearBtn.addEventListener('click', clearOutput);
-      
-      // Keyboard shortcut Ctrl+Enter
-      document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === 'Enter') {
-          e.preventDefault();
-          generateText();
+      function generateText() {
+        const type = document.getElementById('textType').value;
+        let format = 'paragraphs';
+        const activeFormatBtn = document.querySelector('.format-btn.active');
+        if (activeFormatBtn) format = activeFormatBtn.dataset.format;
+        
+        const quantity = parseInt(document.getElementById('quantityInput').value) || 3;
+        
+        let output = '';
+        
+        if (format === 'paragraphs') {
+          const paragraphs = [];
+          for (let i = 0; i < quantity; i++) {
+            const sentenceCount = Math.floor(Math.random() * 5) + 3;
+            paragraphs.push(generateParagraph(type, sentenceCount));
+          }
+          output = paragraphs.join("\n\n");
+        } else {
+          const sentences = [];
+          for (let i = 0; i < quantity; i++) {
+            sentences.push(generateSentence(type));
+          }
+          output = sentences.join("\n");
         }
-      });
-      
-      // Initial generation
-      setTimeout(() => {
-        generateText();
-      }, 500);
-    }
+        
+        const outputDiv = document.getElementById('generatedText');
+        outputDiv.innerHTML = output.replace(/\n/g, '<br>');
+        
+        const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+        const typeNames = { lorem: 'Lorem Ipsum', realistic: 'English', tech: 'Tech Jargon', nonsense: 'Nonsense' };
+        
+        history.unshift({
+          text: output,
+          type: typeNames[type] || type,
+          timestamp: timestamp,
+          preview: output.substring(0, 100)
+        });
+        
+        if (history.length > 8) history.pop();
+        renderHistory();
+        
+        showToast('✨ Text generated successfully');
+      }
 
-    // Start when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initRandomTextGenerator);
-    } else {
-      initRandomTextGenerator();
-    }
+      function renderHistory() {
+        const container = document.getElementById('historyList');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        if (history.length === 0) {
+          container.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">No history yet. Generate some text!</div>';
+          return;
+        }
+        
+        history.forEach(function(item, index) {
+          const div = document.createElement('div');
+          div.className = 'note-item';
+          div.style.cursor = 'pointer';
+          div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+              <span style="font-size:0.7rem; color:var(--primary-light);">${item.timestamp} • ${item.type}</span>
+            </div>
+            <div style="margin-top:4px; font-size:0.8rem; line-height:1.4; color: var(--text-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+              ${item.preview}...
+            </div>
+          `;
+          div.onclick = function() {
+            document.getElementById('generatedText').innerHTML = item.text.replace(/\n/g, '<br>');
+            showToast('📋 Loaded from history');
+          };
+          container.appendChild(div);
+        });
+      }
+
+      function copyToClipboard() {
+        const textDiv = document.getElementById('generatedText');
+        const plainText = textDiv.innerText || textDiv.textContent;
+        if (!plainText || plainText.includes('Click "Generate Text"')) {
+          showToast('⚠️ Nothing to copy. Generate text first.');
+          return;
+        }
+        
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(plainText).then(function() {
+            showToast('✅ Text copied to clipboard');
+          }).catch(function() {
+            showToast('❌ Could not copy');
+          });
+        } else {
+          // Fallback
+          const textarea = document.createElement('textarea');
+          textarea.value = plainText;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            showToast('✅ Text copied to clipboard');
+          } catch(e) {
+            showToast('❌ Could not copy');
+          }
+          document.body.removeChild(textarea);
+        }
+      }
+
+      function downloadText() {
+        const textDiv = document.getElementById('generatedText');
+        const plainText = textDiv.innerText || textDiv.textContent;
+        if (!plainText || plainText.includes('Click "Generate Text"')) {
+          showToast('⚠️ Nothing to download. Generate text first.');
+          return;
+        }
+        
+        const blob = new Blob([plainText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'random-text-' + new Date().toISOString().slice(0,19).replace(/:/g, '-') + '.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+        
+        showToast('📥 Text downloaded as .txt file');
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(function() {
+            toast.classList.remove('show');
+          }, 2500);
+        }
+      }
+
+      function clearOutput() {
+        document.getElementById('generatedText').innerHTML = '<em style="color: var(--text-muted);">Click "Generate Text" to create random content...</em>';
+        showToast('🧹 Output cleared');
+      }
+
+      // Initialize the generator
+      function initRandomTextGenerator() {
+        // Format buttons
+        document.querySelectorAll('.format-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.format-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            const unit = btn.dataset.format === 'paragraphs' ? 'Paragraphs' : 'Sentences';
+            const val = document.getElementById('quantityInput').value;
+            document.getElementById('quantityLabel').textContent = val + ' ' + unit;
+          });
+        });
+        
+        // Quantity sync
+        const slider = document.getElementById('quantitySlider');
+        const input = document.getElementById('quantityInput');
+        const label = document.getElementById('quantityLabel');
+        
+        function updateLabel() {
+          const val = parseInt(input.value);
+          const format = document.querySelector('.format-btn.active').dataset.format;
+          const unit = format === 'paragraphs' ? 'Paragraphs' : 'Sentences';
+          label.textContent = val + ' ' + unit;
+        }
+        
+        if (slider) {
+          slider.addEventListener('input', function() {
+            input.value = slider.value;
+            updateLabel();
+          });
+        }
+        
+        if (input) {
+          input.addEventListener('input', function() {
+            let val = parseInt(input.value);
+            if (isNaN(val)) val = 1;
+            val = Math.min(50, Math.max(1, val));
+            input.value = val;
+            if (slider) slider.value = val;
+            updateLabel();
+          });
+        }
+        
+        // Generate button
+        const generateBtn = document.getElementById('generateBtn');
+        if (generateBtn) {
+          generateBtn.addEventListener('click', generateText);
+          generateBtn.addEventListener('touchstart', function(e) {
+            // Allow touch but prevent double tap zoom
+          });
+        }
+        
+        // Copy & Download
+        const copyBtn = document.getElementById('copyBtn');
+        if (copyBtn) copyBtn.addEventListener('click', copyToClipboard);
+        
+        const downloadBtn = document.getElementById('downloadBtn');
+        if (downloadBtn) downloadBtn.addEventListener('click', downloadText);
+        
+        // Clear
+        const clearBtn = document.getElementById('clearBtn');
+        if (clearBtn) clearBtn.addEventListener('click', clearOutput);
+        
+        // Keyboard shortcut Ctrl+Enter
+        document.addEventListener('keydown', function(e) {
+          if (e.ctrlKey && e.key === 'Enter') {
+            e.preventDefault();
+            generateText();
+          }
+        });
+        
+        // Initial generation
+        setTimeout(function() {
+          generateText();
+        }, 500);
+      }
+
+      // Start when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRandomTextGenerator);
+      } else {
+        initRandomTextGenerator();
+      }
+    })();
   </script>
 </body>
 </html>
