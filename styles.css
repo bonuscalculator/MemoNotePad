@@ -292,7 +292,7 @@ ul { list-style: none; }
 
 /* ---- HERO SECTION ---- */
 .hero-section {
-  min-height: 60vh;
+  min-height: 40vh;
   padding-top: calc(var(--header-h) + 60px);
   padding-bottom: 60px;
   position: relative;
