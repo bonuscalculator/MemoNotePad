@@ -294,7 +294,7 @@ ul { list-style: none; }
 .hero-section {
   min-height: 40vh;
   padding-top: calc(var(--header-h) + 60px);
-  padding-bottom: 60px;
+  padding-bottom: 40px;
   position: relative;
   display: flex;
   flex-direction: column;
